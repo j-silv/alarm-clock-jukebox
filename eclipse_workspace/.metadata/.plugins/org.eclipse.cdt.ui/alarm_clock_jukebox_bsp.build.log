@@ -1,0 +1,6 @@
+10:17:49 **** Clean-only build of configuration Nios II for project alarm_clock_jukebox_bsp ****
+make clean 
+[BSP clean complete]
+
+10:17:52 Build Finished (took 2s.906ms)
+

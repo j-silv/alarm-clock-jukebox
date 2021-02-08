@@ -83,7 +83,7 @@ module qsys_system_NiosII_CPU_cpu_test_bench (
   input   [ 31: 0] A_wr_data_unfiltered;
   input            A_wr_dst_reg;
   input   [ 17: 0] M_mem_baddr;
-  input   [ 16: 0] M_target_pcb;
+  input   [ 17: 0] M_target_pcb;
   input            M_valid;
   input   [ 31: 0] W_badaddr_reg;
   input   [ 31: 0] W_bstatus_reg;
@@ -93,7 +93,7 @@ module qsys_system_NiosII_CPU_cpu_test_bench (
   input   [ 31: 0] W_iw;
   input   [  5: 0] W_iw_op;
   input   [  5: 0] W_iw_opx;
-  input   [ 16: 0] W_pcb;
+  input   [ 17: 0] W_pcb;
   input   [ 31: 0] W_status_reg;
   input            W_valid;
   input   [ 71: 0] W_vinst;
@@ -103,7 +103,7 @@ module qsys_system_NiosII_CPU_cpu_test_bench (
   input   [  3: 0] d_byteenable;
   input            d_read;
   input            d_write;
-  input   [ 16: 0] i_address;
+  input   [ 17: 0] i_address;
   input            i_read;
   input            i_readdatavalid;
   input            reset_n;
@@ -111,7 +111,7 @@ module qsys_system_NiosII_CPU_cpu_test_bench (
 
 wire             A_iw_invalid;
 reg     [ 17: 0] A_mem_baddr;
-reg     [ 16: 0] A_target_pcb;
+reg     [ 17: 0] A_target_pcb;
 wire    [ 31: 0] A_wr_data_filtered;
 wire             A_wr_data_unfiltered_0_is_x;
 wire             A_wr_data_unfiltered_10_is_x;
@@ -278,7 +278,7 @@ wire             W_op_xor;
 wire             W_op_xorhi;
 wire             W_op_xori;
 reg     [ 31: 0] W_st_data;
-reg     [ 16: 0] W_target_pcb;
+reg     [ 17: 0] W_target_pcb;
 reg              W_valid_crst;
 reg              W_valid_hbreak;
 reg              W_valid_intr;

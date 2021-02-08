@@ -2,7 +2,9 @@
 User will select a "volume" switch and then on the display user
 will have the option to increment or decrement the current volume
 This will then adjust the duty cycle of the PWM on the speaker
-(look into logarithic scaling for this adjustment) 
+(look into logarithic scaling for this adjustment)
+-> check application note 333 (an333) of Nios documentation
+to see how they set up a PWM peripheral 
 
 -Cellphone ringtone format for melodies
 User can select a "melody" switch and then on the display
