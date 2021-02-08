@@ -1,8 +1,11 @@
 {
 	"folders": [
-		{
-			"path": "."
-		}
+    {
+      "path": "."
+    },
+    {
+      "path": "..\\..\\..\\..\\..\\..\\electronics\\Projects\\Gyro_controlled_RGB\\Gyro-controlled-RGB"
+    }
   ],
   "settings": {}
 }
