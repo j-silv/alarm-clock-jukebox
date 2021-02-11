@@ -1,18 +1,19 @@
-12:10:47 **** Build of configuration Nios II for project alarm_clock_jukebox ****
+23:48:47 **** Incremental Build of configuration Nios II for project alarm_clock_jukebox ****
 make all 
 Info: Building ../alarm_clock_jukebox_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../alarm_clock_jukebox_bsp/
 [BSP build complete]
+Info: Compiling Src/display.c to obj/default/Src/display.o
+nios2-elf-gcc -xc -MP -MMD -c -IInc -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/display.o Src/display.c
 Info: Compiling Src/main.c to obj/default/Src/main.o
 nios2-elf-gcc -xc -MP -MMD -c -IInc -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/main.o Src/main.c
 Info: Linking alarm_clock_jukebox.elf
-nios2-elf-g++  -T'../alarm_clock_jukebox_bsp//linker.x' -msys-crt0='../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../alarm_clock_jukebox_bsp/   -Wl,-Map=alarm_clock_jukebox.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o alarm_clock_jukebox.elf obj/default/Src/main.o -lm -msys-lib=m
-nios2-elf-insert alarm_clock_jukebox.elf --thread_model hal --cpu_name NiosII_CPU --qsys true --simulation_enabled false --id 305419896 --sidp 0x210c0 --timestamp 1612774744 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name qsys_system --quartus_project_dir "C:/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox" --jdi ../..//output_files/system_block.jdi --sopcinfo C:/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox_bsp/../../qsys_system.sopcinfo
-Info: (alarm_clock_jukebox.elf) 29 KBytes program size (code + initialized data).
-Info:                           3648 Bytes free for stack + heap.
-Info: Creating alarm_clock_jukebox.objdump
-nios2-elf-objdump --disassemble --syms --all-header --source alarm_clock_jukebox.elf >alarm_clock_jukebox.objdump
-[alarm_clock_jukebox build complete]
+nios2-elf-g++  -T'../alarm_clock_jukebox_bsp//linker.x' -msys-crt0='../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../alarm_clock_jukebox_bsp/   -Wl,-Map=alarm_clock_jukebox.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o alarm_clock_jukebox.elf obj/default/Src/display.o obj/default/Src/interrupts.o obj/default/Src/main.o -lm -msys-lib=m
+obj/default/Src/main.o:(.data+0x0): multiple definition of `COM_ANODE_SEG_TABLE'
+obj/default/Src/display.o:(.data+0x0): first defined here
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: Disabling relaxation: it will not work with multiple definitions
+collect2.exe: error: ld returned 1 exit status
+make: *** [alarm_clock_jukebox.elf] Error 1
 
-12:10:53 Build Finished (took 5s.92ms)
+23:48:52 Build Finished (took 5s.551ms)
 

@@ -142,7 +142,11 @@ ACDS_VERSION := 18.1
 ELF := alarm_clock_jukebox.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := Src/main.c
+C_SRCS += Src/main.c
+C_SRCS += Src/display.c
+C_SRCS += Src/interrupts.c
+C_SRCS += Src/button.c
+C_SRCS += Src/timer.c
 CXX_SRCS :=
 ASM_SRCS :=
 

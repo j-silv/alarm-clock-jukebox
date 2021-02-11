@@ -4,7 +4,10 @@
       "path": "."
     },
     {
-      "path": "..\\..\\..\\..\\..\\..\\electronics\\Projects\\Gyro_controlled_RGB\\Gyro-controlled-RGB"
+      "path": "..\\..\\..\\..\\..\\..\\Projects\\Gyro_controlled_RGB\\Gyro-controlled-RGB"
+    },
+    {
+      "path": "..\\..\\..\\..\\..\\..\\electronics\\stm32\\STM32Cube\\STM32Cube_FW_F0_V1.11.0"
     }
   ],
   "settings": {}
