@@ -1,5 +1,9 @@
-This is the C source code for my alarm clock jukebox. The device uses a Nios II embedded softcore
-IP from Quartus, programmed on a MAX 10 FPGA. 
+Here is the project repo for my alarm clock that plays cellphone ringtones (i.e., a "jukebox"!)
 
-The board support files are not included in the repo, but were generated from an empty Eclipse
-project template and an .sopcinfo file obtained from using Platform Designer and compilation in Quartus. 
+The device uses a Nios II embedded softcore IP from Quartus, programmed on a MAX 10 FPGA. 
+The ringtones are obtained through RTTTL (Ring Tones Text Transfer Language).
+
+NAVIGATING THE REPO:
+
+The C source code can be found in the software/ folder.
+The block diagrams for the device can be found in the diagrams/ folder.
