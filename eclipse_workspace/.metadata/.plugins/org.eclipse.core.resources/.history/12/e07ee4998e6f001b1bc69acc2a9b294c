@@ -1,4 +1,3 @@
-#include "timer.h"
 #include "main.h"
 
 typedef struct time {
@@ -8,7 +7,7 @@ typedef struct time {
 } time;
 
 time current_time;
-time alarm_time;
+time alarm;
 
 // 24 hour or 12 hour format (24 by default)
 int time_format = 24;
@@ -27,32 +26,32 @@ void initializeTime(void) {
   current_time.second = 0x0;
 }
 
-// initialize alarm_time to 00:00:00
+// initialize alarm to 00:00:00
 void initializeAlarm(void) {
-  alarm_time.hour = 0x0;
-  alarm_time.minute = 0x0;
-  alarm_time.second = 0x0;
+  alarm.hour = 0x0;
+  alarm.minute = 0x0;
+  alarm.second = 0x0;
 }
 
 void incrementAlarmHour(void) {
   // case where time is at 12:XX:XX or 24:XX:XX
-  if(alarm_time.hour == time_format) {
+  if(alarm.hour == time_format) {
     // wrap to 00:XX:XX
-    alarm_time.hour = 0;
+    alarm.hour = 0;
   }
   else {
-    alarm_time.hour++;
+    alarm.hour++;
   }
 }
 
 void incrementAlarmMinute(void) {
   // case where time is at XX:60:XX
-  if(alarm_time.minute == ONE_HOUR) {
+  if(alarm.minute == ONE_HOUR) {
     incrementAlarmHour();
-    alarm_time.minute = 0;
+    alarm.minute = 0;
   }
   else {
-    alarm_time.minute++;
+    alarm.minute++;
   }
 }
 

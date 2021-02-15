@@ -1,5 +1,5 @@
+#include "display.h"
 #include "main.h"
-
 
 /* Conversion decimal to BCD example (number 512):
 dec = 512
