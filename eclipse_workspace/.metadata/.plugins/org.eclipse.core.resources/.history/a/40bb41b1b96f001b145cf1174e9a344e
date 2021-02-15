@@ -4,11 +4,10 @@
 void update_second_isr(void* isr_context) {
   printf("INTERRUPT FIRED!\n");
 
-  /* The TO (timeout) bit is set to 1 when the internal counter reaches zero. Once set by a
-  timeout event, the TO bit stays set until explicitly cleared by a master peripheral. Write zero
-  to the status register to clear the TO bit. */
-  IOWR_ALTERA_AVALON_TIMER_STATUS(UPDATE_SECOND_BASE, 0);
+  // clear irq status in order to prevent retriggering
+  // IOWR_ALTERA_AVALON_TIMER_STATUS(SYS_CLK_TIMER_BASE, 0);
 }
+
 
 
 int registerTimerInterrupt(void) {
@@ -24,13 +23,13 @@ int registerTimerInterrupt(void) {
 
 void enableTimerInterrupt(void) {
 
- IOWR_ALTERA_AVALON_TIMER_CONTROL(UPDATE_SECOND_BASE,
+ IOWR_ALTERA_AVALON_TIMER_CONTROL(SYS_CLK_TIMER_BASE, 
                  ALTERA_AVALON_TIMER_CONTROL_CONT_MSK  
                | ALTERA_AVALON_TIMER_CONTROL_START_MSK
                | ALTERA_AVALON_TIMER_CONTROL_ITO_MSK);
+
+  IOWR_ALTERA_AVALON_PIO_IRQ_MASK(UPDATE_SECOND_BASE,0x1);
 }
-
-
 
 
 
