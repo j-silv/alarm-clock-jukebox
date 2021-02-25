@@ -147,6 +147,7 @@ C_SRCS += Src/display.c
 C_SRCS += Src/button.c
 C_SRCS += Src/timer.c
 C_SRCS += Src/interrupt.c
+C_SRCS += Src/led.c
 CXX_SRCS :=
 ASM_SRCS :=
 

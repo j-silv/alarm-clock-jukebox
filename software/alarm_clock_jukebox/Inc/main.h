@@ -22,5 +22,17 @@ void timerSecondCallback(void);
 int registerISR(void);
 void enableTimerSecondISR(void);
 
+// led.c API
+void alarmLEDoff(void);
+void alarmLEDon(void);
+void alarmLEDtoggle(void);
+
+// constants
+#define TIME_DISPLAY 0
+#define NOT_ARMED 0
+#define FALSE 0
+#define TRUE 1
+
+
 
 #endif

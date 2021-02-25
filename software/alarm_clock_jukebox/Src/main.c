@@ -1,6 +1,28 @@
 #include "main.h"
 
 int main(void) {
+
+  typedef struct {
+    int on;
+    int hour;
+    int minute;
+  } config_struct;
+
+  typedef struct {
+    int display;
+    int alarm;
+    config_struct config;
+  } mode_struct;
+
+  mode_struct mode;
+  mode.display = TIME_DISPLAY;
+  mode.alarm = NOT_ARMED;
+  mode.config.on = FALSE;
+  mode.config.hour = FALSE;
+  mode.config.minute = FALSE;
+
+  alarmLEDoff();
+
   if (registerISR() == ISR_REGISTRATION_FAILURE) {
     printf("ERROR: Interrupts unsuccessfully initialized!\n");
   }
@@ -10,8 +32,11 @@ int main(void) {
   }
 
 
-  while(1) {
-  }  
+
+
+
+
+  while(1) {}  
 }
 
 
@@ -20,6 +45,7 @@ int main(void) {
 
 void timerSecondCallback(void) {
   printf("timerSecond interrupt has fired!\n");
+  alarmLEDtoggle();
 }
 
 
