@@ -1,16 +1,16 @@
 #include "time.h"
 
 typedef struct {
-  uint8_t hour;
-  uint8_t minute;
-  uint8_t second;
+  volatile uint8_t hour;
+  volatile uint8_t minute;
+  volatile uint8_t second;
 } time_struct;
 
 time_struct clock_time;
 time_struct alarm_time;
 
 // 24 hour or 12 hour format (24 by default)
-uint8_t time_format = 24;
+volatile uint8_t time_format = 24;
 
 // initialize clock time to 00:00:00
 void resetClockTime(void) {

@@ -32,6 +32,9 @@ void alarmLEDtoggle(void);
 void resetClockTime(void);
 void resetAlarmTime(void);
 
+// display.c API
+void resetDisplay(void);
+
 // constants
 #define TIME_DISPLAY 0
 #define NOT_ARMED 0

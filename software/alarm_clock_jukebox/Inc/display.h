@@ -3,7 +3,7 @@
 #define __DISPLAY_H
 
 /*
-COMMON CATHODE SEG MAPPING:
+COMMON CATHODE SEG MAPPING:    
 dec   binary    hex
 0	    0111111	  3F
 1	    0000110	  06
@@ -30,13 +30,24 @@ dec   binary    hex
 9	    0010000	  90
 */
 
+// C libraries
+#include <stdint.h>
+
+// altera bsp
+#include "system.h"
+#include  "altera_avalon_pio_regs.h"
+
 // array position [0] corresponds to displaying 0, [1] -> 1, etc.
 // position [10] -> all segments are OFF
 // position [11] -> the minus sign (-, segment G)
-int COM_ANODE_SEG_TABLE[] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0xFF,0x3F};
+uint8_t COM_ANODE_SEG_TABLE[] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0xFF,0x3F};
 
 // 999 is the maximum value we can display with 3 LED segment displays
 #define MAX_ABS_VALUE 999
+
+#define RESET_DISPLAY_VALUE 0xC0
+
+void resetDisplay(void);
 
 int convert3DigitDecimalToLED(int decimal);
 int convertBCDToLED(int *bcd);

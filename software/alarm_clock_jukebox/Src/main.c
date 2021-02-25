@@ -3,14 +3,14 @@
 int main(void) {
 
   typedef struct {
-    uint8_t on;
-    uint8_t hour;
-    uint8_t minute;
+    volatile uint8_t on;
+    volatile uint8_t hour;
+    volatile uint8_t minute;
   } config_struct;
 
   typedef struct {
-    uint8_t display;
-    uint8_t alarm;
+    volatile uint8_t display;
+    volatile uint8_t alarm;
     config_struct config;
   } mode_struct;
 
@@ -24,6 +24,7 @@ int main(void) {
   alarmLEDoff();
   resetClockTime();
   resetAlarmTime();
+  resetDisplay();
 
   if (registerISR() == ISR_REGISTRATION_FAILURE) {
     printf("ERROR: Interrupts unsuccessfully initialized!\n");
