@@ -1,6 +1,8 @@
 #ifndef __INTERRUPTS_H
 #define __INTERRUPTS_H
 
+// C libraries
+#include <stdint.h>
 
 // altera bsp
 #include "system.h"
@@ -14,7 +16,7 @@
 int registerISR(void);
 void enableTimerSecondISR(void);
 void timerSecondISR(void* isr_context);
-int registerTimerSecondISR(void);
+uint8_t registerTimerSecondISR(void);
 
 // callbacks in main.c
 void timerSecondCallback(void);

@@ -9,7 +9,7 @@ void alarmLEDon(void) {
 }
 
 void alarmLEDtoggle(void) {
-  int led_state;
+  uint8_t led_state;
   led_state = IORD_ALTERA_AVALON_PIO_DATA(LED_ALARM_BASE);
   IOWR_ALTERA_AVALON_PIO_DATA(LED_ALARM_BASE, !led_state);
 }

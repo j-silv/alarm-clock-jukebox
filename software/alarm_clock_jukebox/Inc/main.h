@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdint.h>
 
 // altera bsp
 #include "system.h"
@@ -19,7 +20,7 @@
 void timerSecondCallback(void);
 
 // interrupt.c API
-int registerISR(void);
+uint8_t registerISR(void);
 void enableTimerSecondISR(void);
 
 // led.c API

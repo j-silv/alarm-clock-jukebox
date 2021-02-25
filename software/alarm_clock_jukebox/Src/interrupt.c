@@ -33,8 +33,8 @@ void timerSecondISR(void* isr_context) {
 
 
 // -------------- ISR registration functions ---------------- 
-int registerTimerSecondISR(void) {
-  int isr_register_status;
+uint8_t registerTimerSecondISR(void) {
+  uint8_t isr_register_status;
 
   isr_register_status = alt_ic_isr_register(TIMER_SECOND_IRQ_INTERRUPT_CONTROLLER_ID,
                                             TIMER_SECOND_IRQ,
