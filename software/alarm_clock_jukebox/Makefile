@@ -145,9 +145,9 @@ ELF := alarm_clock_jukebox.elf
 C_SRCS += Src/main.c
 C_SRCS += Src/display.c
 C_SRCS += Src/button.c
-C_SRCS += Src/timer.c
 C_SRCS += Src/interrupt.c
 C_SRCS += Src/led.c
+C_SRCS += Src/time.c
 CXX_SRCS :=
 ASM_SRCS :=
 

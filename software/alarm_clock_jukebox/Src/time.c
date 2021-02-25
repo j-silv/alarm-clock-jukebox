@@ -1,39 +1,28 @@
-#include "timer.h"
-#include "main.h"
+#include "time.h"
 
-typedef struct time {
-  int hour;
-  int minute;
-  int second;
-} time;
+typedef struct {
+  uint8_t hour;
+  uint8_t minute;
+  uint8_t second;
+} time_struct;
 
-time current_time;
-time alarm_time;
+time_struct clock_time;
+time_struct alarm_time;
 
 // 24 hour or 12 hour format (24 by default)
-int time_format = 24;
+uint8_t time_format = 24;
 
-// initialize time to 00:00:00
-void initializeTime(void) {
-  // method #1 (possible to do doing struct declaration?)
-  // myStruct m = {0};
-
-  // method #2
-  // memset(&m, 0, sizeof(myStruct));
-
-  // method #3
-  current_time.hour = 0x0;
-  current_time.minute = 0x0;
-  current_time.second = 0x0;
+// initialize clock time to 00:00:00
+void resetClockTime(void) {
+  clock_time = (time_struct){0};
 }
 
-// initialize alarm_time to 00:00:00
-void initializeAlarm(void) {
-  alarm_time.hour = 0x0;
-  alarm_time.minute = 0x0;
-  alarm_time.second = 0x0;
+// initialize alarm time to 00:00:00
+void resetAlarmTime(void) {
+  alarm_time = (time_struct){0};
 }
 
+/*
 void incrementAlarmHour(void) {
   // case where time is at 12:XX:XX or 24:XX:XX
   if(alarm_time.hour == time_format) {
@@ -88,3 +77,4 @@ void incrementTimeSecond(void) {
     current_time.second++;
   }
 }
+*/

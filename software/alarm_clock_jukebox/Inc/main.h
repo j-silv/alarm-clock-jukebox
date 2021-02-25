@@ -28,6 +28,10 @@ void alarmLEDoff(void);
 void alarmLEDon(void);
 void alarmLEDtoggle(void);
 
+// time.c API
+void resetClockTime(void);
+void resetAlarmTime(void);
+
 // constants
 #define TIME_DISPLAY 0
 #define NOT_ARMED 0

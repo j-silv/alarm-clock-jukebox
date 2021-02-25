@@ -22,6 +22,8 @@ int main(void) {
   mode.config.minute = FALSE;
 
   alarmLEDoff();
+  resetClockTime();
+  resetAlarmTime();
 
   if (registerISR() == ISR_REGISTRATION_FAILURE) {
     printf("ERROR: Interrupts unsuccessfully initialized!\n");
