@@ -4,7 +4,7 @@
  * Machine generated for CPU 'NiosII_CPU' in SOPC Builder design 'qsys_system'
  * SOPC Builder design path: ../../qsys_system.sopcinfo
  *
- * Generated: Mon Feb 08 10:17:46 CET 2021
+ * Generated: Thu Feb 25 14:20:15 CET 2021
  */
 
 /*
@@ -71,7 +71,7 @@ ALTERA_NIOS2_GEN2_IRQ_INSTANCE ( NIOSII_CPU, NiosII_CPU);
 ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART_0, jtag_uart_0);
 ALTERA_AVALON_SYSID_QSYS_INSTANCE ( SYSID_QSYS_0, sysid_qsys_0);
 ALTERA_AVALON_TIMER_INSTANCE ( SYS_CLK_TIMER, SYS_CLK_timer);
-ALTERA_AVALON_TIMER_INSTANCE ( UPDATE_SECOND, update_second);
+ALTERA_AVALON_TIMER_INSTANCE ( TIMER_SECOND, timer_second);
 
 /*
  * Initialize the interrupt controller devices
@@ -95,7 +95,7 @@ void alt_irq_init ( const void* base )
 void alt_sys_init( void )
 {
     ALTERA_AVALON_TIMER_INIT ( SYS_CLK_TIMER, SYS_CLK_timer);
-    ALTERA_AVALON_TIMER_INIT ( UPDATE_SECOND, update_second);
+    ALTERA_AVALON_TIMER_INIT ( TIMER_SECOND, timer_second);
     ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART_0, jtag_uart_0);
     ALTERA_AVALON_SYSID_QSYS_INIT ( SYSID_QSYS_0, sysid_qsys_0);
 }

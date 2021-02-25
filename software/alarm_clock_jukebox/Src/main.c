@@ -1,22 +1,25 @@
 #include "main.h"
-#include "interrupts.h"
 
 int main(void) {
-
-
-  if (registerTimerInterrupt() == ISR_REGISTER_SUCCESS) {
-    printf("ISR registered!\n");
-
-    // enable the appropiate update_second peripheral
-    enableTimerInterrupt();
+  if (registerISR() == ISR_REGISTRATION_FAILURE) {
+    printf("ERROR: Interrupts unsuccessfully initialized!\n");
   }
   else {
-    printf("ERROR: ISR unsuccessfully registered!\n");
+    printf("Interrupts successively initialized!\n");
+    enableTimerSecondISR();
   }
 
 
   while(1) {
   }  
+}
+
+
+// -------------- ISR callbacks -------------------
+// these are the main.c callback functions that the ISRs call from interrupt.c
+
+void timerSecondCallback(void) {
+  printf("timerSecond interrupt has fired!\n");
 }
 
 

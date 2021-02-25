@@ -4,7 +4,7 @@
  * Machine generated for CPU 'NiosII_CPU' in SOPC Builder design 'qsys_system'
  * SOPC Builder design path: ../../qsys_system.sopcinfo
  *
- * Generated: Mon Feb 08 10:17:46 CET 2021
+ * Generated: Thu Feb 25 14:20:14 CET 2021
  */
 
 /*
@@ -146,33 +146,6 @@
 
 
 /*
- * LEDR configuration
- *
- */
-
-#define ALT_MODULE_CLASS_LEDR altera_avalon_pio
-#define LEDR_BASE 0x21090
-#define LEDR_BIT_CLEARING_EDGE_REGISTER 0
-#define LEDR_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define LEDR_CAPTURE 0
-#define LEDR_DATA_WIDTH 10
-#define LEDR_DO_TEST_BENCH_WIRING 0
-#define LEDR_DRIVEN_SIM_VALUE 0
-#define LEDR_EDGE_TYPE "NONE"
-#define LEDR_FREQ 50000000
-#define LEDR_HAS_IN 0
-#define LEDR_HAS_OUT 1
-#define LEDR_HAS_TRI 0
-#define LEDR_IRQ -1
-#define LEDR_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define LEDR_IRQ_TYPE "NONE"
-#define LEDR_NAME "/dev/LEDR"
-#define LEDR_RESET_VALUE 0
-#define LEDR_SPAN 16
-#define LEDR_TYPE "altera_avalon_pio"
-
-
-/*
  * MEMOIRE_ONCHIP configuration
  *
  */
@@ -208,7 +181,7 @@
 
 #define ALT_MODULE_CLASS_SYS_CLK_timer altera_avalon_timer
 #define SYS_CLK_TIMER_ALWAYS_RUN 0
-#define SYS_CLK_TIMER_BASE 0x21000
+#define SYS_CLK_TIMER_BASE 0x21020
 #define SYS_CLK_TIMER_COUNTER_SIZE 32
 #define SYS_CLK_TIMER_FIXED_PERIOD 0
 #define SYS_CLK_TIMER_FREQ 50000000
@@ -243,19 +216,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_0"
-#define ALT_STDERR_BASE 0x210c8
+#define ALT_STDERR_BASE 0x21108
 #define ALT_STDERR_DEV jtag_uart_0
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_0"
-#define ALT_STDIN_BASE 0x210c8
+#define ALT_STDIN_BASE 0x21108
 #define ALT_STDIN_DEV jtag_uart_0
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_0"
-#define ALT_STDOUT_BASE 0x210c8
+#define ALT_STDOUT_BASE 0x21108
 #define ALT_STDOUT_DEV jtag_uart_0
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -269,7 +242,7 @@
  */
 
 #define ALT_MODULE_CLASS_buttons altera_avalon_pio
-#define BUTTONS_BASE 0x210a0
+#define BUTTONS_BASE 0x21040
 #define BUTTONS_BIT_CLEARING_EDGE_REGISTER 0
 #define BUTTONS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define BUTTONS_CAPTURE 1
@@ -281,7 +254,7 @@
 #define BUTTONS_HAS_IN 1
 #define BUTTONS_HAS_OUT 0
 #define BUTTONS_HAS_TRI 0
-#define BUTTONS_IRQ 1
+#define BUTTONS_IRQ 3
 #define BUTTONS_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define BUTTONS_IRQ_TYPE "EDGE"
 #define BUTTONS_NAME "/dev/buttons"
@@ -307,7 +280,7 @@
  */
 
 #define ALT_MODULE_CLASS_hour0 altera_avalon_pio
-#define HOUR0_BASE 0x21080
+#define HOUR0_BASE 0x210d0
 #define HOUR0_BIT_CLEARING_EDGE_REGISTER 0
 #define HOUR0_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HOUR0_CAPTURE 0
@@ -334,7 +307,7 @@
  */
 
 #define ALT_MODULE_CLASS_hour1 altera_avalon_pio
-#define HOUR1_BASE 0x21070
+#define HOUR1_BASE 0x210c0
 #define HOUR1_BIT_CLEARING_EDGE_REGISTER 0
 #define HOUR1_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HOUR1_CAPTURE 0
@@ -361,7 +334,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
-#define JTAG_UART_0_BASE 0x210c8
+#define JTAG_UART_0_BASE 0x21108
 #define JTAG_UART_0_IRQ 16
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
@@ -374,12 +347,93 @@
 
 
 /*
+ * led_alarm configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_led_alarm altera_avalon_pio
+#define LED_ALARM_BASE 0x21060
+#define LED_ALARM_BIT_CLEARING_EDGE_REGISTER 0
+#define LED_ALARM_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define LED_ALARM_CAPTURE 0
+#define LED_ALARM_DATA_WIDTH 1
+#define LED_ALARM_DO_TEST_BENCH_WIRING 0
+#define LED_ALARM_DRIVEN_SIM_VALUE 0
+#define LED_ALARM_EDGE_TYPE "NONE"
+#define LED_ALARM_FREQ 50000000
+#define LED_ALARM_HAS_IN 0
+#define LED_ALARM_HAS_OUT 1
+#define LED_ALARM_HAS_TRI 0
+#define LED_ALARM_IRQ -1
+#define LED_ALARM_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define LED_ALARM_IRQ_TYPE "NONE"
+#define LED_ALARM_NAME "/dev/led_alarm"
+#define LED_ALARM_RESET_VALUE 0
+#define LED_ALARM_SPAN 16
+#define LED_ALARM_TYPE "altera_avalon_pio"
+
+
+/*
+ * led_piano configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_led_piano altera_avalon_pio
+#define LED_PIANO_BASE 0x210e0
+#define LED_PIANO_BIT_CLEARING_EDGE_REGISTER 0
+#define LED_PIANO_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define LED_PIANO_CAPTURE 0
+#define LED_PIANO_DATA_WIDTH 7
+#define LED_PIANO_DO_TEST_BENCH_WIRING 0
+#define LED_PIANO_DRIVEN_SIM_VALUE 0
+#define LED_PIANO_EDGE_TYPE "NONE"
+#define LED_PIANO_FREQ 50000000
+#define LED_PIANO_HAS_IN 0
+#define LED_PIANO_HAS_OUT 1
+#define LED_PIANO_HAS_TRI 0
+#define LED_PIANO_IRQ -1
+#define LED_PIANO_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define LED_PIANO_IRQ_TYPE "NONE"
+#define LED_PIANO_NAME "/dev/led_piano"
+#define LED_PIANO_RESET_VALUE 0
+#define LED_PIANO_SPAN 16
+#define LED_PIANO_TYPE "altera_avalon_pio"
+
+
+/*
+ * led_status configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_led_status altera_avalon_pio
+#define LED_STATUS_BASE 0x21050
+#define LED_STATUS_BIT_CLEARING_EDGE_REGISTER 0
+#define LED_STATUS_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define LED_STATUS_CAPTURE 0
+#define LED_STATUS_DATA_WIDTH 2
+#define LED_STATUS_DO_TEST_BENCH_WIRING 0
+#define LED_STATUS_DRIVEN_SIM_VALUE 0
+#define LED_STATUS_EDGE_TYPE "NONE"
+#define LED_STATUS_FREQ 50000000
+#define LED_STATUS_HAS_IN 0
+#define LED_STATUS_HAS_OUT 1
+#define LED_STATUS_HAS_TRI 0
+#define LED_STATUS_IRQ -1
+#define LED_STATUS_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define LED_STATUS_IRQ_TYPE "NONE"
+#define LED_STATUS_NAME "/dev/led_status"
+#define LED_STATUS_RESET_VALUE 0
+#define LED_STATUS_SPAN 16
+#define LED_STATUS_TYPE "altera_avalon_pio"
+
+
+/*
  * min0 configuration
  *
  */
 
 #define ALT_MODULE_CLASS_min0 altera_avalon_pio
-#define MIN0_BASE 0x21060
+#define MIN0_BASE 0x210b0
 #define MIN0_BIT_CLEARING_EDGE_REGISTER 0
 #define MIN0_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define MIN0_CAPTURE 0
@@ -406,7 +460,7 @@
  */
 
 #define ALT_MODULE_CLASS_min1 altera_avalon_pio
-#define MIN1_BASE 0x21050
+#define MIN1_BASE 0x210a0
 #define MIN1_BIT_CLEARING_EDGE_REGISTER 0
 #define MIN1_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define MIN1_CAPTURE 0
@@ -433,7 +487,7 @@
  */
 
 #define ALT_MODULE_CLASS_sec0 altera_avalon_pio
-#define SEC0_BASE 0x21040
+#define SEC0_BASE 0x21090
 #define SEC0_BIT_CLEARING_EDGE_REGISTER 0
 #define SEC0_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define SEC0_CAPTURE 0
@@ -460,7 +514,7 @@
  */
 
 #define ALT_MODULE_CLASS_sec1 altera_avalon_pio
-#define SEC1_BASE 0x21030
+#define SEC1_BASE 0x21080
 #define SEC1_BIT_CLEARING_EDGE_REGISTER 0
 #define SEC1_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define SEC1_CAPTURE 0
@@ -487,7 +541,7 @@
  */
 
 #define ALT_MODULE_CLASS_speaker altera_avalon_pio
-#define SPEAKER_BASE 0x21020
+#define SPEAKER_BASE 0x21070
 #define SPEAKER_BIT_CLEARING_EDGE_REGISTER 0
 #define SPEAKER_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define SPEAKER_CAPTURE 0
@@ -514,21 +568,21 @@
  */
 
 #define ALT_MODULE_CLASS_switches altera_avalon_pio
-#define SWITCHES_BASE 0x210b0
+#define SWITCHES_BASE 0x210f0
 #define SWITCHES_BIT_CLEARING_EDGE_REGISTER 0
 #define SWITCHES_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define SWITCHES_CAPTURE 0
+#define SWITCHES_CAPTURE 1
 #define SWITCHES_DATA_WIDTH 10
 #define SWITCHES_DO_TEST_BENCH_WIRING 0
 #define SWITCHES_DRIVEN_SIM_VALUE 0
-#define SWITCHES_EDGE_TYPE "NONE"
+#define SWITCHES_EDGE_TYPE "ANY"
 #define SWITCHES_FREQ 50000000
 #define SWITCHES_HAS_IN 1
 #define SWITCHES_HAS_OUT 0
 #define SWITCHES_HAS_TRI 0
-#define SWITCHES_IRQ -1
-#define SWITCHES_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define SWITCHES_IRQ_TYPE "NONE"
+#define SWITCHES_IRQ 2
+#define SWITCHES_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define SWITCHES_IRQ_TYPE "LEVEL"
 #define SWITCHES_NAME "/dev/switches"
 #define SWITCHES_RESET_VALUE 0
 #define SWITCHES_SPAN 16
@@ -541,39 +595,39 @@
  */
 
 #define ALT_MODULE_CLASS_sysid_qsys_0 altera_avalon_sysid_qsys
-#define SYSID_QSYS_0_BASE 0x210c0
+#define SYSID_QSYS_0_BASE 0x21100
 #define SYSID_QSYS_0_ID 305419896
 #define SYSID_QSYS_0_IRQ -1
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1612774744
+#define SYSID_QSYS_0_TIMESTAMP 1614257749
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 
 /*
- * update_second configuration
+ * timer_second configuration
  *
  */
 
-#define ALT_MODULE_CLASS_update_second altera_avalon_timer
-#define UPDATE_SECOND_ALWAYS_RUN 0
-#define UPDATE_SECOND_BASE 0x0
-#define UPDATE_SECOND_COUNTER_SIZE 32
-#define UPDATE_SECOND_FIXED_PERIOD 0
-#define UPDATE_SECOND_FREQ 50000000
-#define UPDATE_SECOND_IRQ 2
-#define UPDATE_SECOND_IRQ_INTERRUPT_CONTROLLER_ID 0
-#define UPDATE_SECOND_LOAD_VALUE 49999999
-#define UPDATE_SECOND_MULT 1.0
-#define UPDATE_SECOND_NAME "/dev/update_second"
-#define UPDATE_SECOND_PERIOD 1
-#define UPDATE_SECOND_PERIOD_UNITS "s"
-#define UPDATE_SECOND_RESET_OUTPUT 0
-#define UPDATE_SECOND_SNAPSHOT 1
-#define UPDATE_SECOND_SPAN 32
-#define UPDATE_SECOND_TICKS_PER_SEC 1
-#define UPDATE_SECOND_TIMEOUT_PULSE_OUTPUT 0
-#define UPDATE_SECOND_TYPE "altera_avalon_timer"
+#define ALT_MODULE_CLASS_timer_second altera_avalon_timer
+#define TIMER_SECOND_ALWAYS_RUN 0
+#define TIMER_SECOND_BASE 0x21000
+#define TIMER_SECOND_COUNTER_SIZE 32
+#define TIMER_SECOND_FIXED_PERIOD 0
+#define TIMER_SECOND_FREQ 50000000
+#define TIMER_SECOND_IRQ 1
+#define TIMER_SECOND_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define TIMER_SECOND_LOAD_VALUE 49999999
+#define TIMER_SECOND_MULT 1.0
+#define TIMER_SECOND_NAME "/dev/timer_second"
+#define TIMER_SECOND_PERIOD 1
+#define TIMER_SECOND_PERIOD_UNITS "s"
+#define TIMER_SECOND_RESET_OUTPUT 0
+#define TIMER_SECOND_SNAPSHOT 1
+#define TIMER_SECOND_SPAN 32
+#define TIMER_SECOND_TICKS_PER_SEC 1
+#define TIMER_SECOND_TIMEOUT_PULSE_OUTPUT 0
+#define TIMER_SECOND_TYPE "altera_avalon_timer"
 
 #endif /* __SYSTEM_H_ */

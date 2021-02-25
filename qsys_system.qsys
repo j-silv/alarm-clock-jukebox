@@ -9,22 +9,6 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element LEDR
-   {
-      datum _sortIndex
-      {
-         value = "5";
-         type = "int";
-      }
-   }
-   element LEDR.s1
-   {
-      datum baseAddress
-      {
-         value = "135312";
-         type = "String";
-      }
-   }
    element MEMOIRE_ONCHIP
    {
       datum _sortIndex
@@ -98,7 +82,7 @@
       }
       datum baseAddress
       {
-         value = "135168";
+         value = "135200";
          type = "String";
       }
    }
@@ -114,7 +98,7 @@
    {
       datum baseAddress
       {
-         value = "135328";
+         value = "135232";
          type = "String";
       }
    }
@@ -146,7 +130,7 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "5";
          type = "int";
       }
    }
@@ -154,7 +138,7 @@
    {
       datum baseAddress
       {
-         value = "135296";
+         value = "135376";
          type = "String";
       }
    }
@@ -162,7 +146,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "6";
          type = "int";
       }
    }
@@ -170,7 +154,7 @@
    {
       datum baseAddress
       {
-         value = "135280";
+         value = "135360";
          type = "String";
       }
    }
@@ -191,19 +175,19 @@
       }
       datum baseAddress
       {
-         value = "135368";
+         value = "135432";
          type = "String";
       }
    }
-   element min0
+   element led_alarm
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "16";
          type = "int";
       }
    }
-   element min0.s1
+   element led_alarm.s1
    {
       datum baseAddress
       {
@@ -211,15 +195,31 @@
          type = "String";
       }
    }
-   element min1
+   element led_piano
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "18";
          type = "int";
       }
    }
-   element min1.s1
+   element led_piano.s1
+   {
+      datum baseAddress
+      {
+         value = "135392";
+         type = "String";
+      }
+   }
+   element led_status
+   {
+      datum _sortIndex
+      {
+         value = "17";
+         type = "int";
+      }
+   }
+   element led_status.s1
    {
       datum baseAddress
       {
@@ -227,11 +227,43 @@
          type = "String";
       }
    }
+   element min0
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element min0.s1
+   {
+      datum baseAddress
+      {
+         value = "135344";
+         type = "String";
+      }
+   }
+   element min1
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+   }
+   element min1.s1
+   {
+      datum baseAddress
+      {
+         value = "135328";
+         type = "String";
+      }
+   }
    element sec0
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "9";
          type = "int";
       }
    }
@@ -239,7 +271,7 @@
    {
       datum baseAddress
       {
-         value = "135232";
+         value = "135312";
          type = "String";
       }
    }
@@ -247,7 +279,7 @@
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "10";
          type = "int";
       }
    }
@@ -255,7 +287,7 @@
    {
       datum baseAddress
       {
-         value = "135216";
+         value = "135296";
          type = "String";
       }
    }
@@ -271,7 +303,7 @@
    {
       datum baseAddress
       {
-         value = "135200";
+         value = "135280";
          type = "String";
       }
    }
@@ -291,11 +323,19 @@
          type = "String";
       }
    }
+   element switches.irq
+   {
+      datum _tags
+      {
+         value = "";
+         type = "String";
+      }
+   }
    element switches.s1
    {
       datum baseAddress
       {
-         value = "135344";
+         value = "135408";
          type = "String";
       }
    }
@@ -311,16 +351,24 @@
    {
       datum baseAddress
       {
-         value = "135360";
+         value = "135424";
          type = "String";
       }
    }
-   element update_second
+   element timer_second
    {
       datum _sortIndex
       {
-         value = "16";
+         value = "11";
          type = "int";
+      }
+   }
+   element timer_second.s1
+   {
+      datum baseAddress
+      {
+         value = "135168";
+         type = "String";
       }
    }
 }
@@ -361,8 +409,18 @@
    type="conduit"
    dir="end" />
  <interface
+   name="led_alarm_external_connection"
+   internal="led_alarm.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="led_status_external_connection"
+   internal="led_status.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="ledr_external_connection"
-   internal="LEDR.external_connection"
+   internal="led_piano.external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -396,27 +454,13 @@
    internal="switches.external_connection"
    type="conduit"
    dir="end" />
- <module name="LEDR" kind="altera_avalon_pio" version="18.1" enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="10" />
- </module>
  <module
    name="MEMOIRE_ONCHIP"
    kind="altera_avalon_onchip_memory2"
    version="18.1"
    enabled="1">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">$${FILENAME}_MEMOIRE_ONCHIP</parameter>
+  <parameter name="autoInitializationFileName">qsys_system_MEMOIRE_ONCHIP</parameter>
   <parameter name="blockType" value="AUTO" />
   <parameter name="copyInitFile" value="false" />
   <parameter name="dataWidth" value="32" />
@@ -443,8 +487,8 @@
   <parameter name="writable" value="true" />
  </module>
  <module name="NiosII_CPU" kind="altera_nios2_gen2" version="18.1" enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="2" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="2" />
   <parameter name="AUTO_DEVICE" value="10M50DAF484C6GES" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="bht_ramBlockType" value="Automatic" />
@@ -462,7 +506,7 @@
   <parameter name="dataAddrWidth" value="18" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='update_second.s1' start='0x0' end='0x20' type='altera_avalon_timer.s1' /><slave name='MEMOIRE_ONCHIP.s1' start='0x10000' end='0x1A000' type='altera_avalon_onchip_memory2.s1' /><slave name='NiosII_CPU.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='SYS_CLK_timer.s1' start='0x21000' end='0x21020' type='altera_avalon_timer.s1' /><slave name='speaker.s1' start='0x21020' end='0x21030' type='altera_avalon_pio.s1' /><slave name='sec1.s1' start='0x21030' end='0x21040' type='altera_avalon_pio.s1' /><slave name='sec0.s1' start='0x21040' end='0x21050' type='altera_avalon_pio.s1' /><slave name='min1.s1' start='0x21050' end='0x21060' type='altera_avalon_pio.s1' /><slave name='min0.s1' start='0x21060' end='0x21070' type='altera_avalon_pio.s1' /><slave name='hour1.s1' start='0x21070' end='0x21080' type='altera_avalon_pio.s1' /><slave name='hour0.s1' start='0x21080' end='0x21090' type='altera_avalon_pio.s1' /><slave name='LEDR.s1' start='0x21090' end='0x210A0' type='altera_avalon_pio.s1' /><slave name='buttons.s1' start='0x210A0' end='0x210B0' type='altera_avalon_pio.s1' /><slave name='switches.s1' start='0x210B0' end='0x210C0' type='altera_avalon_pio.s1' /><slave name='sysid_qsys_0.control_slave' start='0x210C0' end='0x210C8' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x210C8' end='0x210D0' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='MEMOIRE_ONCHIP.s1' start='0x10000' end='0x1A000' type='altera_avalon_onchip_memory2.s1' /><slave name='NiosII_CPU.debug_mem_slave' start='0x20800' end='0x21000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer_second.s1' start='0x21000' end='0x21020' type='altera_avalon_timer.s1' /><slave name='SYS_CLK_timer.s1' start='0x21020' end='0x21040' type='altera_avalon_timer.s1' /><slave name='buttons.s1' start='0x21040' end='0x21050' type='altera_avalon_pio.s1' /><slave name='led_status.s1' start='0x21050' end='0x21060' type='altera_avalon_pio.s1' /><slave name='led_alarm.s1' start='0x21060' end='0x21070' type='altera_avalon_pio.s1' /><slave name='speaker.s1' start='0x21070' end='0x21080' type='altera_avalon_pio.s1' /><slave name='sec1.s1' start='0x21080' end='0x21090' type='altera_avalon_pio.s1' /><slave name='sec0.s1' start='0x21090' end='0x210A0' type='altera_avalon_pio.s1' /><slave name='min1.s1' start='0x210A0' end='0x210B0' type='altera_avalon_pio.s1' /><slave name='min0.s1' start='0x210B0' end='0x210C0' type='altera_avalon_pio.s1' /><slave name='hour1.s1' start='0x210C0' end='0x210D0' type='altera_avalon_pio.s1' /><slave name='hour0.s1' start='0x210D0' end='0x210E0' type='altera_avalon_pio.s1' /><slave name='led_piano.s1' start='0x210E0' end='0x210F0' type='altera_avalon_pio.s1' /><slave name='switches.s1' start='0x210F0' end='0x21100' type='altera_avalon_pio.s1' /><slave name='sysid_qsys_0.control_slave' start='0x21100' end='0x21108' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x21108' end='0x21110' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -508,7 +552,7 @@
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="65543" />
+  <parameter name="internalIrqMaskSystemInfo" value="65551" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -703,6 +747,48 @@
   <parameter name="writeBufferDepth" value="64" />
   <parameter name="writeIRQThreshold" value="8" />
  </module>
+ <module name="led_alarm" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
+ <module name="led_piano" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="7" />
+ </module>
+ <module name="led_status" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="2" />
+ </module>
  <module name="min0" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -776,11 +862,11 @@
  <module name="switches" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
+  <parameter name="captureEdge" value="true" />
   <parameter name="clockRate" value="50000000" />
   <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
+  <parameter name="edgeType" value="ANY" />
+  <parameter name="generateIRQ" value="true" />
   <parameter name="irqType" value="LEVEL" />
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
@@ -795,7 +881,7 @@
   <parameter name="id" value="305419896" />
  </module>
  <module
-   name="update_second"
+   name="timer_second"
    kind="altera_avalon_timer"
    version="18.1"
    enabled="1">
@@ -816,7 +902,7 @@
    start="NiosII_CPU.data_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x000210c8" />
+  <parameter name="baseAddress" value="0x00021108" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -825,7 +911,7 @@
    start="NiosII_CPU.data_master"
    end="sysid_qsys_0.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x000210c0" />
+  <parameter name="baseAddress" value="0x00021100" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -852,7 +938,7 @@
    start="NiosII_CPU.data_master"
    end="SYS_CLK_timer.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021000" />
+  <parameter name="baseAddress" value="0x00021020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -861,25 +947,16 @@
    start="NiosII_CPU.data_master"
    end="switches.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x000210b0" />
+  <parameter name="baseAddress" value="0x000210f0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.1"
    start="NiosII_CPU.data_master"
-   end="buttons.s1">
+   end="led_piano.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x000210a0" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="NiosII_CPU.data_master"
-   end="LEDR.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021090" />
+  <parameter name="baseAddress" value="0x000210e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -888,7 +965,7 @@
    start="NiosII_CPU.data_master"
    end="hour0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021080" />
+  <parameter name="baseAddress" value="0x000210d0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -897,7 +974,7 @@
    start="NiosII_CPU.data_master"
    end="hour1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021070" />
+  <parameter name="baseAddress" value="0x000210c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -906,7 +983,7 @@
    start="NiosII_CPU.data_master"
    end="min0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021060" />
+  <parameter name="baseAddress" value="0x000210b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -915,7 +992,7 @@
    start="NiosII_CPU.data_master"
    end="min1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021050" />
+  <parameter name="baseAddress" value="0x000210a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -924,7 +1001,7 @@
    start="NiosII_CPU.data_master"
    end="sec0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021040" />
+  <parameter name="baseAddress" value="0x00021090" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -933,7 +1010,7 @@
    start="NiosII_CPU.data_master"
    end="sec1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021030" />
+  <parameter name="baseAddress" value="0x00021080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -942,16 +1019,43 @@
    start="NiosII_CPU.data_master"
    end="speaker.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00021020" />
+  <parameter name="baseAddress" value="0x00021070" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.1"
    start="NiosII_CPU.data_master"
-   end="update_second.s1">
+   end="timer_second.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="baseAddress" value="0x00021000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="NiosII_CPU.data_master"
+   end="led_alarm.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00021060" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="NiosII_CPU.data_master"
+   end="led_status.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00021050" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="NiosII_CPU.data_master"
+   end="buttons.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00021040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -978,7 +1082,7 @@
  <connection kind="clock" version="18.1" start="clk_0.clk" end="sysid_qsys_0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="switches.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="buttons.clk" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="LEDR.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="led_piano.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="hour0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="hour1.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="min0.clk" />
@@ -986,19 +1090,14 @@
  <connection kind="clock" version="18.1" start="clk_0.clk" end="sec0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="sec1.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="speaker.clk" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="update_second.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="timer_second.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="led_alarm.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="led_status.clk" />
  <connection
    kind="clock"
    version="18.1"
    start="clk_0.clk"
    end="MEMOIRE_ONCHIP.clk1" />
- <connection
-   kind="interrupt"
-   version="18.1"
-   start="NiosII_CPU.irq"
-   end="buttons.irq">
-  <parameter name="irqNumber" value="1" />
- </connection>
  <connection
    kind="interrupt"
    version="18.1"
@@ -1017,8 +1116,22 @@
    kind="interrupt"
    version="18.1"
    start="NiosII_CPU.irq"
-   end="update_second.irq">
+   end="timer_second.irq">
+  <parameter name="irqNumber" value="1" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.1"
+   start="NiosII_CPU.irq"
+   end="switches.irq">
   <parameter name="irqNumber" value="2" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="18.1"
+   start="NiosII_CPU.irq"
+   end="buttons.irq">
+  <parameter name="irqNumber" value="3" />
  </connection>
  <connection
    kind="reset"
@@ -1050,7 +1163,11 @@
    version="18.1"
    start="clk_0.clk_reset"
    end="buttons.reset" />
- <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="LEDR.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="led_piano.reset" />
  <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="hour0.reset" />
  <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="hour1.reset" />
  <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="min0.reset" />
@@ -1066,7 +1183,17 @@
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="update_second.reset" />
+   end="timer_second.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="led_alarm.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="led_status.reset" />
  <connection
    kind="reset"
    version="18.1"
