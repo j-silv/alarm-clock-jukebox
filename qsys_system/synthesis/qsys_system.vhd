@@ -10,16 +10,16 @@ entity qsys_system is
 	port (
 		buttons_external_connection_export    : in  std_logic_vector(1 downto 0) := (others => '0'); --    buttons_external_connection.export
 		clk_clk                               : in  std_logic                    := '0';             --                            clk.clk
-		hour0_external_connection_export      : out std_logic_vector(6 downto 0);                    --      hour0_external_connection.export
-		hour1_external_connection_export      : out std_logic_vector(6 downto 0);                    --      hour1_external_connection.export
+		hour0_external_connection_export      : out std_logic_vector(7 downto 0);                    --      hour0_external_connection.export
+		hour1_external_connection_export      : out std_logic_vector(7 downto 0);                    --      hour1_external_connection.export
 		led_alarm_external_connection_export  : out std_logic;                                       --  led_alarm_external_connection.export
 		led_status_external_connection_export : out std_logic_vector(1 downto 0);                    -- led_status_external_connection.export
 		ledr_external_connection_export       : out std_logic_vector(6 downto 0);                    --       ledr_external_connection.export
-		min0_external_connection_export       : out std_logic_vector(6 downto 0);                    --       min0_external_connection.export
-		min1_external_connection_export       : out std_logic_vector(6 downto 0);                    --       min1_external_connection.export
+		minute0_external_connection_export    : out std_logic_vector(7 downto 0);                    --    minute0_external_connection.export
+		minute1_external_connection_export    : out std_logic_vector(7 downto 0);                    --    minute1_external_connection.export
 		reset_reset_n                         : in  std_logic                    := '0';             --                          reset.reset_n
-		sec0_external_connection_export       : out std_logic_vector(6 downto 0);                    --       sec0_external_connection.export
-		sec1_external_connection_export       : out std_logic_vector(6 downto 0);                    --       sec1_external_connection.export
+		second0_external_connection_export    : out std_logic_vector(7 downto 0);                    --    second0_external_connection.export
+		second1_external_connection_export    : out std_logic_vector(7 downto 0);                    --    second1_external_connection.export
 		speaker_external_connection_export    : out std_logic;                                       --    speaker_external_connection.export
 		switches_external_connection_export   : in  std_logic_vector(9 downto 0) := (others => '0')  --   switches_external_connection.export
 	);
@@ -94,7 +94,7 @@ architecture rtl of qsys_system is
 			writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
 			chipselect : in  std_logic                     := 'X';             -- chipselect
 			readdata   : out std_logic_vector(31 downto 0);                    -- readdata
-			out_port   : out std_logic_vector(6 downto 0)                      -- export
+			out_port   : out std_logic_vector(7 downto 0)                      -- export
 		);
 	end component qsys_system_hour0;
 
@@ -259,16 +259,16 @@ architecture rtl of qsys_system is
 			led_status_s1_readdata                        : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			led_status_s1_writedata                       : out std_logic_vector(31 downto 0);                    -- writedata
 			led_status_s1_chipselect                      : out std_logic;                                        -- chipselect
-			min0_s1_address                               : out std_logic_vector(1 downto 0);                     -- address
-			min0_s1_write                                 : out std_logic;                                        -- write
-			min0_s1_readdata                              : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			min0_s1_writedata                             : out std_logic_vector(31 downto 0);                    -- writedata
-			min0_s1_chipselect                            : out std_logic;                                        -- chipselect
-			min1_s1_address                               : out std_logic_vector(1 downto 0);                     -- address
-			min1_s1_write                                 : out std_logic;                                        -- write
-			min1_s1_readdata                              : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			min1_s1_writedata                             : out std_logic_vector(31 downto 0);                    -- writedata
-			min1_s1_chipselect                            : out std_logic;                                        -- chipselect
+			minute0_s1_address                            : out std_logic_vector(1 downto 0);                     -- address
+			minute0_s1_write                              : out std_logic;                                        -- write
+			minute0_s1_readdata                           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			minute0_s1_writedata                          : out std_logic_vector(31 downto 0);                    -- writedata
+			minute0_s1_chipselect                         : out std_logic;                                        -- chipselect
+			minute1_s1_address                            : out std_logic_vector(1 downto 0);                     -- address
+			minute1_s1_write                              : out std_logic;                                        -- write
+			minute1_s1_readdata                           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			minute1_s1_writedata                          : out std_logic_vector(31 downto 0);                    -- writedata
+			minute1_s1_chipselect                         : out std_logic;                                        -- chipselect
 			NiosII_CPU_debug_mem_slave_address            : out std_logic_vector(8 downto 0);                     -- address
 			NiosII_CPU_debug_mem_slave_write              : out std_logic;                                        -- write
 			NiosII_CPU_debug_mem_slave_read               : out std_logic;                                        -- read
@@ -284,16 +284,16 @@ architecture rtl of qsys_system is
 			onchip_memory_s1_byteenable                   : out std_logic_vector(3 downto 0);                     -- byteenable
 			onchip_memory_s1_chipselect                   : out std_logic;                                        -- chipselect
 			onchip_memory_s1_clken                        : out std_logic;                                        -- clken
-			sec0_s1_address                               : out std_logic_vector(1 downto 0);                     -- address
-			sec0_s1_write                                 : out std_logic;                                        -- write
-			sec0_s1_readdata                              : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			sec0_s1_writedata                             : out std_logic_vector(31 downto 0);                    -- writedata
-			sec0_s1_chipselect                            : out std_logic;                                        -- chipselect
-			sec1_s1_address                               : out std_logic_vector(1 downto 0);                     -- address
-			sec1_s1_write                                 : out std_logic;                                        -- write
-			sec1_s1_readdata                              : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			sec1_s1_writedata                             : out std_logic_vector(31 downto 0);                    -- writedata
-			sec1_s1_chipselect                            : out std_logic;                                        -- chipselect
+			second0_s1_address                            : out std_logic_vector(1 downto 0);                     -- address
+			second0_s1_write                              : out std_logic;                                        -- write
+			second0_s1_readdata                           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			second0_s1_writedata                          : out std_logic_vector(31 downto 0);                    -- writedata
+			second0_s1_chipselect                         : out std_logic;                                        -- chipselect
+			second1_s1_address                            : out std_logic_vector(1 downto 0);                     -- address
+			second1_s1_write                              : out std_logic;                                        -- write
+			second1_s1_readdata                           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			second1_s1_writedata                          : out std_logic_vector(31 downto 0);                    -- writedata
+			second1_s1_chipselect                         : out std_logic;                                        -- chipselect
 			speaker_s1_address                            : out std_logic_vector(1 downto 0);                     -- address
 			speaker_s1_write                              : out std_logic;                                        -- write
 			speaker_s1_readdata                           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
@@ -521,31 +521,16 @@ architecture rtl of qsys_system is
 	signal mm_interconnect_0_hour0_s1_address                              : std_logic_vector(1 downto 0);  -- mm_interconnect_0:hour0_s1_address -> hour0:address
 	signal mm_interconnect_0_hour0_s1_write                                : std_logic;                     -- mm_interconnect_0:hour0_s1_write -> mm_interconnect_0_hour0_s1_write:in
 	signal mm_interconnect_0_hour0_s1_writedata                            : std_logic_vector(31 downto 0); -- mm_interconnect_0:hour0_s1_writedata -> hour0:writedata
-	signal mm_interconnect_0_hour1_s1_chipselect                           : std_logic;                     -- mm_interconnect_0:hour1_s1_chipselect -> hour1:chipselect
-	signal mm_interconnect_0_hour1_s1_readdata                             : std_logic_vector(31 downto 0); -- hour1:readdata -> mm_interconnect_0:hour1_s1_readdata
-	signal mm_interconnect_0_hour1_s1_address                              : std_logic_vector(1 downto 0);  -- mm_interconnect_0:hour1_s1_address -> hour1:address
-	signal mm_interconnect_0_hour1_s1_write                                : std_logic;                     -- mm_interconnect_0:hour1_s1_write -> mm_interconnect_0_hour1_s1_write:in
-	signal mm_interconnect_0_hour1_s1_writedata                            : std_logic_vector(31 downto 0); -- mm_interconnect_0:hour1_s1_writedata -> hour1:writedata
-	signal mm_interconnect_0_min0_s1_chipselect                            : std_logic;                     -- mm_interconnect_0:min0_s1_chipselect -> min0:chipselect
-	signal mm_interconnect_0_min0_s1_readdata                              : std_logic_vector(31 downto 0); -- min0:readdata -> mm_interconnect_0:min0_s1_readdata
-	signal mm_interconnect_0_min0_s1_address                               : std_logic_vector(1 downto 0);  -- mm_interconnect_0:min0_s1_address -> min0:address
-	signal mm_interconnect_0_min0_s1_write                                 : std_logic;                     -- mm_interconnect_0:min0_s1_write -> mm_interconnect_0_min0_s1_write:in
-	signal mm_interconnect_0_min0_s1_writedata                             : std_logic_vector(31 downto 0); -- mm_interconnect_0:min0_s1_writedata -> min0:writedata
-	signal mm_interconnect_0_min1_s1_chipselect                            : std_logic;                     -- mm_interconnect_0:min1_s1_chipselect -> min1:chipselect
-	signal mm_interconnect_0_min1_s1_readdata                              : std_logic_vector(31 downto 0); -- min1:readdata -> mm_interconnect_0:min1_s1_readdata
-	signal mm_interconnect_0_min1_s1_address                               : std_logic_vector(1 downto 0);  -- mm_interconnect_0:min1_s1_address -> min1:address
-	signal mm_interconnect_0_min1_s1_write                                 : std_logic;                     -- mm_interconnect_0:min1_s1_write -> mm_interconnect_0_min1_s1_write:in
-	signal mm_interconnect_0_min1_s1_writedata                             : std_logic_vector(31 downto 0); -- mm_interconnect_0:min1_s1_writedata -> min1:writedata
-	signal mm_interconnect_0_sec0_s1_chipselect                            : std_logic;                     -- mm_interconnect_0:sec0_s1_chipselect -> sec0:chipselect
-	signal mm_interconnect_0_sec0_s1_readdata                              : std_logic_vector(31 downto 0); -- sec0:readdata -> mm_interconnect_0:sec0_s1_readdata
-	signal mm_interconnect_0_sec0_s1_address                               : std_logic_vector(1 downto 0);  -- mm_interconnect_0:sec0_s1_address -> sec0:address
-	signal mm_interconnect_0_sec0_s1_write                                 : std_logic;                     -- mm_interconnect_0:sec0_s1_write -> mm_interconnect_0_sec0_s1_write:in
-	signal mm_interconnect_0_sec0_s1_writedata                             : std_logic_vector(31 downto 0); -- mm_interconnect_0:sec0_s1_writedata -> sec0:writedata
-	signal mm_interconnect_0_sec1_s1_chipselect                            : std_logic;                     -- mm_interconnect_0:sec1_s1_chipselect -> sec1:chipselect
-	signal mm_interconnect_0_sec1_s1_readdata                              : std_logic_vector(31 downto 0); -- sec1:readdata -> mm_interconnect_0:sec1_s1_readdata
-	signal mm_interconnect_0_sec1_s1_address                               : std_logic_vector(1 downto 0);  -- mm_interconnect_0:sec1_s1_address -> sec1:address
-	signal mm_interconnect_0_sec1_s1_write                                 : std_logic;                     -- mm_interconnect_0:sec1_s1_write -> mm_interconnect_0_sec1_s1_write:in
-	signal mm_interconnect_0_sec1_s1_writedata                             : std_logic_vector(31 downto 0); -- mm_interconnect_0:sec1_s1_writedata -> sec1:writedata
+	signal mm_interconnect_0_minute0_s1_chipselect                         : std_logic;                     -- mm_interconnect_0:minute0_s1_chipselect -> minute0:chipselect
+	signal mm_interconnect_0_minute0_s1_readdata                           : std_logic_vector(31 downto 0); -- minute0:readdata -> mm_interconnect_0:minute0_s1_readdata
+	signal mm_interconnect_0_minute0_s1_address                            : std_logic_vector(1 downto 0);  -- mm_interconnect_0:minute0_s1_address -> minute0:address
+	signal mm_interconnect_0_minute0_s1_write                              : std_logic;                     -- mm_interconnect_0:minute0_s1_write -> mm_interconnect_0_minute0_s1_write:in
+	signal mm_interconnect_0_minute0_s1_writedata                          : std_logic_vector(31 downto 0); -- mm_interconnect_0:minute0_s1_writedata -> minute0:writedata
+	signal mm_interconnect_0_second0_s1_chipselect                         : std_logic;                     -- mm_interconnect_0:second0_s1_chipselect -> second0:chipselect
+	signal mm_interconnect_0_second0_s1_readdata                           : std_logic_vector(31 downto 0); -- second0:readdata -> mm_interconnect_0:second0_s1_readdata
+	signal mm_interconnect_0_second0_s1_address                            : std_logic_vector(1 downto 0);  -- mm_interconnect_0:second0_s1_address -> second0:address
+	signal mm_interconnect_0_second0_s1_write                              : std_logic;                     -- mm_interconnect_0:second0_s1_write -> mm_interconnect_0_second0_s1_write:in
+	signal mm_interconnect_0_second0_s1_writedata                          : std_logic_vector(31 downto 0); -- mm_interconnect_0:second0_s1_writedata -> second0:writedata
 	signal mm_interconnect_0_speaker_s1_chipselect                         : std_logic;                     -- mm_interconnect_0:speaker_s1_chipselect -> speaker:chipselect
 	signal mm_interconnect_0_speaker_s1_readdata                           : std_logic_vector(31 downto 0); -- speaker:readdata -> mm_interconnect_0:speaker_s1_readdata
 	signal mm_interconnect_0_speaker_s1_address                            : std_logic_vector(1 downto 0);  -- mm_interconnect_0:speaker_s1_address -> speaker:address
@@ -571,6 +556,21 @@ architecture rtl of qsys_system is
 	signal mm_interconnect_0_buttons_s1_address                            : std_logic_vector(1 downto 0);  -- mm_interconnect_0:buttons_s1_address -> buttons:address
 	signal mm_interconnect_0_buttons_s1_write                              : std_logic;                     -- mm_interconnect_0:buttons_s1_write -> mm_interconnect_0_buttons_s1_write:in
 	signal mm_interconnect_0_buttons_s1_writedata                          : std_logic_vector(31 downto 0); -- mm_interconnect_0:buttons_s1_writedata -> buttons:writedata
+	signal mm_interconnect_0_second1_s1_chipselect                         : std_logic;                     -- mm_interconnect_0:second1_s1_chipselect -> second1:chipselect
+	signal mm_interconnect_0_second1_s1_readdata                           : std_logic_vector(31 downto 0); -- second1:readdata -> mm_interconnect_0:second1_s1_readdata
+	signal mm_interconnect_0_second1_s1_address                            : std_logic_vector(1 downto 0);  -- mm_interconnect_0:second1_s1_address -> second1:address
+	signal mm_interconnect_0_second1_s1_write                              : std_logic;                     -- mm_interconnect_0:second1_s1_write -> mm_interconnect_0_second1_s1_write:in
+	signal mm_interconnect_0_second1_s1_writedata                          : std_logic_vector(31 downto 0); -- mm_interconnect_0:second1_s1_writedata -> second1:writedata
+	signal mm_interconnect_0_minute1_s1_chipselect                         : std_logic;                     -- mm_interconnect_0:minute1_s1_chipselect -> minute1:chipselect
+	signal mm_interconnect_0_minute1_s1_readdata                           : std_logic_vector(31 downto 0); -- minute1:readdata -> mm_interconnect_0:minute1_s1_readdata
+	signal mm_interconnect_0_minute1_s1_address                            : std_logic_vector(1 downto 0);  -- mm_interconnect_0:minute1_s1_address -> minute1:address
+	signal mm_interconnect_0_minute1_s1_write                              : std_logic;                     -- mm_interconnect_0:minute1_s1_write -> mm_interconnect_0_minute1_s1_write:in
+	signal mm_interconnect_0_minute1_s1_writedata                          : std_logic_vector(31 downto 0); -- mm_interconnect_0:minute1_s1_writedata -> minute1:writedata
+	signal mm_interconnect_0_hour1_s1_chipselect                           : std_logic;                     -- mm_interconnect_0:hour1_s1_chipselect -> hour1:chipselect
+	signal mm_interconnect_0_hour1_s1_readdata                             : std_logic_vector(31 downto 0); -- hour1:readdata -> mm_interconnect_0:hour1_s1_readdata
+	signal mm_interconnect_0_hour1_s1_address                              : std_logic_vector(1 downto 0);  -- mm_interconnect_0:hour1_s1_address -> hour1:address
+	signal mm_interconnect_0_hour1_s1_write                                : std_logic;                     -- mm_interconnect_0:hour1_s1_write -> mm_interconnect_0_hour1_s1_write:in
+	signal mm_interconnect_0_hour1_s1_writedata                            : std_logic_vector(31 downto 0); -- mm_interconnect_0:hour1_s1_writedata -> hour1:writedata
 	signal irq_mapper_receiver0_irq                                        : std_logic;                     -- SYS_CLK_timer:irq -> irq_mapper:receiver0_irq
 	signal irq_mapper_receiver1_irq                                        : std_logic;                     -- jtag_uart_0:av_irq -> irq_mapper:receiver1_irq
 	signal irq_mapper_receiver2_irq                                        : std_logic;                     -- timer_second:irq -> irq_mapper:receiver2_irq
@@ -588,18 +588,18 @@ architecture rtl of qsys_system is
 	signal mm_interconnect_0_switches_s1_write_ports_inv                   : std_logic;                     -- mm_interconnect_0_switches_s1_write:inv -> switches:write_n
 	signal mm_interconnect_0_led_piano_s1_write_ports_inv                  : std_logic;                     -- mm_interconnect_0_led_piano_s1_write:inv -> led_piano:write_n
 	signal mm_interconnect_0_hour0_s1_write_ports_inv                      : std_logic;                     -- mm_interconnect_0_hour0_s1_write:inv -> hour0:write_n
-	signal mm_interconnect_0_hour1_s1_write_ports_inv                      : std_logic;                     -- mm_interconnect_0_hour1_s1_write:inv -> hour1:write_n
-	signal mm_interconnect_0_min0_s1_write_ports_inv                       : std_logic;                     -- mm_interconnect_0_min0_s1_write:inv -> min0:write_n
-	signal mm_interconnect_0_min1_s1_write_ports_inv                       : std_logic;                     -- mm_interconnect_0_min1_s1_write:inv -> min1:write_n
-	signal mm_interconnect_0_sec0_s1_write_ports_inv                       : std_logic;                     -- mm_interconnect_0_sec0_s1_write:inv -> sec0:write_n
-	signal mm_interconnect_0_sec1_s1_write_ports_inv                       : std_logic;                     -- mm_interconnect_0_sec1_s1_write:inv -> sec1:write_n
+	signal mm_interconnect_0_minute0_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_minute0_s1_write:inv -> minute0:write_n
+	signal mm_interconnect_0_second0_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_second0_s1_write:inv -> second0:write_n
 	signal mm_interconnect_0_speaker_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_speaker_s1_write:inv -> speaker:write_n
 	signal mm_interconnect_0_timer_second_s1_write_ports_inv               : std_logic;                     -- mm_interconnect_0_timer_second_s1_write:inv -> timer_second:write_n
 	signal mm_interconnect_0_led_alarm_s1_write_ports_inv                  : std_logic;                     -- mm_interconnect_0_led_alarm_s1_write:inv -> led_alarm:write_n
 	signal mm_interconnect_0_led_status_s1_write_ports_inv                 : std_logic;                     -- mm_interconnect_0_led_status_s1_write:inv -> led_status:write_n
 	signal mm_interconnect_0_buttons_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_buttons_s1_write:inv -> buttons:write_n
+	signal mm_interconnect_0_second1_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_second1_s1_write:inv -> second1:write_n
+	signal mm_interconnect_0_minute1_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_minute1_s1_write:inv -> minute1:write_n
+	signal mm_interconnect_0_hour1_s1_write_ports_inv                      : std_logic;                     -- mm_interconnect_0_hour1_s1_write:inv -> hour1:write_n
 	signal rst_controller_reset_out_reset_ports_inv                        : std_logic;                     -- rst_controller_reset_out_reset:inv -> NiosII_CPU:reset_n
-	signal rst_controller_001_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [SYS_CLK_timer:reset_n, buttons:reset_n, hour0:reset_n, hour1:reset_n, jtag_uart_0:rst_n, led_alarm:reset_n, led_piano:reset_n, led_status:reset_n, min0:reset_n, min1:reset_n, sec0:reset_n, sec1:reset_n, speaker:reset_n, switches:reset_n, sysid_qsys_0:reset_n, timer_second:reset_n]
+	signal rst_controller_001_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [SYS_CLK_timer:reset_n, buttons:reset_n, hour0:reset_n, hour1:reset_n, jtag_uart_0:rst_n, led_alarm:reset_n, led_piano:reset_n, led_status:reset_n, minute0:reset_n, minute1:reset_n, second0:reset_n, second1:reset_n, speaker:reset_n, switches:reset_n, sysid_qsys_0:reset_n, timer_second:reset_n]
 
 begin
 
@@ -733,28 +733,28 @@ begin
 			out_port   => led_status_external_connection_export            -- external_connection.export
 		);
 
-	min0 : component qsys_system_hour0
+	minute0 : component qsys_system_hour0
 		port map (
 			clk        => clk_clk,                                      --                 clk.clk
 			reset_n    => rst_controller_001_reset_out_reset_ports_inv, --               reset.reset_n
-			address    => mm_interconnect_0_min0_s1_address,            --                  s1.address
-			write_n    => mm_interconnect_0_min0_s1_write_ports_inv,    --                    .write_n
-			writedata  => mm_interconnect_0_min0_s1_writedata,          --                    .writedata
-			chipselect => mm_interconnect_0_min0_s1_chipselect,         --                    .chipselect
-			readdata   => mm_interconnect_0_min0_s1_readdata,           --                    .readdata
-			out_port   => min0_external_connection_export               -- external_connection.export
+			address    => mm_interconnect_0_minute0_s1_address,         --                  s1.address
+			write_n    => mm_interconnect_0_minute0_s1_write_ports_inv, --                    .write_n
+			writedata  => mm_interconnect_0_minute0_s1_writedata,       --                    .writedata
+			chipselect => mm_interconnect_0_minute0_s1_chipselect,      --                    .chipselect
+			readdata   => mm_interconnect_0_minute0_s1_readdata,        --                    .readdata
+			out_port   => minute0_external_connection_export            -- external_connection.export
 		);
 
-	min1 : component qsys_system_hour0
+	minute1 : component qsys_system_hour0
 		port map (
 			clk        => clk_clk,                                      --                 clk.clk
 			reset_n    => rst_controller_001_reset_out_reset_ports_inv, --               reset.reset_n
-			address    => mm_interconnect_0_min1_s1_address,            --                  s1.address
-			write_n    => mm_interconnect_0_min1_s1_write_ports_inv,    --                    .write_n
-			writedata  => mm_interconnect_0_min1_s1_writedata,          --                    .writedata
-			chipselect => mm_interconnect_0_min1_s1_chipselect,         --                    .chipselect
-			readdata   => mm_interconnect_0_min1_s1_readdata,           --                    .readdata
-			out_port   => min1_external_connection_export               -- external_connection.export
+			address    => mm_interconnect_0_minute1_s1_address,         --                  s1.address
+			write_n    => mm_interconnect_0_minute1_s1_write_ports_inv, --                    .write_n
+			writedata  => mm_interconnect_0_minute1_s1_writedata,       --                    .writedata
+			chipselect => mm_interconnect_0_minute1_s1_chipselect,      --                    .chipselect
+			readdata   => mm_interconnect_0_minute1_s1_readdata,        --                    .readdata
+			out_port   => minute1_external_connection_export            -- external_connection.export
 		);
 
 	onchip_memory : component qsys_system_onchip_memory
@@ -772,28 +772,28 @@ begin
 			freeze     => '0'                                            -- (terminated)
 		);
 
-	sec0 : component qsys_system_hour0
+	second0 : component qsys_system_hour0
 		port map (
 			clk        => clk_clk,                                      --                 clk.clk
 			reset_n    => rst_controller_001_reset_out_reset_ports_inv, --               reset.reset_n
-			address    => mm_interconnect_0_sec0_s1_address,            --                  s1.address
-			write_n    => mm_interconnect_0_sec0_s1_write_ports_inv,    --                    .write_n
-			writedata  => mm_interconnect_0_sec0_s1_writedata,          --                    .writedata
-			chipselect => mm_interconnect_0_sec0_s1_chipselect,         --                    .chipselect
-			readdata   => mm_interconnect_0_sec0_s1_readdata,           --                    .readdata
-			out_port   => sec0_external_connection_export               -- external_connection.export
+			address    => mm_interconnect_0_second0_s1_address,         --                  s1.address
+			write_n    => mm_interconnect_0_second0_s1_write_ports_inv, --                    .write_n
+			writedata  => mm_interconnect_0_second0_s1_writedata,       --                    .writedata
+			chipselect => mm_interconnect_0_second0_s1_chipselect,      --                    .chipselect
+			readdata   => mm_interconnect_0_second0_s1_readdata,        --                    .readdata
+			out_port   => second0_external_connection_export            -- external_connection.export
 		);
 
-	sec1 : component qsys_system_hour0
+	second1 : component qsys_system_hour0
 		port map (
 			clk        => clk_clk,                                      --                 clk.clk
 			reset_n    => rst_controller_001_reset_out_reset_ports_inv, --               reset.reset_n
-			address    => mm_interconnect_0_sec1_s1_address,            --                  s1.address
-			write_n    => mm_interconnect_0_sec1_s1_write_ports_inv,    --                    .write_n
-			writedata  => mm_interconnect_0_sec1_s1_writedata,          --                    .writedata
-			chipselect => mm_interconnect_0_sec1_s1_chipselect,         --                    .chipselect
-			readdata   => mm_interconnect_0_sec1_s1_readdata,           --                    .readdata
-			out_port   => sec1_external_connection_export               -- external_connection.export
+			address    => mm_interconnect_0_second1_s1_address,         --                  s1.address
+			write_n    => mm_interconnect_0_second1_s1_write_ports_inv, --                    .write_n
+			writedata  => mm_interconnect_0_second1_s1_writedata,       --                    .writedata
+			chipselect => mm_interconnect_0_second1_s1_chipselect,      --                    .chipselect
+			readdata   => mm_interconnect_0_second1_s1_readdata,        --                    .readdata
+			out_port   => second1_external_connection_export            -- external_connection.export
 		);
 
 	speaker : component qsys_system_led_alarm
@@ -896,16 +896,16 @@ begin
 			led_status_s1_readdata                        => mm_interconnect_0_led_status_s1_readdata,                    --                                        .readdata
 			led_status_s1_writedata                       => mm_interconnect_0_led_status_s1_writedata,                   --                                        .writedata
 			led_status_s1_chipselect                      => mm_interconnect_0_led_status_s1_chipselect,                  --                                        .chipselect
-			min0_s1_address                               => mm_interconnect_0_min0_s1_address,                           --                                 min0_s1.address
-			min0_s1_write                                 => mm_interconnect_0_min0_s1_write,                             --                                        .write
-			min0_s1_readdata                              => mm_interconnect_0_min0_s1_readdata,                          --                                        .readdata
-			min0_s1_writedata                             => mm_interconnect_0_min0_s1_writedata,                         --                                        .writedata
-			min0_s1_chipselect                            => mm_interconnect_0_min0_s1_chipselect,                        --                                        .chipselect
-			min1_s1_address                               => mm_interconnect_0_min1_s1_address,                           --                                 min1_s1.address
-			min1_s1_write                                 => mm_interconnect_0_min1_s1_write,                             --                                        .write
-			min1_s1_readdata                              => mm_interconnect_0_min1_s1_readdata,                          --                                        .readdata
-			min1_s1_writedata                             => mm_interconnect_0_min1_s1_writedata,                         --                                        .writedata
-			min1_s1_chipselect                            => mm_interconnect_0_min1_s1_chipselect,                        --                                        .chipselect
+			minute0_s1_address                            => mm_interconnect_0_minute0_s1_address,                        --                              minute0_s1.address
+			minute0_s1_write                              => mm_interconnect_0_minute0_s1_write,                          --                                        .write
+			minute0_s1_readdata                           => mm_interconnect_0_minute0_s1_readdata,                       --                                        .readdata
+			minute0_s1_writedata                          => mm_interconnect_0_minute0_s1_writedata,                      --                                        .writedata
+			minute0_s1_chipselect                         => mm_interconnect_0_minute0_s1_chipselect,                     --                                        .chipselect
+			minute1_s1_address                            => mm_interconnect_0_minute1_s1_address,                        --                              minute1_s1.address
+			minute1_s1_write                              => mm_interconnect_0_minute1_s1_write,                          --                                        .write
+			minute1_s1_readdata                           => mm_interconnect_0_minute1_s1_readdata,                       --                                        .readdata
+			minute1_s1_writedata                          => mm_interconnect_0_minute1_s1_writedata,                      --                                        .writedata
+			minute1_s1_chipselect                         => mm_interconnect_0_minute1_s1_chipselect,                     --                                        .chipselect
 			NiosII_CPU_debug_mem_slave_address            => mm_interconnect_0_niosii_cpu_debug_mem_slave_address,        --              NiosII_CPU_debug_mem_slave.address
 			NiosII_CPU_debug_mem_slave_write              => mm_interconnect_0_niosii_cpu_debug_mem_slave_write,          --                                        .write
 			NiosII_CPU_debug_mem_slave_read               => mm_interconnect_0_niosii_cpu_debug_mem_slave_read,           --                                        .read
@@ -921,16 +921,16 @@ begin
 			onchip_memory_s1_byteenable                   => mm_interconnect_0_onchip_memory_s1_byteenable,               --                                        .byteenable
 			onchip_memory_s1_chipselect                   => mm_interconnect_0_onchip_memory_s1_chipselect,               --                                        .chipselect
 			onchip_memory_s1_clken                        => mm_interconnect_0_onchip_memory_s1_clken,                    --                                        .clken
-			sec0_s1_address                               => mm_interconnect_0_sec0_s1_address,                           --                                 sec0_s1.address
-			sec0_s1_write                                 => mm_interconnect_0_sec0_s1_write,                             --                                        .write
-			sec0_s1_readdata                              => mm_interconnect_0_sec0_s1_readdata,                          --                                        .readdata
-			sec0_s1_writedata                             => mm_interconnect_0_sec0_s1_writedata,                         --                                        .writedata
-			sec0_s1_chipselect                            => mm_interconnect_0_sec0_s1_chipselect,                        --                                        .chipselect
-			sec1_s1_address                               => mm_interconnect_0_sec1_s1_address,                           --                                 sec1_s1.address
-			sec1_s1_write                                 => mm_interconnect_0_sec1_s1_write,                             --                                        .write
-			sec1_s1_readdata                              => mm_interconnect_0_sec1_s1_readdata,                          --                                        .readdata
-			sec1_s1_writedata                             => mm_interconnect_0_sec1_s1_writedata,                         --                                        .writedata
-			sec1_s1_chipselect                            => mm_interconnect_0_sec1_s1_chipselect,                        --                                        .chipselect
+			second0_s1_address                            => mm_interconnect_0_second0_s1_address,                        --                              second0_s1.address
+			second0_s1_write                              => mm_interconnect_0_second0_s1_write,                          --                                        .write
+			second0_s1_readdata                           => mm_interconnect_0_second0_s1_readdata,                       --                                        .readdata
+			second0_s1_writedata                          => mm_interconnect_0_second0_s1_writedata,                      --                                        .writedata
+			second0_s1_chipselect                         => mm_interconnect_0_second0_s1_chipselect,                     --                                        .chipselect
+			second1_s1_address                            => mm_interconnect_0_second1_s1_address,                        --                              second1_s1.address
+			second1_s1_write                              => mm_interconnect_0_second1_s1_write,                          --                                        .write
+			second1_s1_readdata                           => mm_interconnect_0_second1_s1_readdata,                       --                                        .readdata
+			second1_s1_writedata                          => mm_interconnect_0_second1_s1_writedata,                      --                                        .writedata
+			second1_s1_chipselect                         => mm_interconnect_0_second1_s1_chipselect,                     --                                        .chipselect
 			speaker_s1_address                            => mm_interconnect_0_speaker_s1_address,                        --                              speaker_s1.address
 			speaker_s1_write                              => mm_interconnect_0_speaker_s1_write,                          --                                        .write
 			speaker_s1_readdata                           => mm_interconnect_0_speaker_s1_readdata,                       --                                        .readdata
@@ -1111,15 +1111,9 @@ begin
 
 	mm_interconnect_0_hour0_s1_write_ports_inv <= not mm_interconnect_0_hour0_s1_write;
 
-	mm_interconnect_0_hour1_s1_write_ports_inv <= not mm_interconnect_0_hour1_s1_write;
+	mm_interconnect_0_minute0_s1_write_ports_inv <= not mm_interconnect_0_minute0_s1_write;
 
-	mm_interconnect_0_min0_s1_write_ports_inv <= not mm_interconnect_0_min0_s1_write;
-
-	mm_interconnect_0_min1_s1_write_ports_inv <= not mm_interconnect_0_min1_s1_write;
-
-	mm_interconnect_0_sec0_s1_write_ports_inv <= not mm_interconnect_0_sec0_s1_write;
-
-	mm_interconnect_0_sec1_s1_write_ports_inv <= not mm_interconnect_0_sec1_s1_write;
+	mm_interconnect_0_second0_s1_write_ports_inv <= not mm_interconnect_0_second0_s1_write;
 
 	mm_interconnect_0_speaker_s1_write_ports_inv <= not mm_interconnect_0_speaker_s1_write;
 
@@ -1130,6 +1124,12 @@ begin
 	mm_interconnect_0_led_status_s1_write_ports_inv <= not mm_interconnect_0_led_status_s1_write;
 
 	mm_interconnect_0_buttons_s1_write_ports_inv <= not mm_interconnect_0_buttons_s1_write;
+
+	mm_interconnect_0_second1_s1_write_ports_inv <= not mm_interconnect_0_second1_s1_write;
+
+	mm_interconnect_0_minute1_s1_write_ports_inv <= not mm_interconnect_0_minute1_s1_write;
+
+	mm_interconnect_0_hour1_s1_write_ports_inv <= not mm_interconnect_0_hour1_s1_write;
 
 	rst_controller_reset_out_reset_ports_inv <= not rst_controller_reset_out_reset;
 

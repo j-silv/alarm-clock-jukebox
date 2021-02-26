@@ -10,11 +10,11 @@ volatile uint8_t time_format = 24;
 
 /* ------------------------ CLOCK functions ---------------------- */
 
-// initialize clock time to 00:00:00
+// initialize clock time to default time (see display.h)
 void resetClockTime(void) {
-  // necessary to cast to a time struct, otherwise the 
-  // value assignment won't work
-  clock = (struct time){0};
+  clock.hour = reset_clock_value[0];
+  clock.minute = reset_clock_value[1];
+  clock.second = reset_clock_value[2];
 }
 
 /*--------- up operations -------*/
@@ -51,7 +51,7 @@ struct time upClockMinute(uint8_t carry_setting) {
 
 // HOURS
 struct time upClockHour(void) {
-  if (clock.hour == time_format) {
+  if (clock.hour == (time_format-1)) {
     clock.hour = 0;
   }
   else {
@@ -95,7 +95,7 @@ struct time downClockMinute(uint8_t carry_setting) {
 // HOURS
 struct time downClockHour(void) {
   if (clock.hour == 0) {
-    clock.hour = time_format;
+    clock.hour = (time_format-1);
   }
   else {
     clock.hour--;
@@ -106,9 +106,14 @@ struct time downClockHour(void) {
 
 /* ------------------------ ALARM functions ---------------------- */
 
-// initialize alarm time to 00:00:00
+// initialize alarm time to 00:00 (seconds are turned off)
 void resetAlarmTime(void) {
+  // necessary to cast to a time struct, otherwise the 
+  // value assignment won't work
   alarm =  (struct time){0};
+
+  // we explicitly turn the second digits off
+  alarm.second = DIGITS_OFF;
 }
 
 /*--------- up operations -------*/
@@ -126,7 +131,7 @@ struct time upAlarmMinute() {
 
 // HOURS
 struct time upAlarmHour(void) {
-  if (alarm.hour == time_format) {
+  if (alarm.hour == (time_format-1)) {
     alarm.hour = 0;
   }
   else {
@@ -151,7 +156,7 @@ struct time downAlarmMinute() {
 // HOURS
 struct time downAlarmHour(void) {
   if (alarm.hour == 0) {
-    alarm.hour = time_format;
+    alarm.hour = (time_format-1);
   }
   else {
     alarm.hour--;

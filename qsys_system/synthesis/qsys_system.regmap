@@ -455,7 +455,7 @@
     </registers>
    </peripheral>
   <peripheral>
-      <name>qsys_system_sec1_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
+      <name>qsys_system_second1_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
       <addressBlock>
         <offset>0x0</offset>
         <size>32</size>
@@ -573,7 +573,7 @@
     </registers>
    </peripheral>
   <peripheral>
-      <name>qsys_system_sec0_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
+      <name>qsys_system_second0_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
       <addressBlock>
         <offset>0x0</offset>
         <size>32</size>
@@ -691,7 +691,7 @@
     </registers>
    </peripheral>
   <peripheral>
-      <name>qsys_system_min1_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
+      <name>qsys_system_minute1_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
       <addressBlock>
         <offset>0x0</offset>
         <size>32</size>
@@ -809,7 +809,7 @@
     </registers>
    </peripheral>
   <peripheral>
-      <name>qsys_system_min0_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
+      <name>qsys_system_minute0_s1_altera_avalon_pio</name><baseAddress>0x00000000</baseAddress> 
       <addressBlock>
         <offset>0x0</offset>
         <size>32</size>

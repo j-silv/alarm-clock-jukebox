@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="qsys_system" kind="qsys_system" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2021.02.26.10:13:59 -->
+ <!-- 2021.02.26.14:21:02 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1614330839</value>
+  <value>1614345661</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -1722,7 +1722,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='onchip_memory.s1' start='0x40000' end='0x68000' type='altera_avalon_onchip_memory2.s1' /><slave name='NiosII_CPU.debug_mem_slave' start='0x80800' end='0x81000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer_second.s1' start='0x81000' end='0x81020' type='altera_avalon_timer.s1' /><slave name='SYS_CLK_timer.s1' start='0x81020' end='0x81040' type='altera_avalon_timer.s1' /><slave name='buttons.s1' start='0x81040' end='0x81050' type='altera_avalon_pio.s1' /><slave name='led_status.s1' start='0x81050' end='0x81060' type='altera_avalon_pio.s1' /><slave name='led_alarm.s1' start='0x81060' end='0x81070' type='altera_avalon_pio.s1' /><slave name='speaker.s1' start='0x81070' end='0x81080' type='altera_avalon_pio.s1' /><slave name='sec1.s1' start='0x81080' end='0x81090' type='altera_avalon_pio.s1' /><slave name='sec0.s1' start='0x81090' end='0x810A0' type='altera_avalon_pio.s1' /><slave name='min1.s1' start='0x810A0' end='0x810B0' type='altera_avalon_pio.s1' /><slave name='min0.s1' start='0x810B0' end='0x810C0' type='altera_avalon_pio.s1' /><slave name='hour1.s1' start='0x810C0' end='0x810D0' type='altera_avalon_pio.s1' /><slave name='hour0.s1' start='0x810D0' end='0x810E0' type='altera_avalon_pio.s1' /><slave name='led_piano.s1' start='0x810E0' end='0x810F0' type='altera_avalon_pio.s1' /><slave name='switches.s1' start='0x810F0' end='0x81100' type='altera_avalon_pio.s1' /><slave name='sysid_qsys_0.control_slave' start='0x81100' end='0x81108' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x81108' end='0x81110' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='onchip_memory.s1' start='0x40000' end='0x68000' type='altera_avalon_onchip_memory2.s1' /><slave name='NiosII_CPU.debug_mem_slave' start='0x80800' end='0x81000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer_second.s1' start='0x81000' end='0x81020' type='altera_avalon_timer.s1' /><slave name='SYS_CLK_timer.s1' start='0x81020' end='0x81040' type='altera_avalon_timer.s1' /><slave name='hour1.s1' start='0x81040' end='0x81050' type='altera_avalon_pio.s1' /><slave name='minute1.s1' start='0x81050' end='0x81060' type='altera_avalon_pio.s1' /><slave name='second1.s1' start='0x81060' end='0x81070' type='altera_avalon_pio.s1' /><slave name='buttons.s1' start='0x81070' end='0x81080' type='altera_avalon_pio.s1' /><slave name='led_status.s1' start='0x81080' end='0x81090' type='altera_avalon_pio.s1' /><slave name='led_alarm.s1' start='0x81090' end='0x810A0' type='altera_avalon_pio.s1' /><slave name='speaker.s1' start='0x810A0' end='0x810B0' type='altera_avalon_pio.s1' /><slave name='second0.s1' start='0x810B0' end='0x810C0' type='altera_avalon_pio.s1' /><slave name='minute0.s1' start='0x810C0' end='0x810D0' type='altera_avalon_pio.s1' /><slave name='hour0.s1' start='0x810D0' end='0x810E0' type='altera_avalon_pio.s1' /><slave name='led_piano.s1' start='0x810E0' end='0x810F0' type='altera_avalon_pio.s1' /><slave name='switches.s1' start='0x810F0' end='0x81100' type='altera_avalon_pio.s1' /><slave name='sysid_qsys_0.control_slave' start='0x81100' end='0x81108' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x81108' end='0x81110' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -2454,42 +2454,18 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>hour1</moduleName>
+    <moduleName>minute0</moduleName>
     <slaveName>s1</slaveName>
-    <name>hour1.s1</name>
+    <name>minute0.s1</name>
     <baseAddress>528576</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>min0</moduleName>
+    <moduleName>second0</moduleName>
     <slaveName>s1</slaveName>
-    <name>min0.s1</name>
+    <name>second0.s1</name>
     <baseAddress>528560</baseAddress>
-    <span>16</span>
-   </memoryBlock>
-   <memoryBlock>
-    <isBridge>false</isBridge>
-    <moduleName>min1</moduleName>
-    <slaveName>s1</slaveName>
-    <name>min1.s1</name>
-    <baseAddress>528544</baseAddress>
-    <span>16</span>
-   </memoryBlock>
-   <memoryBlock>
-    <isBridge>false</isBridge>
-    <moduleName>sec0</moduleName>
-    <slaveName>s1</slaveName>
-    <name>sec0.s1</name>
-    <baseAddress>528528</baseAddress>
-    <span>16</span>
-   </memoryBlock>
-   <memoryBlock>
-    <isBridge>false</isBridge>
-    <moduleName>sec1</moduleName>
-    <slaveName>s1</slaveName>
-    <name>sec1.s1</name>
-    <baseAddress>528512</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -2497,7 +2473,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>speaker</moduleName>
     <slaveName>s1</slaveName>
     <name>speaker.s1</name>
-    <baseAddress>528496</baseAddress>
+    <baseAddress>528544</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -2513,7 +2489,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>led_alarm</moduleName>
     <slaveName>s1</slaveName>
     <name>led_alarm.s1</name>
-    <baseAddress>528480</baseAddress>
+    <baseAddress>528528</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -2521,7 +2497,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>led_status</moduleName>
     <slaveName>s1</slaveName>
     <name>led_status.s1</name>
-    <baseAddress>528464</baseAddress>
+    <baseAddress>528512</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -2529,6 +2505,30 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>buttons</moduleName>
     <slaveName>s1</slaveName>
     <name>buttons.s1</name>
+    <baseAddress>528496</baseAddress>
+    <span>16</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>second1</moduleName>
+    <slaveName>s1</slaveName>
+    <name>second1.s1</name>
+    <baseAddress>528480</baseAddress>
+    <span>16</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>minute1</moduleName>
+    <slaveName>s1</slaveName>
+    <name>minute1.s1</name>
+    <baseAddress>528464</baseAddress>
+    <span>16</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>hour1</moduleName>
+    <slaveName>s1</slaveName>
+    <name>hour1.s1</name>
     <baseAddress>528448</baseAddress>
     <span>16</span>
    </memoryBlock>
@@ -5409,33 +5409,15 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>hour1</moduleName>
+    <moduleName>minute0</moduleName>
     <slaveName>clk</slaveName>
-    <name>hour1.clk</name>
+    <name>minute0.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>min0</moduleName>
+    <moduleName>second0</moduleName>
     <slaveName>clk</slaveName>
-    <name>min0.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>min1</moduleName>
-    <slaveName>clk</slaveName>
-    <name>min1.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>sec0</moduleName>
-    <slaveName>clk</slaveName>
-    <name>sec0.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>sec1</moduleName>
-    <slaveName>clk</slaveName>
-    <name>sec1.clk</name>
+    <name>second0.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -5460,6 +5442,24 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>led_status</moduleName>
     <slaveName>clk</slaveName>
     <name>led_status.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>second1</moduleName>
+    <slaveName>clk</slaveName>
+    <name>second1.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>minute1</moduleName>
+    <slaveName>clk</slaveName>
+    <name>minute1.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>hour1</moduleName>
+    <slaveName>clk</slaveName>
+    <name>hour1.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -5547,7 +5547,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DATA_WIDTH</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DO_TEST_BENCH_WIRING</name>
@@ -5599,7 +5599,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,gpio-bank-width</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.resetvalue</name>
@@ -5691,7 +5691,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="width">
    <type>int</type>
-   <value>7</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -6299,7 +6299,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>out_port</name>
     <direction>Output</direction>
-    <width>7</width>
+    <width>8</width>
     <role>export</role>
    </port>
   </interface>
@@ -6321,7 +6321,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DATA_WIDTH</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DO_TEST_BENCH_WIRING</name>
@@ -6373,7 +6373,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,gpio-bank-width</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.resetvalue</name>
@@ -6465,7 +6465,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="width">
    <type>int</type>
-   <value>7</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -7073,7 +7073,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>out_port</name>
     <direction>Output</direction>
-    <width>7</width>
+    <width>8</width>
     <role>export</role>
    </port>
   </interface>
@@ -10159,7 +10159,7 @@ parameters are a RESULT of the module parameters. -->
    </port>
   </interface>
  </module>
- <module name="min0" kind="altera_avalon_pio" version="18.1" path="min0">
+ <module name="minute0" kind="altera_avalon_pio" version="18.1" path="minute0">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -10176,7 +10176,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DATA_WIDTH</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DO_TEST_BENCH_WIRING</name>
@@ -10228,7 +10228,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,gpio-bank-width</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.resetvalue</name>
@@ -10320,7 +10320,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="width">
    <type>int</type>
-   <value>7</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -10928,12 +10928,12 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>out_port</name>
     <direction>Output</direction>
-    <width>7</width>
+    <width>8</width>
     <role>export</role>
    </port>
   </interface>
  </module>
- <module name="min1" kind="altera_avalon_pio" version="18.1" path="min1">
+ <module name="minute1" kind="altera_avalon_pio" version="18.1" path="minute1">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -10950,7 +10950,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DATA_WIDTH</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DO_TEST_BENCH_WIRING</name>
@@ -11002,7 +11002,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,gpio-bank-width</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.resetvalue</name>
@@ -11094,7 +11094,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="width">
    <type>int</type>
-   <value>7</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -11702,7 +11702,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>out_port</name>
     <direction>Output</direction>
-    <width>7</width>
+    <width>8</width>
     <role>export</role>
    </port>
   </interface>
@@ -12575,7 +12575,7 @@ parameters are a RESULT of the module parameters. -->
    </port>
   </interface>
  </module>
- <module name="sec0" kind="altera_avalon_pio" version="18.1" path="sec0">
+ <module name="second0" kind="altera_avalon_pio" version="18.1" path="second0">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -12592,7 +12592,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DATA_WIDTH</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DO_TEST_BENCH_WIRING</name>
@@ -12644,7 +12644,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,gpio-bank-width</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.resetvalue</name>
@@ -12736,7 +12736,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="width">
    <type>int</type>
-   <value>7</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -13344,12 +13344,12 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>out_port</name>
     <direction>Output</direction>
-    <width>7</width>
+    <width>8</width>
     <role>export</role>
    </port>
   </interface>
  </module>
- <module name="sec1" kind="altera_avalon_pio" version="18.1" path="sec1">
+ <module name="second1" kind="altera_avalon_pio" version="18.1" path="second1">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -13366,7 +13366,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DATA_WIDTH</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DO_TEST_BENCH_WIRING</name>
@@ -13418,7 +13418,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,gpio-bank-width</name>
-   <value>7</value>
+   <value>8</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.resetvalue</name>
@@ -13510,7 +13510,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="width">
    <type>int</type>
-   <value>7</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -14118,7 +14118,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>out_port</name>
     <direction>Output</direction>
-    <width>7</width>
+    <width>8</width>
     <role>export</role>
    </port>
   </interface>
@@ -15781,7 +15781,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1614330839</value>
+   <value>1614345661</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -15801,7 +15801,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1614330839</value>
+   <value>1614345661</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -15817,7 +15817,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1614330839</value>
+   <value>1614345661</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -17465,11 +17465,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
-   name="NiosII_CPU.data_master/hour1.s1"
+   name="NiosII_CPU.data_master/minute0.s1"
    kind="avalon"
    version="18.1"
    start="NiosII_CPU.data_master"
-   end="hour1.s1">
+   end="minute0.s1">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -17512,15 +17512,15 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>NiosII_CPU</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>hour1</endModule>
+  <endModule>minute0</endModule>
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
-   name="NiosII_CPU.data_master/min0.s1"
+   name="NiosII_CPU.data_master/second0.s1"
    kind="avalon"
    version="18.1"
    start="NiosII_CPU.data_master"
-   end="min0.s1">
+   end="second0.s1">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -17563,160 +17563,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>NiosII_CPU</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>min0</endModule>
-  <endConnectionPoint>s1</endConnectionPoint>
- </connection>
- <connection
-   name="NiosII_CPU.data_master/min1.s1"
-   kind="avalon"
-   version="18.1"
-   start="NiosII_CPU.data_master"
-   end="min1.s1">
-  <parameter name="arbitrationPriority">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="baseAddress">
-   <type>java.math.BigInteger</type>
-   <value>0x000810a0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="defaultConnection">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>NiosII_CPU</startModule>
-  <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>min1</endModule>
-  <endConnectionPoint>s1</endConnectionPoint>
- </connection>
- <connection
-   name="NiosII_CPU.data_master/sec0.s1"
-   kind="avalon"
-   version="18.1"
-   start="NiosII_CPU.data_master"
-   end="sec0.s1">
-  <parameter name="arbitrationPriority">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="baseAddress">
-   <type>java.math.BigInteger</type>
-   <value>0x00081090</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="defaultConnection">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>NiosII_CPU</startModule>
-  <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>sec0</endModule>
-  <endConnectionPoint>s1</endConnectionPoint>
- </connection>
- <connection
-   name="NiosII_CPU.data_master/sec1.s1"
-   kind="avalon"
-   version="18.1"
-   start="NiosII_CPU.data_master"
-   end="sec1.s1">
-  <parameter name="arbitrationPriority">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="baseAddress">
-   <type>java.math.BigInteger</type>
-   <value>0x00081080</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="defaultConnection">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>NiosII_CPU</startModule>
-  <startConnectionPoint>data_master</startConnectionPoint>
-  <endModule>sec1</endModule>
+  <endModule>second0</endModule>
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
@@ -17735,7 +17582,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00081070</value>
+   <value>0x000810a0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17837,7 +17684,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00081060</value>
+   <value>0x00081090</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17888,7 +17735,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00081050</value>
+   <value>0x00081080</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17939,7 +17786,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x00081040</value>
+   <value>0x00081070</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17972,6 +17819,159 @@ parameters are a RESULT of the module parameters. -->
   <startModule>NiosII_CPU</startModule>
   <startConnectionPoint>data_master</startConnectionPoint>
   <endModule>buttons</endModule>
+  <endConnectionPoint>s1</endConnectionPoint>
+ </connection>
+ <connection
+   name="NiosII_CPU.data_master/second1.s1"
+   kind="avalon"
+   version="18.1"
+   start="NiosII_CPU.data_master"
+   end="second1.s1">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x00081060</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>NiosII_CPU</startModule>
+  <startConnectionPoint>data_master</startConnectionPoint>
+  <endModule>second1</endModule>
+  <endConnectionPoint>s1</endConnectionPoint>
+ </connection>
+ <connection
+   name="NiosII_CPU.data_master/minute1.s1"
+   kind="avalon"
+   version="18.1"
+   start="NiosII_CPU.data_master"
+   end="minute1.s1">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x00081050</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>NiosII_CPU</startModule>
+  <startConnectionPoint>data_master</startConnectionPoint>
+  <endModule>minute1</endModule>
+  <endConnectionPoint>s1</endConnectionPoint>
+ </connection>
+ <connection
+   name="NiosII_CPU.data_master/hour1.s1"
+   kind="avalon"
+   version="18.1"
+   start="NiosII_CPU.data_master"
+   end="hour1.s1">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x00081040</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>NiosII_CPU</startModule>
+  <startConnectionPoint>data_master</startConnectionPoint>
+  <endModule>hour1</endModule>
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
@@ -18293,11 +18293,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/hour1.clk"
+   name="clk_0.clk/minute0.clk"
    kind="clock"
    version="18.1"
    start="clk_0.clk"
-   end="hour1.clk">
+   end="minute0.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -18316,15 +18316,15 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>hour1</endModule>
+  <endModule>minute0</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/min0.clk"
+   name="clk_0.clk/second0.clk"
    kind="clock"
    version="18.1"
    start="clk_0.clk"
-   end="min0.clk">
+   end="second0.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -18343,88 +18343,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>min0</endModule>
-  <endConnectionPoint>clk</endConnectionPoint>
- </connection>
- <connection
-   name="clk_0.clk/min1.clk"
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="min1.clk">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>clk_0</startModule>
-  <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>min1</endModule>
-  <endConnectionPoint>clk</endConnectionPoint>
- </connection>
- <connection
-   name="clk_0.clk/sec0.clk"
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="sec0.clk">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>clk_0</startModule>
-  <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>sec0</endModule>
-  <endConnectionPoint>clk</endConnectionPoint>
- </connection>
- <connection
-   name="clk_0.clk/sec1.clk"
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="sec1.clk">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>clk_0</startModule>
-  <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>sec1</endModule>
+  <endModule>second0</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
@@ -18533,6 +18452,87 @@ parameters are a RESULT of the module parameters. -->
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>led_status</endModule>
+  <endConnectionPoint>clk</endConnectionPoint>
+ </connection>
+ <connection
+   name="clk_0.clk/second1.clk"
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="second1.clk">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk</startConnectionPoint>
+  <endModule>second1</endModule>
+  <endConnectionPoint>clk</endConnectionPoint>
+ </connection>
+ <connection
+   name="clk_0.clk/minute1.clk"
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="minute1.clk">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk</startConnectionPoint>
+  <endModule>minute1</endModule>
+  <endConnectionPoint>clk</endConnectionPoint>
+ </connection>
+ <connection
+   name="clk_0.clk/hour1.clk"
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="hour1.clk">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk</startConnectionPoint>
+  <endModule>hour1</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
@@ -18954,11 +18954,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/hour1.reset"
+   name="clk_0.clk_reset/minute0.reset"
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="hour1.reset">
+   end="minute0.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -18977,15 +18977,15 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>hour1</endModule>
+  <endModule>minute0</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk_reset/min0.reset"
+   name="clk_0.clk_reset/second0.reset"
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="min0.reset">
+   end="second0.reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -19004,88 +19004,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>min0</endModule>
-  <endConnectionPoint>reset</endConnectionPoint>
- </connection>
- <connection
-   name="clk_0.clk_reset/min1.reset"
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="min1.reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>clk_0</startModule>
-  <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>min1</endModule>
-  <endConnectionPoint>reset</endConnectionPoint>
- </connection>
- <connection
-   name="clk_0.clk_reset/sec0.reset"
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="sec0.reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>clk_0</startModule>
-  <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>sec0</endModule>
-  <endConnectionPoint>reset</endConnectionPoint>
- </connection>
- <connection
-   name="clk_0.clk_reset/sec1.reset"
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="sec1.reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>clk_0</startModule>
-  <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>sec1</endModule>
+  <endModule>second0</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
@@ -19194,6 +19113,87 @@ parameters are a RESULT of the module parameters. -->
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>led_status</endModule>
+  <endConnectionPoint>reset</endConnectionPoint>
+ </connection>
+ <connection
+   name="clk_0.clk_reset/second1.reset"
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="second1.reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk_reset</startConnectionPoint>
+  <endModule>second1</endModule>
+  <endConnectionPoint>reset</endConnectionPoint>
+ </connection>
+ <connection
+   name="clk_0.clk_reset/minute1.reset"
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="minute1.reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk_reset</startConnectionPoint>
+  <endModule>minute1</endModule>
+  <endConnectionPoint>reset</endConnectionPoint>
+ </connection>
+ <connection
+   name="clk_0.clk_reset/hour1.reset"
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="hour1.reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk_reset</startConnectionPoint>
+  <endModule>hour1</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection

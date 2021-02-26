@@ -67,6 +67,7 @@ struct time{
 
 // display.c API
 void resetDisplay(void);
+void updateDisplay(struct time time);
 
 
 

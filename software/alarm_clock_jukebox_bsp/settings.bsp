@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Feb 26, 2021 10:32:14 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1614331934995</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Feb 26, 2021 5:30:35 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1614357035720</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\idontseeit\Desktop\Justins_Files\school\Master_MNE\M1S2\sys_embarque\alarm_clock_jukebox\software\alarm_clock_jukebox_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\qsys_system.sopcinfo</SopcDesignFile>
@@ -917,55 +917,55 @@
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>buttons</slaveDescriptor>
+                <slaveDescriptor>hour1</slaveDescriptor>
                 <addressRange>0x00081040 - 0x0008104F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>led_status</slaveDescriptor>
+                <slaveDescriptor>minute1</slaveDescriptor>
                 <addressRange>0x00081050 - 0x0008105F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>led_alarm</slaveDescriptor>
+                <slaveDescriptor>second1</slaveDescriptor>
                 <addressRange>0x00081060 - 0x0008106F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>speaker</slaveDescriptor>
+                <slaveDescriptor>buttons</slaveDescriptor>
                 <addressRange>0x00081070 - 0x0008107F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>sec1</slaveDescriptor>
+                <slaveDescriptor>led_status</slaveDescriptor>
                 <addressRange>0x00081080 - 0x0008108F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>sec0</slaveDescriptor>
+                <slaveDescriptor>led_alarm</slaveDescriptor>
                 <addressRange>0x00081090 - 0x0008109F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>min1</slaveDescriptor>
+                <slaveDescriptor>speaker</slaveDescriptor>
                 <addressRange>0x000810A0 - 0x000810AF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>min0</slaveDescriptor>
+                <slaveDescriptor>second0</slaveDescriptor>
                 <addressRange>0x000810B0 - 0x000810BF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>hour1</slaveDescriptor>
+                <slaveDescriptor>minute0</slaveDescriptor>
                 <addressRange>0x000810C0 - 0x000810CF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>

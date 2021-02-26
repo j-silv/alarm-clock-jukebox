@@ -22,7 +22,7 @@ int main(void) {
   // initialization
   mode.display = TIME_DISPLAY;
   mode.alarm = NOT_ARMED;
-  mode.config.on = TRUE;
+  mode.config.on = FALSE;
   mode.config.hour = FALSE;
   mode.config.minute = FALSE;
   alarmLEDoff();
@@ -64,25 +64,35 @@ void timerSecondISR(void* isr_context) {
   alarmLEDtoggle();
 
  
-
-  /* if we're currently configuring the current time, the display
-  should not overflow its digits (for ex., at sec = 60, the minute should not
-  pass to 1 */
   if (mode.display == TIME_DISPLAY) {
+    // temporary time struct for data transfer between modules
+    struct time clock;
+
     if (mode.config.on == TRUE) {
 
-      // temporary time struct for data transfer between modules
-      struct time clock;
-
+      // since we're in config, we don't want to carry the digits
       clock = upClockSecond(CARRY_OFF);
       printf("The clock time is currently: %d:%d:%d\n",clock.hour,clock.minute,clock.second);
     }
+    else if (mode.config.on == FALSE) {
+
+      // since we're not in config, the time should normally count and carry
+      clock = upClockSecond(CARRY_ON);
+      printf("The clock time is currently: %d:%d:%d\n",clock.hour,clock.minute,clock.second);
+    }
+    else {
+      printf("ERROR: mode.config.on is invalid\n");
+    }
+
+    // since the time is being displayed, we'll have to update the display
+    updateDisplay(clock);
+
+    
   }
-
-
-
-  //payload = convertBCD2LED(clock_time);
-  //updateDisplay(payload);
+  else {
+    // since the current time is not being displayed, we don't update the display
+    upClockSecond(CARRY_ON);
+  }
 }
 
 

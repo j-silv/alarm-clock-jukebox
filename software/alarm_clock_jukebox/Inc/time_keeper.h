@@ -31,6 +31,18 @@ struct time{
 #define CARRY_ON 0
 #define CARRY_OFF 1
 
+/* if one of the time struct members has 110 as its value, then 
+the corresponding digit will give a BCD value of 11 for the decimal
+place digit and 10 for the ones place. the COM_ANODE_SEG[] array
+will then access indexes 11 and 10, which are 0xFF and turn off the digits */
+#define DIGITS_OFF 110
+
+const uint8_t reset_clock_value [] = {
+  23, // hour
+  59, // minute
+  0   // second
+};
+
 
 
 #endif

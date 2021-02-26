@@ -8,7 +8,7 @@
    <endaddress preferredWidth="113" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
+ <library expandedCategories="Library,Project" />
  <window width="1920" height="1020" x="0" y="0" />
  <generation synthesis="VHDL" path="_PROJECT_NAME_" />
 </preferences>

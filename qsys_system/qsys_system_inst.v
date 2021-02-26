@@ -6,11 +6,11 @@
 		.led_alarm_external_connection_export  (<connected-to-led_alarm_external_connection_export>),  //  led_alarm_external_connection.export
 		.led_status_external_connection_export (<connected-to-led_status_external_connection_export>), // led_status_external_connection.export
 		.ledr_external_connection_export       (<connected-to-ledr_external_connection_export>),       //       ledr_external_connection.export
-		.min0_external_connection_export       (<connected-to-min0_external_connection_export>),       //       min0_external_connection.export
-		.min1_external_connection_export       (<connected-to-min1_external_connection_export>),       //       min1_external_connection.export
+		.minute0_external_connection_export    (<connected-to-minute0_external_connection_export>),    //    minute0_external_connection.export
+		.minute1_external_connection_export    (<connected-to-minute1_external_connection_export>),    //    minute1_external_connection.export
 		.reset_reset_n                         (<connected-to-reset_reset_n>),                         //                          reset.reset_n
-		.sec0_external_connection_export       (<connected-to-sec0_external_connection_export>),       //       sec0_external_connection.export
-		.sec1_external_connection_export       (<connected-to-sec1_external_connection_export>),       //       sec1_external_connection.export
+		.second0_external_connection_export    (<connected-to-second0_external_connection_export>),    //    second0_external_connection.export
+		.second1_external_connection_export    (<connected-to-second1_external_connection_export>),    //    second1_external_connection.export
 		.speaker_external_connection_export    (<connected-to-speaker_external_connection_export>),    //    speaker_external_connection.export
 		.switches_external_connection_export   (<connected-to-switches_external_connection_export>)    //   switches_external_connection.export
 	);

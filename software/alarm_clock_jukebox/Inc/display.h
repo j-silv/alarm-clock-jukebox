@@ -2,6 +2,13 @@
 #ifndef __DISPLAY_H
 #define __DISPLAY_H
 
+// C libraries
+#include <stdint.h>
+
+// altera bsp
+#include "system.h"
+#include  "altera_avalon_pio_regs.h"
+
 /*
 COMMON CATHODE SEG MAPPING:    
 dec   binary    hex
@@ -30,29 +37,31 @@ dec   binary    hex
 9	    0010000	  90
 */
 
-// C libraries
-#include <stdint.h>
-
-// altera bsp
-#include "system.h"
-#include  "altera_avalon_pio_regs.h"
-
 // array position [0] corresponds to displaying 0, [1] -> 1, etc.
-// position [10] -> all segments are OFF
-// position [11] -> the minus sign (-, segment G)
-uint8_t COM_ANODE_SEG_TABLE[] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0xFF,0x3F};
-
-// 999 is the maximum value we can display with 3 LED segment displays
-#define MAX_ABS_VALUE 999
+// position [10] and position [11] -> all segments are OFF. If a member of the time
+// struct has a BCD value of 10 or 11, then after BCD to LED conversion, the resulting digits
+// will be off (for ex, if seconds = 110, then bcd[1] = 11, and bcd[0] = 10. Thus after referencing
+// the COM_ANODE_SEG_TABLE, they will both be 0)
+const uint8_t COM_ANODE_SEG_TABLE[] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0xFF,0xFF};
 
 #define RESET_DISPLAY_VALUE 0xC0
 
-void resetDisplay(void);
+// 999 is the maximum value we can display with 3 LED segment displays
+#define MAX_ABS_VALUE 999
+// how many digits are displayed on the 7 seg display
+#define NUM_DISPLAY_DIGITS 6
+// how many different time units are there (seconds, minutes, hours)
+#define NUM_TIME_UNITS 3
+// what is the precision of each time unit (how many digits for each time unit)
+#define NUM_DIGITS_FOR_UNIT 2
 
-int convert3DigitDecimalToLED(int decimal);
-int convertBCDToLED(int *bcd);
-void updateHourTime(int hour);
-void updateMinutesTime(int minute);
-void updateSecondsTime(int second);
+struct time{
+  uint8_t hour;
+  uint8_t minute;
+  uint8_t second;
+};
+
+void resetDisplay(void);
+void updateDisplay(struct time time);
 
 #endif

@@ -1,27 +1,243 @@
-13:07:39 **** Incremental Build of configuration Nios II for project alarm_clock_jukebox ****
+18:02:28 **** Incremental Build of configuration Nios II for project alarm_clock_jukebox ****
 make all 
 Info: Building ../alarm_clock_jukebox_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../alarm_clock_jukebox_bsp/
 [BSP build complete]
-Info: Compiling Src/main.c to obj/default/Src/main.o
-nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/main.o Src/main.c
+Info: Compiling Src/display.c to obj/default/Src/display.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/display.o Src/display.c
+In file included from Src/display.c:1:0:
+Inc/display.h:48:3: error: initializer element is not constant
+   COM_ANODE_SEG_TABLE[1],  // hour1
+   ^
+Inc/display.h:48:3: note: (near initialization for 'reset_display[0]')
+Inc/display.h:49:3: error: initializer element is not constant
+   COM_ANODE_SEG_TABLE[8],  // hour0
+   ^
+Inc/display.h:49:3: note: (near initialization for 'reset_display[1]')
+Inc/display.h:50:3: error: initializer element is not constant
+   COM_ANODE_SEG_TABLE[0],  // minute1
+   ^
+Inc/display.h:50:3: note: (near initialization for 'reset_display[2]')
+Inc/display.h:51:3: error: initializer element is not constant
+   COM_ANODE_SEG_TABLE[0],  // minute0
+   ^
+Inc/display.h:51:3: note: (near initialization for 'reset_display[3]')
+Inc/display.h:52:3: error: initializer element is not constant
+   COM_ANODE_SEG_TABLE[0],  // second1
+   ^
+Inc/display.h:52:3: note: (near initialization for 'reset_display[4]')
+Inc/display.h:53:3: error: initializer element is not constant
+   COM_ANODE_SEG_TABLE[0]  // second0  
+   ^
+Inc/display.h:53:3: note: (near initialization for 'reset_display[5]')
+Inc/display.h:67:1: error: expected ',' or ';' before 'struct'
+ struct time{
+ ^
+Inc/display.h:74:27: warning: 'struct time' declared inside parameter list
+ void updateDisplay(struct time time);
+                           ^
+Inc/display.h:74:27: warning: its scope is only this definition or declaration, which is probably not what you want
+Src/display.c:19:27: warning: 'struct time' declared inside parameter list
+ void updateDisplay(struct time time) {
+                           ^
+Src/display.c:19:32: error: parameter 1 ('time') has incomplete type
+ void updateDisplay(struct time time) {
+                                ^
+Src/display.c: In function 'updateDisplay':
+Src/display.c:24:16: error: request for member 'hour' in something not a structure or union
+   bcd[1] = time.hour/10;
+                ^
+Src/display.c:24:21: error: invalid operands to binary / (have 'uint8_t * {aka unsigned char *}' and 'int')
+   bcd[1] = time.hour/10;
+                     ^
+Src/display.c:24:10: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   bcd[1] = time.hour/10;
+          ^
+Src/display.c:25:16: error: request for member 'hour' in something not a structure or union
+   bcd[0] = time.hour - bcd[1]*10;
+                ^
+Src/display.c:25:10: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   bcd[0] = time.hour - bcd[1]*10;
+          ^
+Src/display.c:32:16: error: request for member 'minute' in something not a structure or union
+   bcd[1] = time.minute/10;
+                ^
+Src/display.c:32:23: error: invalid operands to binary / (have 'uint8_t * {aka unsigned char *}' and 'int')
+   bcd[1] = time.minute/10;
+                       ^
+Src/display.c:32:10: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   bcd[1] = time.minute/10;
+          ^
+Src/display.c:33:16: error: request for member 'minute' in something not a structure or union
+   bcd[0] = time.minute - bcd[1]*10;
+                ^
+Src/display.c:33:10: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   bcd[0] = time.minute - bcd[1]*10;
+          ^
+Src/display.c:40:16: error: request for member 'second' in something not a structure or union
+   bcd[1] = time.second/10;
+                ^
+Src/display.c:40:23: error: invalid operands to binary / (have 'uint8_t * {aka unsigned char *}' and 'int')
+   bcd[1] = time.second/10;
+                       ^
+Src/display.c:40:10: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   bcd[1] = time.second/10;
+          ^
+Src/display.c:41:16: error: request for member 'second' in something not a structure or union
+   bcd[0] = time.second - bcd[1]*10;
+                ^
+Src/display.c:41:10: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   bcd[0] = time.second - bcd[1]*10;
+          ^
+make: *** [obj/default/Src/display.o] Error 1
+18:12:04 **** Build of configuration Nios II for project alarm_clock_jukebox ****
+make all 
+Info: Building ../alarm_clock_jukebox_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../alarm_clock_jukebox_bsp/
+[BSP build complete]
+Info: Compiling Src/display.c to obj/default/Src/display.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/display.o Src/display.c
+Info: Compiling Src/time_keeper.c to obj/default/Src/time_keeper.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/time_keeper.o Src/time_keeper.c
+Src/time_keeper.c:4:1: error: expected ',' or ';' before 'struct'
+ struct time clock;
+ ^
+Src/time_keeper.c: In function 'resetClockTime':
+Src/time_keeper.c:15:3: error: 'clock' undeclared (first use in this function)
+   clock.hour = reset_clock_value[0];
+   ^
+Src/time_keeper.c:15:3: note: each undeclared identifier is reported only once for each function it appears in
+Src/time_keeper.c: In function 'upClockSecond':
+Src/time_keeper.c:24:7: error: 'clock' undeclared (first use in this function)
+   if (clock.second == (ONE_MINUTE-1)) {
+       ^
+Src/time_keeper.c: In function 'upClockMinute':
+Src/time_keeper.c:39:7: error: 'clock' undeclared (first use in this function)
+   if (clock.minute == (ONE_HOUR-1)) {
+       ^
+Src/time_keeper.c: In function 'upClockHour':
+Src/time_keeper.c:54:7: error: 'clock' undeclared (first use in this function)
+   if (clock.hour == time_format) {
+       ^
+Src/time_keeper.c: In function 'downClockSecond':
+Src/time_keeper.c:67:7: error: 'clock' undeclared (first use in this function)
+   if (clock.second == 0) {
+       ^
+Src/time_keeper.c: In function 'downClockMinute':
+Src/time_keeper.c:82:7: error: 'clock' undeclared (first use in this function)
+   if (clock.minute == 0) {
+       ^
+Src/time_keeper.c: In function 'downClockHour':
+Src/time_keeper.c:97:7: error: 'clock' undeclared (first use in this function)
+   if (clock.hour == 0) {
+       ^
+Src/time_keeper.c: In function 'upClockSecond':
+Src/time_keeper.c:35:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Src/time_keeper.c: In function 'upClockMinute':
+Src/time_keeper.c:50:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Src/time_keeper.c: In function 'upClockHour':
+Src/time_keeper.c:61:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Src/time_keeper.c: In function 'downClockSecond':
+Src/time_keeper.c:78:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Src/time_keeper.c: In function 'downClockMinute':
+Src/time_keeper.c:93:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Src/time_keeper.c: In function 'downClockHour':
+Src/time_keeper.c:104:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [obj/default/Src/time_keeper.o] Error 1
+18:12:12 **** Incremental Build of configuration Nios II for project alarm_clock_jukebox ****
+make all 
+Info: Building ../alarm_clock_jukebox_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../alarm_clock_jukebox_bsp/
+[BSP build complete]
+Info: Compiling Src/time_keeper.c to obj/default/Src/time_keeper.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/time_keeper.o Src/time_keeper.c
+Src/time_keeper.c:4:1: error: expected ',' or ';' before 'struct'
+ struct time clock;
+ ^
+Src/time_keeper.c: In function 'resetClockTime':
+Src/time_keeper.c:15:3: error: 'clock' undeclared (first use in this function)
+   clock.hour = reset_clock_value[0];
+   ^
+Src/time_keeper.c:15:3: note: each undeclared identifier is reported only once for each function it appears in
+Src/time_keeper.c: In function 'upClockSecond':
+Src/time_keeper.c:24:7: error: 'clock' undeclared (first use in this function)
+   if (clock.second == (ONE_MINUTE-1)) {
+       ^
+Src/time_keeper.c: In function 'upClockMinute':
+Src/time_keeper.c:39:7: error: 'clock' undeclared (first use in this function)
+   if (clock.minute == (ONE_HOUR-1)) {
+       ^
+Src/time_keeper.c: In function 'upClockHour':
+Src/time_keeper.c:54:7: error: 'clock' undeclared (first use in this function)
+   if (clock.hour == time_format) {
+       ^
+Src/time_keeper.c: In function 'downClockSecond':
+Src/time_keeper.c:67:7: error: 'clock' undeclared (first use in this function)
+   if (clock.second == 0) {
+       ^
+Src/time_keeper.c: In function 'downClockMinute':
+Src/time_keeper.c:82:7: error: 'clock' undeclared (first use in this function)
+   if (clock.minute == 0) {
+       ^
+Src/time_keeper.c: In function 'downClockHour':
+Src/time_keeper.c:97:7: error: 'clock' undeclared (first use in this function)
+   if (clock.hour == 0) {
+       ^
+Src/time_keeper.c: In function 'upClockSecond':
+Src/time_keeper.c:35:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Src/time_keeper.c: In function 'upClockMinute':
+Src/time_keeper.c:50:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Src/time_keeper.c: In function 'upClockHour':
+Src/time_keeper.c:61:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Src/time_keeper.c: In function 'downClockSecond':
+Src/time_keeper.c:78:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Src/time_keeper.c: In function 'downClockMinute':
+Src/time_keeper.c:93:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Src/time_keeper.c: In function 'downClockHour':
+Src/time_keeper.c:104:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [obj/default/Src/time_keeper.o] Error 1
+18:12:55 **** Build of configuration Nios II for project alarm_clock_jukebox ****
+make all 
+Info: Building ../alarm_clock_jukebox_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../alarm_clock_jukebox_bsp/
+[BSP build complete]
+Info: Compiling Src/display.c to obj/default/Src/display.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/display.o Src/display.c
 Info: Compiling Src/time_keeper.c to obj/default/Src/time_keeper.o
 nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/time_keeper.o Src/time_keeper.c
 Info: Linking alarm_clock_jukebox.elf
 nios2-elf-g++  -T'../alarm_clock_jukebox_bsp//linker.x' -msys-crt0='../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../alarm_clock_jukebox_bsp/  -msmallc  -Wl,-Map=alarm_clock_jukebox.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o alarm_clock_jukebox.elf obj/default/Src/button.o obj/default/Src/display.o obj/default/Src/interrupt.o obj/default/Src/led.o obj/default/Src/main.o obj/default/Src/time_keeper.o -lm -msys-lib=m
-nios2-elf-insert alarm_clock_jukebox.elf --thread_model hal --cpu_name NiosII_CPU --qsys true --simulation_enabled false --id 305419896 --sidp 0x81100 --timestamp 1614330839 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name qsys_system --quartus_project_dir "C:/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox" --jdi ../..//output_files/system_block.jdi --sopcinfo C:/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox_bsp/../../qsys_system.sopcinfo
+nios2-elf-insert alarm_clock_jukebox.elf --thread_model hal --cpu_name NiosII_CPU --qsys true --simulation_enabled false --id 305419896 --sidp 0x81100 --timestamp 1614345661 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name qsys_system --quartus_project_dir "C:/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox" --jdi ../..//output_files/system_block.jdi --sopcinfo C:/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox_bsp/../../qsys_system.sopcinfo
 Info: (alarm_clock_jukebox.elf) 13 KBytes program size (code + initialized data).
 Info:                           146 KBytes free for stack + heap.
 Info: Creating alarm_clock_jukebox.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source alarm_clock_jukebox.elf >alarm_clock_jukebox.objdump
 [alarm_clock_jukebox build complete]
-13:08:37 **** Build of configuration Nios II for project alarm_clock_jukebox ****
-make all 
-Info: Building ../alarm_clock_jukebox_bsp/
-C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../alarm_clock_jukebox_bsp/
-[BSP build complete]
-[alarm_clock_jukebox build complete]
-13:08:41 **** Incremental Build of configuration Nios II for project alarm_clock_jukebox ****
+18:13:04 **** Incremental Build of configuration Nios II for project alarm_clock_jukebox ****
 make all 
 Info: Building ../alarm_clock_jukebox_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../alarm_clock_jukebox_bsp/

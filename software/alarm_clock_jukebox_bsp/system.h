@@ -4,7 +4,7 @@
  * Machine generated for CPU 'NiosII_CPU' in SOPC Builder design 'qsys_system'
  * SOPC Builder design path: ../../qsys_system.sopcinfo
  *
- * Generated: Fri Feb 26 10:31:13 CET 2021
+ * Generated: Fri Feb 26 17:30:37 CET 2021
  */
 
 /*
@@ -213,7 +213,7 @@
  */
 
 #define ALT_MODULE_CLASS_buttons altera_avalon_pio
-#define BUTTONS_BASE 0x81040
+#define BUTTONS_BASE 0x81070
 #define BUTTONS_BIT_CLEARING_EDGE_REGISTER 0
 #define BUTTONS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define BUTTONS_CAPTURE 1
@@ -255,7 +255,7 @@
 #define HOUR0_BIT_CLEARING_EDGE_REGISTER 0
 #define HOUR0_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HOUR0_CAPTURE 0
-#define HOUR0_DATA_WIDTH 7
+#define HOUR0_DATA_WIDTH 8
 #define HOUR0_DO_TEST_BENCH_WIRING 0
 #define HOUR0_DRIVEN_SIM_VALUE 0
 #define HOUR0_EDGE_TYPE "NONE"
@@ -278,11 +278,11 @@
  */
 
 #define ALT_MODULE_CLASS_hour1 altera_avalon_pio
-#define HOUR1_BASE 0x810c0
+#define HOUR1_BASE 0x81040
 #define HOUR1_BIT_CLEARING_EDGE_REGISTER 0
 #define HOUR1_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HOUR1_CAPTURE 0
-#define HOUR1_DATA_WIDTH 7
+#define HOUR1_DATA_WIDTH 8
 #define HOUR1_DO_TEST_BENCH_WIRING 0
 #define HOUR1_DRIVEN_SIM_VALUE 0
 #define HOUR1_EDGE_TYPE "NONE"
@@ -323,7 +323,7 @@
  */
 
 #define ALT_MODULE_CLASS_led_alarm altera_avalon_pio
-#define LED_ALARM_BASE 0x81060
+#define LED_ALARM_BASE 0x81090
 #define LED_ALARM_BIT_CLEARING_EDGE_REGISTER 0
 #define LED_ALARM_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LED_ALARM_CAPTURE 0
@@ -377,7 +377,7 @@
  */
 
 #define ALT_MODULE_CLASS_led_status altera_avalon_pio
-#define LED_STATUS_BASE 0x81050
+#define LED_STATUS_BASE 0x81080
 #define LED_STATUS_BIT_CLEARING_EDGE_REGISTER 0
 #define LED_STATUS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LED_STATUS_CAPTURE 0
@@ -399,57 +399,57 @@
 
 
 /*
- * min0 configuration
+ * minute0 configuration
  *
  */
 
-#define ALT_MODULE_CLASS_min0 altera_avalon_pio
-#define MIN0_BASE 0x810b0
-#define MIN0_BIT_CLEARING_EDGE_REGISTER 0
-#define MIN0_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define MIN0_CAPTURE 0
-#define MIN0_DATA_WIDTH 7
-#define MIN0_DO_TEST_BENCH_WIRING 0
-#define MIN0_DRIVEN_SIM_VALUE 0
-#define MIN0_EDGE_TYPE "NONE"
-#define MIN0_FREQ 50000000
-#define MIN0_HAS_IN 0
-#define MIN0_HAS_OUT 1
-#define MIN0_HAS_TRI 0
-#define MIN0_IRQ -1
-#define MIN0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define MIN0_IRQ_TYPE "NONE"
-#define MIN0_NAME "/dev/min0"
-#define MIN0_RESET_VALUE 64
-#define MIN0_SPAN 16
-#define MIN0_TYPE "altera_avalon_pio"
+#define ALT_MODULE_CLASS_minute0 altera_avalon_pio
+#define MINUTE0_BASE 0x810c0
+#define MINUTE0_BIT_CLEARING_EDGE_REGISTER 0
+#define MINUTE0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define MINUTE0_CAPTURE 0
+#define MINUTE0_DATA_WIDTH 8
+#define MINUTE0_DO_TEST_BENCH_WIRING 0
+#define MINUTE0_DRIVEN_SIM_VALUE 0
+#define MINUTE0_EDGE_TYPE "NONE"
+#define MINUTE0_FREQ 50000000
+#define MINUTE0_HAS_IN 0
+#define MINUTE0_HAS_OUT 1
+#define MINUTE0_HAS_TRI 0
+#define MINUTE0_IRQ -1
+#define MINUTE0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define MINUTE0_IRQ_TYPE "NONE"
+#define MINUTE0_NAME "/dev/minute0"
+#define MINUTE0_RESET_VALUE 64
+#define MINUTE0_SPAN 16
+#define MINUTE0_TYPE "altera_avalon_pio"
 
 
 /*
- * min1 configuration
+ * minute1 configuration
  *
  */
 
-#define ALT_MODULE_CLASS_min1 altera_avalon_pio
-#define MIN1_BASE 0x810a0
-#define MIN1_BIT_CLEARING_EDGE_REGISTER 0
-#define MIN1_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define MIN1_CAPTURE 0
-#define MIN1_DATA_WIDTH 7
-#define MIN1_DO_TEST_BENCH_WIRING 0
-#define MIN1_DRIVEN_SIM_VALUE 0
-#define MIN1_EDGE_TYPE "NONE"
-#define MIN1_FREQ 50000000
-#define MIN1_HAS_IN 0
-#define MIN1_HAS_OUT 1
-#define MIN1_HAS_TRI 0
-#define MIN1_IRQ -1
-#define MIN1_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define MIN1_IRQ_TYPE "NONE"
-#define MIN1_NAME "/dev/min1"
-#define MIN1_RESET_VALUE 64
-#define MIN1_SPAN 16
-#define MIN1_TYPE "altera_avalon_pio"
+#define ALT_MODULE_CLASS_minute1 altera_avalon_pio
+#define MINUTE1_BASE 0x81050
+#define MINUTE1_BIT_CLEARING_EDGE_REGISTER 0
+#define MINUTE1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define MINUTE1_CAPTURE 0
+#define MINUTE1_DATA_WIDTH 8
+#define MINUTE1_DO_TEST_BENCH_WIRING 0
+#define MINUTE1_DRIVEN_SIM_VALUE 0
+#define MINUTE1_EDGE_TYPE "NONE"
+#define MINUTE1_FREQ 50000000
+#define MINUTE1_HAS_IN 0
+#define MINUTE1_HAS_OUT 1
+#define MINUTE1_HAS_TRI 0
+#define MINUTE1_IRQ -1
+#define MINUTE1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define MINUTE1_IRQ_TYPE "NONE"
+#define MINUTE1_NAME "/dev/minute1"
+#define MINUTE1_RESET_VALUE 64
+#define MINUTE1_SPAN 16
+#define MINUTE1_TYPE "altera_avalon_pio"
 
 
 /*
@@ -482,57 +482,57 @@
 
 
 /*
- * sec0 configuration
+ * second0 configuration
  *
  */
 
-#define ALT_MODULE_CLASS_sec0 altera_avalon_pio
-#define SEC0_BASE 0x81090
-#define SEC0_BIT_CLEARING_EDGE_REGISTER 0
-#define SEC0_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define SEC0_CAPTURE 0
-#define SEC0_DATA_WIDTH 7
-#define SEC0_DO_TEST_BENCH_WIRING 0
-#define SEC0_DRIVEN_SIM_VALUE 0
-#define SEC0_EDGE_TYPE "NONE"
-#define SEC0_FREQ 50000000
-#define SEC0_HAS_IN 0
-#define SEC0_HAS_OUT 1
-#define SEC0_HAS_TRI 0
-#define SEC0_IRQ -1
-#define SEC0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define SEC0_IRQ_TYPE "NONE"
-#define SEC0_NAME "/dev/sec0"
-#define SEC0_RESET_VALUE 64
-#define SEC0_SPAN 16
-#define SEC0_TYPE "altera_avalon_pio"
+#define ALT_MODULE_CLASS_second0 altera_avalon_pio
+#define SECOND0_BASE 0x810b0
+#define SECOND0_BIT_CLEARING_EDGE_REGISTER 0
+#define SECOND0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define SECOND0_CAPTURE 0
+#define SECOND0_DATA_WIDTH 8
+#define SECOND0_DO_TEST_BENCH_WIRING 0
+#define SECOND0_DRIVEN_SIM_VALUE 0
+#define SECOND0_EDGE_TYPE "NONE"
+#define SECOND0_FREQ 50000000
+#define SECOND0_HAS_IN 0
+#define SECOND0_HAS_OUT 1
+#define SECOND0_HAS_TRI 0
+#define SECOND0_IRQ -1
+#define SECOND0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define SECOND0_IRQ_TYPE "NONE"
+#define SECOND0_NAME "/dev/second0"
+#define SECOND0_RESET_VALUE 64
+#define SECOND0_SPAN 16
+#define SECOND0_TYPE "altera_avalon_pio"
 
 
 /*
- * sec1 configuration
+ * second1 configuration
  *
  */
 
-#define ALT_MODULE_CLASS_sec1 altera_avalon_pio
-#define SEC1_BASE 0x81080
-#define SEC1_BIT_CLEARING_EDGE_REGISTER 0
-#define SEC1_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define SEC1_CAPTURE 0
-#define SEC1_DATA_WIDTH 7
-#define SEC1_DO_TEST_BENCH_WIRING 0
-#define SEC1_DRIVEN_SIM_VALUE 0
-#define SEC1_EDGE_TYPE "NONE"
-#define SEC1_FREQ 50000000
-#define SEC1_HAS_IN 0
-#define SEC1_HAS_OUT 1
-#define SEC1_HAS_TRI 0
-#define SEC1_IRQ -1
-#define SEC1_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define SEC1_IRQ_TYPE "NONE"
-#define SEC1_NAME "/dev/sec1"
-#define SEC1_RESET_VALUE 64
-#define SEC1_SPAN 16
-#define SEC1_TYPE "altera_avalon_pio"
+#define ALT_MODULE_CLASS_second1 altera_avalon_pio
+#define SECOND1_BASE 0x81060
+#define SECOND1_BIT_CLEARING_EDGE_REGISTER 0
+#define SECOND1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define SECOND1_CAPTURE 0
+#define SECOND1_DATA_WIDTH 8
+#define SECOND1_DO_TEST_BENCH_WIRING 0
+#define SECOND1_DRIVEN_SIM_VALUE 0
+#define SECOND1_EDGE_TYPE "NONE"
+#define SECOND1_FREQ 50000000
+#define SECOND1_HAS_IN 0
+#define SECOND1_HAS_OUT 1
+#define SECOND1_HAS_TRI 0
+#define SECOND1_IRQ -1
+#define SECOND1_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define SECOND1_IRQ_TYPE "NONE"
+#define SECOND1_NAME "/dev/second1"
+#define SECOND1_RESET_VALUE 64
+#define SECOND1_SPAN 16
+#define SECOND1_TYPE "altera_avalon_pio"
 
 
 /*
@@ -541,7 +541,7 @@
  */
 
 #define ALT_MODULE_CLASS_speaker altera_avalon_pio
-#define SPEAKER_BASE 0x81070
+#define SPEAKER_BASE 0x810a0
 #define SPEAKER_BIT_CLEARING_EDGE_REGISTER 0
 #define SPEAKER_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define SPEAKER_CAPTURE 0
@@ -601,7 +601,7 @@
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1614330839
+#define SYSID_QSYS_0_TIMESTAMP 1614345661
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 
