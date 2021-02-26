@@ -74,7 +74,7 @@ void timerSecondISR(void* isr_context) {
       // temporary time struct for data transfer between modules
       struct time clock;
 
-      clock = updateTime(CLOCK,SECOND,UP,CARRY_OFF);
+      clock = upClockSecond(CARRY_OFF);
       printf("The clock time is currently: %d:%d:%d\n",clock.hour,clock.minute,clock.second);
     }
   }

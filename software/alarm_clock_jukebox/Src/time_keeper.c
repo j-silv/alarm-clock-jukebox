@@ -7,6 +7,9 @@ struct time alarm;
 // 24 hour or 12 hour format (24 by default)
 volatile uint8_t time_format = 24;
 
+
+/* ------------------------ CLOCK functions ---------------------- */
+
 // initialize clock time to 00:00:00
 void resetClockTime(void) {
   // necessary to cast to a time struct, otherwise the 
@@ -14,217 +17,144 @@ void resetClockTime(void) {
   clock = (struct time){0};
 }
 
-// initialize alarm time to 00:00:00
-void resetAlarmTime(void) {
-  alarm =  (struct time){0};
-}
-
-/* in this function we determine which time struct to update and whether
-or not it's a incrementation of time (+) or a decrementation of time (-) */
-struct time updateTime(uint8_t time_type, uint8_t time_unit, uint8_t operation, uint8_t carry_setting) {
-  if (time_type == CLOCK) {
-    if (operation == UP) {
-      incrementClock(time_unit, carry_setting);
-    }
-    else if (operation == DOWN) {
-      decrementClock(time_unit, carry_setting);
-    }
-    return clock;
-  }
-
-  else if (time_type == ALARM) {
-    if (operation == UP) {
-      incrementAlarm(time_unit);
-    }
-    else if (operation == DOWN) {
-      decrementAlarm(time_unit);
-    }
-    return alarm;
-  }
-
-  // error from main.c call
-  else {
-    return (struct time){1};
-  }
-}
-
-
-
-/* ------------------------ CLOCK functions ---------------------- */
-
-/*--------- increment operations -------*/
-
-void incrementClock(uint8_t time_unit, uint8_t carry_setting) {
-  switch (time_unit) {
-    case SECOND:
-      incrementClockSecond(carry_setting);
-      break;
-    case MINUTE:
-      incrementClockMinute(carry_setting);
-      break;
-    case HOUR:
-      incrementClockHour();
-      break;   
-  }
-}
+/*--------- up operations -------*/
 
 // SECONDS
-void incrementClockSecond(uint8_t carry_setting) {
+struct time upClockSecond(uint8_t carry_setting) {
   if (clock.second == (ONE_MINUTE-1)) {
     clock.second = 0;
     
     if (carry_setting == CARRY_ON) {
-      incrementClockMinute(CARRY_ON);
+      upClockMinute(CARRY_ON);
     }
   }
   else {
     clock.second++;
   }
+  return clock;
 }
 
 // MINUTES
-void incrementClockMinute(uint8_t carry_setting) {
+struct time upClockMinute(uint8_t carry_setting) {
   if (clock.minute == (ONE_HOUR-1)) {
     clock.minute = 0;
     
     if (carry_setting == CARRY_ON) {
-      incrementClockHour();
+      upClockHour();
     }
   }
   else {
     clock.minute++;
   }
+  return clock;
 }
 
 // HOURS
-void incrementClockHour(void) {
+struct time upClockHour(void) {
   if (clock.hour == time_format) {
     clock.hour = 0;
   }
   else {
     clock.hour++;
   }
+  return clock;
 }
 
-/*--------- decrement operations -------*/
-
-void decrementClock(uint8_t time_unit, uint8_t carry_setting) {
-  switch (time_unit) {
-    case SECOND:
-      decrementClockSecond(carry_setting);
-      break;
-    case MINUTE:
-      decrementClockMinute(carry_setting);
-      break;
-    case HOUR:
-      decrementClockHour();
-      break;   
-  }
-}
+/*--------- down operations -------*/
 
 // SECONDS
-void decrementClockSecond(uint8_t carry_setting) {
+struct time downClockSecond(uint8_t carry_setting) {
   if (clock.second == 0) {
     clock.second = (ONE_MINUTE-1);
     
     if (carry_setting == CARRY_ON) {
-      decrementClockMinute(CARRY_ON);
+      downClockMinute(CARRY_ON);
     }
   }
   else {
     clock.second--;
   }
+  return clock;
 }
 
 // MINUTES
-void decrementClockMinute(uint8_t carry_setting) {
+struct time downClockMinute(uint8_t carry_setting) {
   if (clock.minute == 0) {
     clock.minute = (ONE_HOUR-1);
     
     if (carry_setting == CARRY_ON) {
-      decrementClockHour();
+      downClockHour();
     }
   }
   else {
     clock.minute--;
   }
+  return clock;
 }
 
 // HOURS
-void decrementClockHour(void) {
+struct time downClockHour(void) {
   if (clock.hour == 0) {
     clock.hour = time_format;
   }
   else {
     clock.hour--;
   }
+  return clock;
 }
 
 
 /* ------------------------ ALARM functions ---------------------- */
 
-/*--------- increment operations -------*/
-
-void incrementAlarm(uint8_t time_unit) {
-  switch (time_unit) {
-    case MINUTE:
-      incrementAlarmMinute();
-      break;
-    case HOUR:
-      incrementAlarmHour();
-      break;   
-  }
+// initialize alarm time to 00:00:00
+void resetAlarmTime(void) {
+  alarm =  (struct time){0};
 }
 
+/*--------- up operations -------*/
+
 // MINUTES
-void incrementAlarmMinute() {
+struct time upAlarmMinute() {
   if (alarm.minute == (ONE_HOUR-1)) {
     alarm.minute = 0;
   }
   else {
     alarm.minute++;
   }
+  return alarm;
 }
 
 // HOURS
-void incrementAlarmHour(void) {
+struct time upAlarmHour(void) {
   if (alarm.hour == time_format) {
     alarm.hour = 0;
   }
   else {
     alarm.hour++;
   }
+  return alarm;
 }
 
-/*--------- decrement operations -------*/
-
-void decrementAlarm(uint8_t time_unit) {
-  switch (time_unit) {
-    case MINUTE:
-      decrementAlarmMinute();
-      break;
-    case HOUR:
-      decrementAlarmHour();
-      break;   
-  }
-}
+/*--------- down operations -------*/
 
 // MINUTES
-void decrementAlarmMinute() {
+struct time downAlarmMinute() {
   if (alarm.minute == 0) {
     alarm.minute = (ONE_HOUR-1);
   }
   else {
     alarm.minute--;
   }
+  return alarm;
 }
 
 // HOURS
-void decrementAlarmHour(void) {
+struct time downAlarmHour(void) {
   if (alarm.hour == 0) {
     alarm.hour = time_format;
   }
   else {
     alarm.hour--;
   }
+  return alarm;
 }

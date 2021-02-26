@@ -11,15 +11,15 @@
 #define VOLUME_DISPLAY 6
 #define SONG_DISPLAY 7
 
-#define SECOND 0
-#define MINUTE 1
-#define HOUR 2
-#define UP 3
-#define DOWN 4
-#define CLOCK 5
-#define ALARM 6
-#define CARRY_ON 7
-#define CARRY_OFF 8
+#define CARRY_ON 0
+#define CARRY_OFF 1
+#define SECOND 2
+#define MINUTE 3
+#define HOUR 4
+#define UP 5
+#define DOWN 6
+#define CLOCK 7
+#define ALARM 8
 
 #define ISR_REGISTRATION_SUCCESS 0
 #define ISR_REGISTRATION_FAILURE -1
@@ -48,12 +48,22 @@ void alarmLEDtoggle(void);
 // time.c API
 void resetClockTime(void);
 void resetAlarmTime(void);
+struct time upClockSecond(uint8_t carry_setting);
+struct time upClockMinute(uint8_t carry_setting);
+struct time upClockHour(void);
+struct time downClockSecond(uint8_t carry_setting);
+struct time downClockMinute(uint8_t carry_setting);
+struct time downClockHour(void);
+struct time upAlarmMinute();
+struct time upAlarmHour(void);
+struct time downAlarmMinute();
+struct time downAlarmHour(void);
+
 struct time{
   uint8_t hour;
   uint8_t minute;
   uint8_t second;
 };
-struct time updateTime(uint8_t time_type, uint8_t time_unit, uint8_t operation, uint8_t carry_setting);
 
 // display.c API
 void resetDisplay(void);

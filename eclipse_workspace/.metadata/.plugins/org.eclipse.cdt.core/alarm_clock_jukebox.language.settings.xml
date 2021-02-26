@@ -2040,8 +2040,11 @@
 						<entry kind="includePath" name="/${ProjName}/Inc">
 							<flag value="VALUE_WORKSPACE_PATH"/>
 						</entry>
+						<entry kind="macro" name="ALT_NO_C_PLUS_PLUS" value=""/>
 						<entry kind="macro" name="ALT_NO_INSTRUCTION_EMULATION" value=""/>
 						<entry kind="macro" name="ALT_SINGLE_THREADED" value=""/>
+						<entry kind="macro" name="ALT_USE_SMALL_DRIVERS" value=""/>
+						<entry kind="macro" name="SMALL_C_LIB" value=""/>
 						<entry kind="macro" name="__hal__" value=""/>
 					</resource>
 					<resource project-relative-path="HAL/src/alt_link.c">
