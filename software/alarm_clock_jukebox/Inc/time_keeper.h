@@ -1,5 +1,5 @@
-#ifndef __TIME_H
-#define __TIME_H
+#ifndef __TIME_KEEPER_H
+#define __TIME_KEEPER_H
 
 // C libraries
 #include <stdint.h>
@@ -37,6 +37,9 @@ place digit and 10 for the ones place. the COM_ANODE_SEG[] array
 will then access indexes 11 and 10, which are 0xFF and turn off the digits */
 #define DIGITS_OFF 110
 
+/* default time that the clock is set to is used for debugging purposes (carry tests)
+... however in theory it could be set to the computer's current time at programming time 
+with some C magic */
 const uint8_t reset_clock_value [] = {
   23, // hour
   59, // minute

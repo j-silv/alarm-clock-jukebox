@@ -3,24 +3,13 @@
 /* the mode struct is global so that the callback functions 
 in main.c can access it and determine the appropiate courses
 of action */
-struct config {
-  uint8_t on;
-  uint8_t hour;
-  uint8_t minute;
-};
-
-struct mode{
-  uint8_t display;
-  uint8_t alarm;
-  struct config config;
-};
-
 struct mode mode;
 
 int main(void) {
 
   // initialization
-  mode.display = TIME_DISPLAY;
+  mode.invalid = FALSE;
+  mode.display = CLOCK_DISPLAY;
   mode.alarm = NOT_ARMED;
   mode.config.on = FALSE;
   mode.config.hour = FALSE;
@@ -41,7 +30,16 @@ int main(void) {
   else {
    printf("ERROR: timerSecondISR unsuccessively registered!\n");
   }
-  // if (timerPWMRegisterISR() == ISR_REGISTRATION_SUCCESS)... etc.
+
+  if (switchesRegisterISR(&switchesISR) == ISR_REGISTRATION_SUCCESS) {
+    printf("switchesISR successively registered!\n");
+    switchesEnableInterrupt();
+  }
+  else {
+   printf("ERROR: switchesISR unsuccessively registered!\n");
+  }
+
+
 
 
 
@@ -64,7 +62,7 @@ void timerSecondISR(void* isr_context) {
   alarmLEDtoggle();
 
  
-  if (mode.display == TIME_DISPLAY) {
+  if (mode.display == CLOCK_DISPLAY) {
     // temporary time struct for data transfer between modules
     struct time clock;
 
@@ -87,12 +85,40 @@ void timerSecondISR(void* isr_context) {
     // since the time is being displayed, we'll have to update the display
     updateDisplay(clock);
 
-    
+
   }
   else {
     // since the current time is not being displayed, we don't update the display
     upClockSecond(CARRY_ON);
   }
+}
+
+
+void switchesISR(void* isr_context) {
+
+  // for debugging purposes -> acknowledgement that interrupt has succesively fired
+  printf("switches interrupt has fired!\n");
+
+  // reset edge capture register by writing to it 
+  IOWR_ALTERA_AVALON_PIO_EDGE_CAP(SWITCHES_BASE, 0);
+
+  /* temporary mode struct for data transfer between modules and for testing
+  the requested mode based on the switches state */
+  struct mode mode_request;
+
+  mode_request = determineMode();
+
+  printf("mode_request.invalid == %d\n", mode_request.invalid);
+  printf("mode_request.display == %d\n", mode_request.display);
+  printf("mode_request.config.on == %d\n", mode_request.config.on);
+  printf("mode_request.config.hour == %d\n", mode_request.config.hour);
+  printf("mode_request.config.minute == %d\n", mode_request.config.minute);
+  printf("mode_request.alarm == %d\n", mode_request.alarm);
+
+  /* Read the PIO to delay ISR exit. This is done to prevent a
+  spurious interrupt in systems with high processor -> pio
+  latency and fast interrupts. */
+  IORD_ALTERA_AVALON_PIO_EDGE_CAP(SWITCHES_BASE); 
 }
 
 
