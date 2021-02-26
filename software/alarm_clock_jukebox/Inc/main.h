@@ -6,8 +6,6 @@
 
 // C libraries
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <stdint.h>
 
 // altera bsp
@@ -31,15 +29,35 @@ void alarmLEDtoggle(void);
 // time.c API
 void resetClockTime(void);
 void resetAlarmTime(void);
+struct time{
+  uint8_t hour;
+  uint8_t minute;
+  uint8_t second;
+};
+struct time updateTime(uint8_t time_type, uint8_t time_unit, uint8_t operation, uint8_t carry_setting);
 
 // display.c API
 void resetDisplay(void);
 
-// constants
-#define TIME_DISPLAY 0
-#define NOT_ARMED 0
+// macros
 #define FALSE 0
 #define TRUE 1
+#define NOT_ARMED 2
+#define ARMED 3
+#define TIME_DISPLAY 4
+#define ALARM_DISPLAY 5
+#define VOLUME_DISPLAY 6
+#define SONG_DISPLAY 7
+
+#define SECOND 0
+#define MINUTE 1
+#define HOUR 2
+#define UP 3
+#define DOWN 4
+#define CLOCK 5
+#define ALARM 6
+#define CARRY_ON 7
+#define CARRY_OFF 8
 
 
 

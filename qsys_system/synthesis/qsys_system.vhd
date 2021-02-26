@@ -26,28 +26,12 @@ entity qsys_system is
 end entity qsys_system;
 
 architecture rtl of qsys_system is
-	component qsys_system_MEMOIRE_ONCHIP is
-		port (
-			clk        : in  std_logic                     := 'X';             -- clk
-			address    : in  std_logic_vector(13 downto 0) := (others => 'X'); -- address
-			clken      : in  std_logic                     := 'X';             -- clken
-			chipselect : in  std_logic                     := 'X';             -- chipselect
-			write      : in  std_logic                     := 'X';             -- write
-			readdata   : out std_logic_vector(31 downto 0);                    -- readdata
-			writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
-			byteenable : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
-			reset      : in  std_logic                     := 'X';             -- reset
-			reset_req  : in  std_logic                     := 'X';             -- reset_req
-			freeze     : in  std_logic                     := 'X'              -- freeze
-		);
-	end component qsys_system_MEMOIRE_ONCHIP;
-
 	component qsys_system_NiosII_CPU is
 		port (
 			clk                                 : in  std_logic                     := 'X';             -- clk
 			reset_n                             : in  std_logic                     := 'X';             -- reset_n
 			reset_req                           : in  std_logic                     := 'X';             -- reset_req
-			d_address                           : out std_logic_vector(17 downto 0);                    -- address
+			d_address                           : out std_logic_vector(19 downto 0);                    -- address
 			d_byteenable                        : out std_logic_vector(3 downto 0);                     -- byteenable
 			d_read                              : out std_logic;                                        -- read
 			d_readdata                          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
@@ -55,7 +39,7 @@ architecture rtl of qsys_system is
 			d_write                             : out std_logic;                                        -- write
 			d_writedata                         : out std_logic_vector(31 downto 0);                    -- writedata
 			debug_mem_slave_debugaccess_to_roms : out std_logic;                                        -- debugaccess
-			i_address                           : out std_logic_vector(17 downto 0);                    -- address
+			i_address                           : out std_logic_vector(19 downto 0);                    -- address
 			i_read                              : out std_logic;                                        -- read
 			i_readdata                          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			i_waitrequest                       : in  std_logic                     := 'X';             -- waitrequest
@@ -168,6 +152,22 @@ architecture rtl of qsys_system is
 		);
 	end component qsys_system_led_status;
 
+	component qsys_system_onchip_memory is
+		port (
+			clk        : in  std_logic                     := 'X';             -- clk
+			address    : in  std_logic_vector(15 downto 0) := (others => 'X'); -- address
+			clken      : in  std_logic                     := 'X';             -- clken
+			chipselect : in  std_logic                     := 'X';             -- chipselect
+			write      : in  std_logic                     := 'X';             -- write
+			readdata   : out std_logic_vector(31 downto 0);                    -- readdata
+			writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			byteenable : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
+			reset      : in  std_logic                     := 'X';             -- reset
+			reset_req  : in  std_logic                     := 'X';             -- reset_req
+			freeze     : in  std_logic                     := 'X'              -- freeze
+		);
+	end component qsys_system_onchip_memory;
+
 	component qsys_system_switches is
 		port (
 			clk        : in  std_logic                     := 'X';             -- clk
@@ -209,7 +209,7 @@ architecture rtl of qsys_system is
 			clk_0_clk_clk                                 : in  std_logic                     := 'X';             -- clk
 			jtag_uart_0_reset_reset_bridge_in_reset_reset : in  std_logic                     := 'X';             -- reset
 			NiosII_CPU_reset_reset_bridge_in_reset_reset  : in  std_logic                     := 'X';             -- reset
-			NiosII_CPU_data_master_address                : in  std_logic_vector(17 downto 0) := (others => 'X'); -- address
+			NiosII_CPU_data_master_address                : in  std_logic_vector(19 downto 0) := (others => 'X'); -- address
 			NiosII_CPU_data_master_waitrequest            : out std_logic;                                        -- waitrequest
 			NiosII_CPU_data_master_byteenable             : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
 			NiosII_CPU_data_master_read                   : in  std_logic                     := 'X';             -- read
@@ -217,7 +217,7 @@ architecture rtl of qsys_system is
 			NiosII_CPU_data_master_write                  : in  std_logic                     := 'X';             -- write
 			NiosII_CPU_data_master_writedata              : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
 			NiosII_CPU_data_master_debugaccess            : in  std_logic                     := 'X';             -- debugaccess
-			NiosII_CPU_instruction_master_address         : in  std_logic_vector(17 downto 0) := (others => 'X'); -- address
+			NiosII_CPU_instruction_master_address         : in  std_logic_vector(19 downto 0) := (others => 'X'); -- address
 			NiosII_CPU_instruction_master_waitrequest     : out std_logic;                                        -- waitrequest
 			NiosII_CPU_instruction_master_read            : in  std_logic                     := 'X';             -- read
 			NiosII_CPU_instruction_master_readdata        : out std_logic_vector(31 downto 0);                    -- readdata
@@ -259,13 +259,6 @@ architecture rtl of qsys_system is
 			led_status_s1_readdata                        : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			led_status_s1_writedata                       : out std_logic_vector(31 downto 0);                    -- writedata
 			led_status_s1_chipselect                      : out std_logic;                                        -- chipselect
-			MEMOIRE_ONCHIP_s1_address                     : out std_logic_vector(13 downto 0);                    -- address
-			MEMOIRE_ONCHIP_s1_write                       : out std_logic;                                        -- write
-			MEMOIRE_ONCHIP_s1_readdata                    : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			MEMOIRE_ONCHIP_s1_writedata                   : out std_logic_vector(31 downto 0);                    -- writedata
-			MEMOIRE_ONCHIP_s1_byteenable                  : out std_logic_vector(3 downto 0);                     -- byteenable
-			MEMOIRE_ONCHIP_s1_chipselect                  : out std_logic;                                        -- chipselect
-			MEMOIRE_ONCHIP_s1_clken                       : out std_logic;                                        -- clken
 			min0_s1_address                               : out std_logic_vector(1 downto 0);                     -- address
 			min0_s1_write                                 : out std_logic;                                        -- write
 			min0_s1_readdata                              : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
@@ -284,6 +277,13 @@ architecture rtl of qsys_system is
 			NiosII_CPU_debug_mem_slave_byteenable         : out std_logic_vector(3 downto 0);                     -- byteenable
 			NiosII_CPU_debug_mem_slave_waitrequest        : in  std_logic                     := 'X';             -- waitrequest
 			NiosII_CPU_debug_mem_slave_debugaccess        : out std_logic;                                        -- debugaccess
+			onchip_memory_s1_address                      : out std_logic_vector(15 downto 0);                    -- address
+			onchip_memory_s1_write                        : out std_logic;                                        -- write
+			onchip_memory_s1_readdata                     : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			onchip_memory_s1_writedata                    : out std_logic_vector(31 downto 0);                    -- writedata
+			onchip_memory_s1_byteenable                   : out std_logic_vector(3 downto 0);                     -- byteenable
+			onchip_memory_s1_chipselect                   : out std_logic;                                        -- chipselect
+			onchip_memory_s1_clken                        : out std_logic;                                        -- clken
 			sec0_s1_address                               : out std_logic_vector(1 downto 0);                     -- address
 			sec0_s1_write                                 : out std_logic;                                        -- write
 			sec0_s1_readdata                              : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
@@ -467,14 +467,14 @@ architecture rtl of qsys_system is
 	signal niosii_cpu_data_master_readdata                                 : std_logic_vector(31 downto 0); -- mm_interconnect_0:NiosII_CPU_data_master_readdata -> NiosII_CPU:d_readdata
 	signal niosii_cpu_data_master_waitrequest                              : std_logic;                     -- mm_interconnect_0:NiosII_CPU_data_master_waitrequest -> NiosII_CPU:d_waitrequest
 	signal niosii_cpu_data_master_debugaccess                              : std_logic;                     -- NiosII_CPU:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:NiosII_CPU_data_master_debugaccess
-	signal niosii_cpu_data_master_address                                  : std_logic_vector(17 downto 0); -- NiosII_CPU:d_address -> mm_interconnect_0:NiosII_CPU_data_master_address
+	signal niosii_cpu_data_master_address                                  : std_logic_vector(19 downto 0); -- NiosII_CPU:d_address -> mm_interconnect_0:NiosII_CPU_data_master_address
 	signal niosii_cpu_data_master_byteenable                               : std_logic_vector(3 downto 0);  -- NiosII_CPU:d_byteenable -> mm_interconnect_0:NiosII_CPU_data_master_byteenable
 	signal niosii_cpu_data_master_read                                     : std_logic;                     -- NiosII_CPU:d_read -> mm_interconnect_0:NiosII_CPU_data_master_read
 	signal niosii_cpu_data_master_write                                    : std_logic;                     -- NiosII_CPU:d_write -> mm_interconnect_0:NiosII_CPU_data_master_write
 	signal niosii_cpu_data_master_writedata                                : std_logic_vector(31 downto 0); -- NiosII_CPU:d_writedata -> mm_interconnect_0:NiosII_CPU_data_master_writedata
 	signal niosii_cpu_instruction_master_readdata                          : std_logic_vector(31 downto 0); -- mm_interconnect_0:NiosII_CPU_instruction_master_readdata -> NiosII_CPU:i_readdata
 	signal niosii_cpu_instruction_master_waitrequest                       : std_logic;                     -- mm_interconnect_0:NiosII_CPU_instruction_master_waitrequest -> NiosII_CPU:i_waitrequest
-	signal niosii_cpu_instruction_master_address                           : std_logic_vector(17 downto 0); -- NiosII_CPU:i_address -> mm_interconnect_0:NiosII_CPU_instruction_master_address
+	signal niosii_cpu_instruction_master_address                           : std_logic_vector(19 downto 0); -- NiosII_CPU:i_address -> mm_interconnect_0:NiosII_CPU_instruction_master_address
 	signal niosii_cpu_instruction_master_read                              : std_logic;                     -- NiosII_CPU:i_read -> mm_interconnect_0:NiosII_CPU_instruction_master_read
 	signal niosii_cpu_instruction_master_readdatavalid                     : std_logic;                     -- mm_interconnect_0:NiosII_CPU_instruction_master_readdatavalid -> NiosII_CPU:i_readdatavalid
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect      : std_logic;                     -- mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_chipselect -> jtag_uart_0:av_chipselect
@@ -494,13 +494,13 @@ architecture rtl of qsys_system is
 	signal mm_interconnect_0_niosii_cpu_debug_mem_slave_byteenable         : std_logic_vector(3 downto 0);  -- mm_interconnect_0:NiosII_CPU_debug_mem_slave_byteenable -> NiosII_CPU:debug_mem_slave_byteenable
 	signal mm_interconnect_0_niosii_cpu_debug_mem_slave_write              : std_logic;                     -- mm_interconnect_0:NiosII_CPU_debug_mem_slave_write -> NiosII_CPU:debug_mem_slave_write
 	signal mm_interconnect_0_niosii_cpu_debug_mem_slave_writedata          : std_logic_vector(31 downto 0); -- mm_interconnect_0:NiosII_CPU_debug_mem_slave_writedata -> NiosII_CPU:debug_mem_slave_writedata
-	signal mm_interconnect_0_memoire_onchip_s1_chipselect                  : std_logic;                     -- mm_interconnect_0:MEMOIRE_ONCHIP_s1_chipselect -> MEMOIRE_ONCHIP:chipselect
-	signal mm_interconnect_0_memoire_onchip_s1_readdata                    : std_logic_vector(31 downto 0); -- MEMOIRE_ONCHIP:readdata -> mm_interconnect_0:MEMOIRE_ONCHIP_s1_readdata
-	signal mm_interconnect_0_memoire_onchip_s1_address                     : std_logic_vector(13 downto 0); -- mm_interconnect_0:MEMOIRE_ONCHIP_s1_address -> MEMOIRE_ONCHIP:address
-	signal mm_interconnect_0_memoire_onchip_s1_byteenable                  : std_logic_vector(3 downto 0);  -- mm_interconnect_0:MEMOIRE_ONCHIP_s1_byteenable -> MEMOIRE_ONCHIP:byteenable
-	signal mm_interconnect_0_memoire_onchip_s1_write                       : std_logic;                     -- mm_interconnect_0:MEMOIRE_ONCHIP_s1_write -> MEMOIRE_ONCHIP:write
-	signal mm_interconnect_0_memoire_onchip_s1_writedata                   : std_logic_vector(31 downto 0); -- mm_interconnect_0:MEMOIRE_ONCHIP_s1_writedata -> MEMOIRE_ONCHIP:writedata
-	signal mm_interconnect_0_memoire_onchip_s1_clken                       : std_logic;                     -- mm_interconnect_0:MEMOIRE_ONCHIP_s1_clken -> MEMOIRE_ONCHIP:clken
+	signal mm_interconnect_0_onchip_memory_s1_chipselect                   : std_logic;                     -- mm_interconnect_0:onchip_memory_s1_chipselect -> onchip_memory:chipselect
+	signal mm_interconnect_0_onchip_memory_s1_readdata                     : std_logic_vector(31 downto 0); -- onchip_memory:readdata -> mm_interconnect_0:onchip_memory_s1_readdata
+	signal mm_interconnect_0_onchip_memory_s1_address                      : std_logic_vector(15 downto 0); -- mm_interconnect_0:onchip_memory_s1_address -> onchip_memory:address
+	signal mm_interconnect_0_onchip_memory_s1_byteenable                   : std_logic_vector(3 downto 0);  -- mm_interconnect_0:onchip_memory_s1_byteenable -> onchip_memory:byteenable
+	signal mm_interconnect_0_onchip_memory_s1_write                        : std_logic;                     -- mm_interconnect_0:onchip_memory_s1_write -> onchip_memory:write
+	signal mm_interconnect_0_onchip_memory_s1_writedata                    : std_logic_vector(31 downto 0); -- mm_interconnect_0:onchip_memory_s1_writedata -> onchip_memory:writedata
+	signal mm_interconnect_0_onchip_memory_s1_clken                        : std_logic;                     -- mm_interconnect_0:onchip_memory_s1_clken -> onchip_memory:clken
 	signal mm_interconnect_0_sys_clk_timer_s1_chipselect                   : std_logic;                     -- mm_interconnect_0:SYS_CLK_timer_s1_chipselect -> SYS_CLK_timer:chipselect
 	signal mm_interconnect_0_sys_clk_timer_s1_readdata                     : std_logic_vector(15 downto 0); -- SYS_CLK_timer:readdata -> mm_interconnect_0:SYS_CLK_timer_s1_readdata
 	signal mm_interconnect_0_sys_clk_timer_s1_address                      : std_logic_vector(2 downto 0);  -- mm_interconnect_0:SYS_CLK_timer_s1_address -> SYS_CLK_timer:address
@@ -577,8 +577,8 @@ architecture rtl of qsys_system is
 	signal irq_mapper_receiver3_irq                                        : std_logic;                     -- switches:irq -> irq_mapper:receiver3_irq
 	signal irq_mapper_receiver4_irq                                        : std_logic;                     -- buttons:irq -> irq_mapper:receiver4_irq
 	signal niosii_cpu_irq_irq                                              : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> NiosII_CPU:irq
-	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [MEMOIRE_ONCHIP:reset, irq_mapper:reset, mm_interconnect_0:NiosII_CPU_reset_reset_bridge_in_reset_reset, rst_controller_reset_out_reset:in]
-	signal rst_controller_reset_out_reset_req                              : std_logic;                     -- rst_controller:reset_req -> [MEMOIRE_ONCHIP:reset_req, NiosII_CPU:reset_req, rst_translator:reset_req_in]
+	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [irq_mapper:reset, mm_interconnect_0:NiosII_CPU_reset_reset_bridge_in_reset_reset, onchip_memory:reset, rst_controller_reset_out_reset:in]
+	signal rst_controller_reset_out_reset_req                              : std_logic;                     -- rst_controller:reset_req -> [NiosII_CPU:reset_req, onchip_memory:reset_req, rst_translator:reset_req_in]
 	signal niosii_cpu_debug_reset_request_reset                            : std_logic;                     -- NiosII_CPU:debug_reset_request -> rst_controller:reset_in1
 	signal rst_controller_001_reset_out_reset                              : std_logic;                     -- rst_controller_001:reset_out -> [mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, rst_controller_001_reset_out_reset:in]
 	signal reset_reset_n_ports_inv                                         : std_logic;                     -- reset_reset_n:inv -> [rst_controller:reset_in0, rst_controller_001:reset_in0]
@@ -602,21 +602,6 @@ architecture rtl of qsys_system is
 	signal rst_controller_001_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [SYS_CLK_timer:reset_n, buttons:reset_n, hour0:reset_n, hour1:reset_n, jtag_uart_0:rst_n, led_alarm:reset_n, led_piano:reset_n, led_status:reset_n, min0:reset_n, min1:reset_n, sec0:reset_n, sec1:reset_n, speaker:reset_n, switches:reset_n, sysid_qsys_0:reset_n, timer_second:reset_n]
 
 begin
-
-	memoire_onchip : component qsys_system_MEMOIRE_ONCHIP
-		port map (
-			clk        => clk_clk,                                        --   clk1.clk
-			address    => mm_interconnect_0_memoire_onchip_s1_address,    --     s1.address
-			clken      => mm_interconnect_0_memoire_onchip_s1_clken,      --       .clken
-			chipselect => mm_interconnect_0_memoire_onchip_s1_chipselect, --       .chipselect
-			write      => mm_interconnect_0_memoire_onchip_s1_write,      --       .write
-			readdata   => mm_interconnect_0_memoire_onchip_s1_readdata,   --       .readdata
-			writedata  => mm_interconnect_0_memoire_onchip_s1_writedata,  --       .writedata
-			byteenable => mm_interconnect_0_memoire_onchip_s1_byteenable, --       .byteenable
-			reset      => rst_controller_reset_out_reset,                 -- reset1.reset
-			reset_req  => rst_controller_reset_out_reset_req,             --       .reset_req
-			freeze     => '0'                                             -- (terminated)
-		);
 
 	niosii_cpu : component qsys_system_NiosII_CPU
 		port map (
@@ -772,6 +757,21 @@ begin
 			out_port   => min1_external_connection_export               -- external_connection.export
 		);
 
+	onchip_memory : component qsys_system_onchip_memory
+		port map (
+			clk        => clk_clk,                                       --   clk1.clk
+			address    => mm_interconnect_0_onchip_memory_s1_address,    --     s1.address
+			clken      => mm_interconnect_0_onchip_memory_s1_clken,      --       .clken
+			chipselect => mm_interconnect_0_onchip_memory_s1_chipselect, --       .chipselect
+			write      => mm_interconnect_0_onchip_memory_s1_write,      --       .write
+			readdata   => mm_interconnect_0_onchip_memory_s1_readdata,   --       .readdata
+			writedata  => mm_interconnect_0_onchip_memory_s1_writedata,  --       .writedata
+			byteenable => mm_interconnect_0_onchip_memory_s1_byteenable, --       .byteenable
+			reset      => rst_controller_reset_out_reset,                -- reset1.reset
+			reset_req  => rst_controller_reset_out_reset_req,            --       .reset_req
+			freeze     => '0'                                            -- (terminated)
+		);
+
 	sec0 : component qsys_system_hour0
 		port map (
 			clk        => clk_clk,                                      --                 clk.clk
@@ -896,13 +896,6 @@ begin
 			led_status_s1_readdata                        => mm_interconnect_0_led_status_s1_readdata,                    --                                        .readdata
 			led_status_s1_writedata                       => mm_interconnect_0_led_status_s1_writedata,                   --                                        .writedata
 			led_status_s1_chipselect                      => mm_interconnect_0_led_status_s1_chipselect,                  --                                        .chipselect
-			MEMOIRE_ONCHIP_s1_address                     => mm_interconnect_0_memoire_onchip_s1_address,                 --                       MEMOIRE_ONCHIP_s1.address
-			MEMOIRE_ONCHIP_s1_write                       => mm_interconnect_0_memoire_onchip_s1_write,                   --                                        .write
-			MEMOIRE_ONCHIP_s1_readdata                    => mm_interconnect_0_memoire_onchip_s1_readdata,                --                                        .readdata
-			MEMOIRE_ONCHIP_s1_writedata                   => mm_interconnect_0_memoire_onchip_s1_writedata,               --                                        .writedata
-			MEMOIRE_ONCHIP_s1_byteenable                  => mm_interconnect_0_memoire_onchip_s1_byteenable,              --                                        .byteenable
-			MEMOIRE_ONCHIP_s1_chipselect                  => mm_interconnect_0_memoire_onchip_s1_chipselect,              --                                        .chipselect
-			MEMOIRE_ONCHIP_s1_clken                       => mm_interconnect_0_memoire_onchip_s1_clken,                   --                                        .clken
 			min0_s1_address                               => mm_interconnect_0_min0_s1_address,                           --                                 min0_s1.address
 			min0_s1_write                                 => mm_interconnect_0_min0_s1_write,                             --                                        .write
 			min0_s1_readdata                              => mm_interconnect_0_min0_s1_readdata,                          --                                        .readdata
@@ -921,6 +914,13 @@ begin
 			NiosII_CPU_debug_mem_slave_byteenable         => mm_interconnect_0_niosii_cpu_debug_mem_slave_byteenable,     --                                        .byteenable
 			NiosII_CPU_debug_mem_slave_waitrequest        => mm_interconnect_0_niosii_cpu_debug_mem_slave_waitrequest,    --                                        .waitrequest
 			NiosII_CPU_debug_mem_slave_debugaccess        => mm_interconnect_0_niosii_cpu_debug_mem_slave_debugaccess,    --                                        .debugaccess
+			onchip_memory_s1_address                      => mm_interconnect_0_onchip_memory_s1_address,                  --                        onchip_memory_s1.address
+			onchip_memory_s1_write                        => mm_interconnect_0_onchip_memory_s1_write,                    --                                        .write
+			onchip_memory_s1_readdata                     => mm_interconnect_0_onchip_memory_s1_readdata,                 --                                        .readdata
+			onchip_memory_s1_writedata                    => mm_interconnect_0_onchip_memory_s1_writedata,                --                                        .writedata
+			onchip_memory_s1_byteenable                   => mm_interconnect_0_onchip_memory_s1_byteenable,               --                                        .byteenable
+			onchip_memory_s1_chipselect                   => mm_interconnect_0_onchip_memory_s1_chipselect,               --                                        .chipselect
+			onchip_memory_s1_clken                        => mm_interconnect_0_onchip_memory_s1_clken,                    --                                        .clken
 			sec0_s1_address                               => mm_interconnect_0_sec0_s1_address,                           --                                 sec0_s1.address
 			sec0_s1_write                                 => mm_interconnect_0_sec0_s1_write,                             --                                        .write
 			sec0_s1_readdata                              => mm_interconnect_0_sec0_s1_readdata,                          --                                        .readdata
