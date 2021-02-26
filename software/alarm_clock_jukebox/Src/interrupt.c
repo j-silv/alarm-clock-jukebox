@@ -5,7 +5,7 @@
 in a pointer to a data structure (isr_context) as a parameter, and does not
 return any value (void). ISRFunction() will be called once the timerSecond
 interrupt fires, and this ISR resides in main.c */
-uint8_t timerSecondRegisterISR(void (*timerSecondISR(void *isr_context))) {
+uint8_t timerSecondRegisterISR(void (*timerSecondISR)(void *isr_context)) {
   uint8_t isr_register_status;
 
   isr_register_status = alt_ic_isr_register(TIMER_SECOND_IRQ_INTERRUPT_CONTROLLER_ID,

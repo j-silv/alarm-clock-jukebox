@@ -10,7 +10,7 @@
 #include "altera_avalon_timer_regs.h"
 #include <sys/alt_irq.h>
 
-uint8_t timerSecondRegisterISR(void (*timerSecondISR(void *isr_context)));
+uint8_t timerSecondRegisterISR(void (*timerSecondISR)(void *isr_context));
 void timerSecondEnableInterrupt(void);
 
 #endif

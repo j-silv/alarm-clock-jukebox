@@ -35,49 +35,49 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   8 .debug_aranges 00000658  00000000  00000000  00004290  2**3
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_info   00008293  00000000  00000000  000048e8  2**0
+  9 .debug_info   0000828f  00000000  00000000  000048e8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_abbrev 00002dba  00000000  00000000  0000cb7b  2**0
+ 10 .debug_abbrev 00002db8  00000000  00000000  0000cb77  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_line   0000342e  00000000  00000000  0000f935  2**0
+ 11 .debug_line   0000342e  00000000  00000000  0000f92f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_frame  00000f7c  00000000  00000000  00012d64  2**2
+ 12 .debug_frame  00000f7c  00000000  00000000  00012d60  2**2
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_str    00001f69  00000000  00000000  00013ce0  2**0
+ 13 .debug_str    00001f69  00000000  00000000  00013cdc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_loc    00001308  00000000  00000000  00015c49  2**0
+ 14 .debug_loc    00001308  00000000  00000000  00015c45  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_alt_sim_info 00000020  00000000  00000000  00016f54  2**2
+ 15 .debug_alt_sim_info 00000020  00000000  00000000  00016f50  2**2
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_ranges 000002a0  00000000  00000000  00016f78  2**3
+ 16 .debug_ranges 000002a0  00000000  00000000  00016f70  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .thread_model 00000003  00000000  00000000  000190da  2**0
+ 17 .thread_model 00000003  00000000  00000000  000190d2  2**0
                   CONTENTS, READONLY
- 18 .cpu          0000000a  00000000  00000000  000190dd  2**0
+ 18 .cpu          0000000a  00000000  00000000  000190d5  2**0
                   CONTENTS, READONLY
- 19 .qsys         00000001  00000000  00000000  000190e7  2**0
+ 19 .qsys         00000001  00000000  00000000  000190df  2**0
                   CONTENTS, READONLY
- 20 .simulation_enabled 00000001  00000000  00000000  000190e8  2**0
+ 20 .simulation_enabled 00000001  00000000  00000000  000190e0  2**0
                   CONTENTS, READONLY
- 21 .sysid_hash   00000004  00000000  00000000  000190e9  2**0
+ 21 .sysid_hash   00000004  00000000  00000000  000190e1  2**0
                   CONTENTS, READONLY
- 22 .sysid_base   00000004  00000000  00000000  000190ed  2**0
+ 22 .sysid_base   00000004  00000000  00000000  000190e5  2**0
                   CONTENTS, READONLY
- 23 .sysid_time   00000004  00000000  00000000  000190f1  2**0
+ 23 .sysid_time   00000004  00000000  00000000  000190e9  2**0
                   CONTENTS, READONLY
- 24 .stderr_dev   0000000b  00000000  00000000  000190f5  2**0
+ 24 .stderr_dev   0000000b  00000000  00000000  000190ed  2**0
                   CONTENTS, READONLY
- 25 .stdin_dev    0000000b  00000000  00000000  00019100  2**0
+ 25 .stdin_dev    0000000b  00000000  00000000  000190f8  2**0
                   CONTENTS, READONLY
- 26 .stdout_dev   0000000b  00000000  00000000  0001910b  2**0
+ 26 .stdout_dev   0000000b  00000000  00000000  00019103  2**0
                   CONTENTS, READONLY
- 27 .sopc_system_name 0000000b  00000000  00000000  00019116  2**0
+ 27 .sopc_system_name 0000000b  00000000  00000000  0001910e  2**0
                   CONTENTS, READONLY
- 28 .quartus_project_dir 00000061  00000000  00000000  00019121  2**0
+ 28 .quartus_project_dir 00000061  00000000  00000000  00019119  2**0
                   CONTENTS, READONLY
- 29 .jdi          0000599a  00000000  00000000  00019182  2**0
+ 29 .jdi          0000599a  00000000  00000000  0001917a  2**0
                   CONTENTS, READONLY
- 30 .sopcinfo     00086c0e  00000000  00000000  0001eb1c  2**0
+ 30 .sopcinfo     00086c0e  00000000  00000000  0001eb14  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00040000 l    d  .entry	00000000 .entry
@@ -318,7 +318,7 @@ Disassembly of section .entry:
    40014:	08409114 	ori	at,at,580
     jmp r1
    40018:	0800683a 	jmp	at
-   4001c:	00000000 	call	0 <__alt_mem_onchip_memory-0x40000>
+   4001c:	00000000 	call	0 <__reset-0x40000>
 
 Disassembly of section .exceptions:
 
@@ -1034,7 +1034,7 @@ void updateSecondsTime(int second) {
 in a pointer to a data structure (isr_context) as a parameter, and does not
 return any value (void). ISRFunction() will be called once the timerSecond
 interrupt fires, and this ISR resides in main.c */
-uint8_t timerSecondRegisterISR(void (*timerSecondISR(void *isr_context))) {
+uint8_t timerSecondRegisterISR(void (*timerSecondISR)(void *isr_context)) {
    40540:	defffb04 	addi	sp,sp,-20
    40544:	dfc00415 	stw	ra,16(sp)
    40548:	df000315 	stw	fp,12(sp)
@@ -1185,7 +1185,7 @@ int main(void) {
 
   // the callback ISR is passed in for the registration. When the timer peripheral
   // fires its interrupt, timerSecondISR() will be called
-  if (timerSecondRegisterISR(timerSecondISR) == ISR_REGISTRATION_SUCCESS) {
+  if (timerSecondRegisterISR(&timerSecondISR) == ISR_REGISTRATION_SUCCESS) {
    406a4:	01000134 	movhi	r4,4
    406a8:	2101b704 	addi	r4,r4,1756
    406ac:	00405400 	call	40540 <timerSecondRegisterISR>
@@ -4156,13 +4156,13 @@ alt_exception_cause_generated_bad_addr(alt_exception_cause cause)
    423c4:	00042408 	cmpgei	zero,zero,4240
    423c8:	00042408 	cmpgei	zero,zero,4240
    423cc:	000423f8 	rdprs	zero,zero,4239
-   423d0:	00042400 	call	4240 <__alt_mem_onchip_memory-0x3bdc0>
+   423d0:	00042400 	call	4240 <__reset-0x3bdc0>
    423d4:	00042408 	cmpgei	zero,zero,4240
    423d8:	000423f8 	rdprs	zero,zero,4239
    423dc:	000423f8 	rdprs	zero,zero,4239
    423e0:	00042408 	cmpgei	zero,zero,4240
    423e4:	000423f8 	rdprs	zero,zero,4239
-   423e8:	00042400 	call	4240 <__alt_mem_onchip_memory-0x3bdc0>
+   423e8:	00042400 	call	4240 <__reset-0x3bdc0>
    423ec:	00042408 	cmpgei	zero,zero,4240
    423f0:	00042408 	cmpgei	zero,zero,4240
    423f4:	000423f8 	rdprs	zero,zero,4239
@@ -5329,9 +5329,9 @@ void alt_icache_flush (void* start, alt_u32 len)
    42e2c:	89000015 	stw	r4,0(r17)
    42e30:	a8000226 	beq	r21,zero,42e3c <__call_exitprocs+0x144>
    42e34:	a809883a 	mov	r4,r21
-   42e38:	00000000 	call	0 <__alt_mem_onchip_memory-0x40000>
+   42e38:	00000000 	call	0 <__reset-0x40000>
    42e3c:	9809883a 	mov	r4,r19
-   42e40:	00000000 	call	0 <__alt_mem_onchip_memory-0x40000>
+   42e40:	00000000 	call	0 <__reset-0x40000>
    42e44:	8cc00017 	ldw	r19,0(r17)
    42e48:	003fbd06 	br	42d40 <__alt_data_end+0xfffdad40>
    42e4c:	9823883a 	mov	r17,r19

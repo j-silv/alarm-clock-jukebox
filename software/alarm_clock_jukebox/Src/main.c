@@ -30,9 +30,11 @@ int main(void) {
   resetAlarmTime();
   resetDisplay();
 
-  // the callback ISR is passed in for the registration. When the timer peripheral
-  // fires its interrupt, timerSecondISR() will be called
-  if (timerSecondRegisterISR(timerSecondISR) == ISR_REGISTRATION_SUCCESS) {
+  /* the callback ISR is passed in for the registration. When the timer peripheral
+  fires its interrupt, timerSecondISR() will be called
+  timerSecondISR can be preceded with or without & (both pass in the function address); 
+  because a function’s name can also be used to get function's address */
+  if (timerSecondRegisterISR(&timerSecondISR) == ISR_REGISTRATION_SUCCESS) {
     printf("timerSecondISR successively registered!\n");
     timerSecondEnableInterrupt();
   }

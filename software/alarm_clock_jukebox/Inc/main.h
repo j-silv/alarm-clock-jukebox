@@ -37,7 +37,7 @@
 void timerSecondISR(void *isr_context);
 
 // interrupt.c API
-uint8_t timerSecondRegisterISR(void (*timerSecondISR(void *isr_context)));
+uint8_t timerSecondRegisterISR(void (*timerSecondISR)(void *isr_context));
 void timerSecondEnableInterrupt(void);
 
 // led.c API
