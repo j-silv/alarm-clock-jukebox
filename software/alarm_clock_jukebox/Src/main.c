@@ -19,33 +19,44 @@ struct mode mode;
 
 int main(void) {
 
+  // initialization
   mode.display = TIME_DISPLAY;
   mode.alarm = NOT_ARMED;
   mode.config.on = TRUE;
   mode.config.hour = FALSE;
   mode.config.minute = FALSE;
-
   alarmLEDoff();
   resetClockTime();
   resetAlarmTime();
   resetDisplay();
 
-  if (registerISR() == ISR_REGISTRATION_FAILURE) {
-    printf("ERROR: Interrupts unsuccessfully initialized!\n");
+  // the callback ISR is passed in for the registration. When the timer peripheral
+  // fires its interrupt, timerSecondISR() will be called
+  if (timerSecondRegisterISR(timerSecondISR) == ISR_REGISTRATION_SUCCESS) {
+    printf("timerSecondISR successively registered!\n");
+    timerSecondEnableInterrupt();
   }
   else {
-    printf("Interrupts successively initialized!\n");
-    enableTimerSecondISR();
+   printf("ERROR: timerSecondISR unsuccessively registered!\n");
   }
+  // if (timerPWMRegisterISR() == ISR_REGISTRATION_SUCCESS)... etc.
+
+
 
   while(1) {}  
 }
 
 
 // -------------- ISR callbacks -------------------
-// these are the main.c callback functions that the ISRs call from interrupt.c
 
-void timerSecondCallback(void) {
+void timerSecondISR(void* isr_context) {
+
+  /* The TO (timeout) bit is set to 1 when the internal counter reaches zero. Once set by a
+  timeout event, the TO bit stays set until explicitly cleared by a master peripheral. 
+  The TO bit is cleared by writing 0 to the status register. */
+  IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_SECOND_BASE, 0);
+
+
   // for debugging purposes -> acknowledgement that interrupt has succesively fired
   //printf("timerSecond interrupt has fired!\n");
   alarmLEDtoggle();

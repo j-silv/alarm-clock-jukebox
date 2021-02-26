@@ -187,7 +187,7 @@ LOAD c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nio
                 0x0000000000040244                PROVIDE (__ram_exceptions_end, ABSOLUTE (.))
                 0x0000000000040020                PROVIDE (__flash_exceptions_start, LOADADDR (.exceptions))
 
-.text           0x0000000000040244     0x2cdc
+.text           0x0000000000040244     0x2c78
                 [!provide]                        PROVIDE (stext, ABSOLUTE (.))
  *(.interp)
  *(.hash)
@@ -242,153 +242,151 @@ LOAD c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nio
                 0x0000000000040474                updateHourTime
                 0x00000000000404b8                updateMinutesTime
                 0x00000000000404fc                updateSecondsTime
- .text          0x0000000000040540       0xf4 obj/default/Src/interrupt.o
-                0x0000000000040540                registerISR
-                0x000000000004057c                enableTimerSecondISR
-                0x00000000000405ac                timerSecondISR
-                0x00000000000405ec                registerTimerSecondISR
- .text          0x0000000000040634       0xac obj/default/Src/led.o
-                0x0000000000040634                alarmLEDoff
-                0x0000000000040664                alarmLEDon
-                0x0000000000040694                alarmLEDtoggle
- .text          0x00000000000406e0      0x130 obj/default/Src/main.o
-                0x00000000000406e0                main
-                0x0000000000040754                timerSecondCallback
- .text          0x0000000000040810      0x6a4 obj/default/Src/time_keeper.o
-                0x0000000000040810                resetClockTime
-                0x000000000004083c                resetAlarmTime
-                0x0000000000040868                updateTime
-                0x00000000000409d4                incrementClock
-                0x0000000000040a50                incrementClockSecond
-                0x0000000000040ab8                incrementClockMinute
-                0x0000000000040b1c                incrementClockHour
-                0x0000000000040b64                decrementClock
-                0x0000000000040be0                decrementClockSecond
-                0x0000000000040c48                decrementClockMinute
-                0x0000000000040cac                decrementClockHour
-                0x0000000000040cf0                incrementAlarm
-                0x0000000000040d48                incrementAlarmMinute
-                0x0000000000040d8c                incrementAlarmHour
-                0x0000000000040dd4                decrementAlarm
-                0x0000000000040e2c                decrementAlarmMinute
-                0x0000000000040e70                decrementAlarmHour
- .text          0x0000000000040eb4      0x1b4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
-                0x0000000000040eb4                __divsi3
-                0x0000000000040f38                __modsi3
-                0x0000000000040fac                __udivsi3
-                0x0000000000041010                __umodsi3
- .text          0x0000000000041068        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
+ .text          0x0000000000040540       0x78 obj/default/Src/interrupt.o
+                0x0000000000040540                timerSecondRegisterISR
+                0x0000000000040588                timerSecondEnableInterrupt
+ .text          0x00000000000405b8       0xac obj/default/Src/led.o
+                0x00000000000405b8                alarmLEDoff
+                0x00000000000405e8                alarmLEDon
+                0x0000000000040618                alarmLEDtoggle
+ .text          0x0000000000040664      0x148 obj/default/Src/main.o
+                0x0000000000040664                main
+                0x00000000000406dc                timerSecondISR
+ .text          0x00000000000407ac      0x6a4 obj/default/Src/time_keeper.o
+                0x00000000000407ac                resetClockTime
+                0x00000000000407d8                resetAlarmTime
+                0x0000000000040804                updateTime
+                0x0000000000040970                incrementClock
+                0x00000000000409ec                incrementClockSecond
+                0x0000000000040a54                incrementClockMinute
+                0x0000000000040ab8                incrementClockHour
+                0x0000000000040b00                decrementClock
+                0x0000000000040b7c                decrementClockSecond
+                0x0000000000040be4                decrementClockMinute
+                0x0000000000040c48                decrementClockHour
+                0x0000000000040c8c                incrementAlarm
+                0x0000000000040ce4                incrementAlarmMinute
+                0x0000000000040d28                incrementAlarmHour
+                0x0000000000040d70                decrementAlarm
+                0x0000000000040dc8                decrementAlarmMinute
+                0x0000000000040e0c                decrementAlarmHour
+ .text          0x0000000000040e50      0x1b4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
+                0x0000000000040e50                __divsi3
+                0x0000000000040ed4                __modsi3
+                0x0000000000040f48                __udivsi3
+                0x0000000000040fac                __umodsi3
+ .text          0x0000000000041004        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
  .text._printf_r
-                0x0000000000041068       0x3c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
-                0x0000000000041068                _printf_r
- .text.printf   0x00000000000410a4       0x4c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
-                0x00000000000410a4                printf
- .text          0x00000000000410f0        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
- .text._puts_r  0x00000000000410f0       0x80 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
-                0x00000000000410f0                _puts_r
- .text.puts     0x0000000000041170       0x14 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
-                0x0000000000041170                puts
- .text          0x0000000000041184        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
- .text.strlen   0x0000000000041184       0x1c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
-                0x0000000000041184                strlen
- .text          0x00000000000411a0        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
+                0x0000000000041004       0x3c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
+                0x0000000000041004                _printf_r
+ .text.printf   0x0000000000041040       0x4c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
+                0x0000000000041040                printf
+ .text          0x000000000004108c        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
+ .text._puts_r  0x000000000004108c       0x80 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
+                0x000000000004108c                _puts_r
+ .text.puts     0x000000000004110c       0x14 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
+                0x000000000004110c                puts
+ .text          0x0000000000041120        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
+ .text.strlen   0x0000000000041120       0x1c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
+                0x0000000000041120                strlen
+ .text          0x000000000004113c        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
  .text.print_repeat
-                0x00000000000411a0       0x6c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
+                0x000000000004113c       0x6c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
  .text.___vfprintf_internal_r
-                0x000000000004120c      0x524 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
-                0x000000000004120c                ___vfprintf_internal_r
+                0x00000000000411a8      0x524 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
+                0x00000000000411a8                ___vfprintf_internal_r
  .text.__vfprintf_internal
-                0x0000000000041730       0x1c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
-                0x0000000000041730                __vfprintf_internal
- .text          0x000000000004174c        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
+                0x00000000000416cc       0x1c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
+                0x00000000000416cc                __vfprintf_internal
+ .text          0x00000000000416e8        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
  .text.__sfvwrite_small_dev
-                0x000000000004174c       0xb8 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
-                0x000000000004174c                __sfvwrite_small_dev
- .text          0x0000000000041804        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
- .text          0x0000000000041804        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
+                0x00000000000416e8       0xb8 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
+                0x00000000000416e8                __sfvwrite_small_dev
+ .text          0x00000000000417a0        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
+ .text          0x00000000000417a0        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
  .text._write_r
-                0x0000000000041804       0x58 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
-                0x0000000000041804                _write_r
- .text          0x000000000004185c        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
- .text          0x000000000004185c      0x1b0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
-                0x000000000004185c                alt_ic_isr_register
-                0x00000000000418ac                alt_ic_irq_enable
-                0x0000000000041934                alt_ic_irq_disable
-                0x00000000000419c0                alt_ic_irq_enabled
- .text          0x0000000000041a0c       0xf0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
-                0x0000000000041a0c                alt_iic_isr_register
- .text          0x0000000000041afc        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .text          0x0000000000041afc        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .text          0x0000000000041afc        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .text          0x0000000000041afc       0xec ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
-                0x0000000000041b64                alt_load
- .text          0x0000000000041be8       0x6c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
-                0x0000000000041be8                alt_main
- .text          0x0000000000041c54      0x134 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
-                0x0000000000041c90                write
- .text          0x0000000000041d88       0xbc ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
-                0x0000000000041dbc                alt_irq_init
-                0x0000000000041df4                alt_sys_init
- .text          0x0000000000041e44       0xc0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
-                0x0000000000041e44                altera_avalon_jtag_uart_read_fd
-                0x0000000000041ea4                altera_avalon_jtag_uart_write_fd
- .text          0x0000000000041f04       0xec ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
-                0x0000000000041f04                altera_avalon_jtag_uart_read
- .text          0x0000000000041ff0       0x94 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
-                0x0000000000041ff0                altera_avalon_jtag_uart_write
- .text          0x0000000000042084       0xf4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
-                0x00000000000420fc                alt_avalon_timer_sc_init
- .text          0x0000000000042178      0x10c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
-                0x00000000000421b4                close
- .text          0x0000000000042284       0x20 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
-                0x0000000000042284                alt_dcache_flush_all
- .text          0x00000000000422a4       0x2c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
- .text          0x00000000000422d0       0xe0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
-                0x000000000004230c                alt_dev_llist_insert
- .text          0x00000000000423b0        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
- .text          0x00000000000423b0        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .text          0x00000000000423b0       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
-                0x00000000000423b0                alt_icache_flush_all
- .text          0x00000000000423e4       0x9c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
-                0x00000000000423e4                alt_exception_cause_generated_bad_addr
- .text          0x0000000000042480      0x140 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
-                0x0000000000042544                alt_io_redirect
- .text          0x00000000000425c0      0x254 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
-                0x00000000000426c0                open
- .text          0x0000000000042814       0x64 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
-                0x0000000000042814                alt_release_fd
- .text          0x0000000000042878      0x1a4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
-                0x0000000000042878                alt_alarm_stop
-                0x0000000000042914                alt_tick
- .text          0x0000000000042a1c       0x24 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
-                0x0000000000042a1c                altera_nios2_gen2_irq_init
- .text          0x0000000000042a40       0x90 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
-                0x0000000000042a40                alt_find_dev
- .text          0x0000000000042ad0      0x108 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
-                0x0000000000042ad0                alt_find_file
- .text          0x0000000000042bd8       0xa4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
-                0x0000000000042bd8                alt_get_fd
- .text          0x0000000000042c7c       0x90 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
-                0x0000000000042c7c                alt_icache_flush
- .text          0x0000000000042d0c        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
- .text.exit     0x0000000000042d0c       0x20 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
-                0x0000000000042d0c                exit
- .text          0x0000000000042d2c        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
- .text.memcmp   0x0000000000042d2c       0x30 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
-                0x0000000000042d2c                memcmp
- .text          0x0000000000042d5c        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
+                0x00000000000417a0       0x58 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
+                0x00000000000417a0                _write_r
+ .text          0x00000000000417f8        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
+ .text          0x00000000000417f8      0x1b0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
+                0x00000000000417f8                alt_ic_isr_register
+                0x0000000000041848                alt_ic_irq_enable
+                0x00000000000418d0                alt_ic_irq_disable
+                0x000000000004195c                alt_ic_irq_enabled
+ .text          0x00000000000419a8       0xf0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+                0x00000000000419a8                alt_iic_isr_register
+ .text          0x0000000000041a98        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .text          0x0000000000041a98        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .text          0x0000000000041a98        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .text          0x0000000000041a98       0xec ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
+                0x0000000000041b00                alt_load
+ .text          0x0000000000041b84       0x6c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
+                0x0000000000041b84                alt_main
+ .text          0x0000000000041bf0      0x134 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
+                0x0000000000041c2c                write
+ .text          0x0000000000041d24       0xbc ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x0000000000041d58                alt_irq_init
+                0x0000000000041d90                alt_sys_init
+ .text          0x0000000000041de0       0xc0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+                0x0000000000041de0                altera_avalon_jtag_uart_read_fd
+                0x0000000000041e40                altera_avalon_jtag_uart_write_fd
+ .text          0x0000000000041ea0       0xec ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                0x0000000000041ea0                altera_avalon_jtag_uart_read
+ .text          0x0000000000041f8c       0x94 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x0000000000041f8c                altera_avalon_jtag_uart_write
+ .text          0x0000000000042020       0xf4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+                0x0000000000042098                alt_avalon_timer_sc_init
+ .text          0x0000000000042114      0x10c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
+                0x0000000000042150                close
+ .text          0x0000000000042220       0x20 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                0x0000000000042220                alt_dcache_flush_all
+ .text          0x0000000000042240       0x2c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
+ .text          0x000000000004226c       0xe0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+                0x00000000000422a8                alt_dev_llist_insert
+ .text          0x000000000004234c        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
+ .text          0x000000000004234c        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .text          0x000000000004234c       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                0x000000000004234c                alt_icache_flush_all
+ .text          0x0000000000042380       0x9c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                0x0000000000042380                alt_exception_cause_generated_bad_addr
+ .text          0x000000000004241c      0x140 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
+                0x00000000000424e0                alt_io_redirect
+ .text          0x000000000004255c      0x254 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
+                0x000000000004265c                open
+ .text          0x00000000000427b0       0x64 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
+                0x00000000000427b0                alt_release_fd
+ .text          0x0000000000042814      0x1a4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
+                0x0000000000042814                alt_alarm_stop
+                0x00000000000428b0                alt_tick
+ .text          0x00000000000429b8       0x24 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                0x00000000000429b8                altera_nios2_gen2_irq_init
+ .text          0x00000000000429dc       0x90 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
+                0x00000000000429dc                alt_find_dev
+ .text          0x0000000000042a6c      0x108 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
+                0x0000000000042a6c                alt_find_file
+ .text          0x0000000000042b74       0xa4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
+                0x0000000000042b74                alt_get_fd
+ .text          0x0000000000042c18       0x90 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
+                0x0000000000042c18                alt_icache_flush
+ .text          0x0000000000042ca8        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
+ .text.exit     0x0000000000042ca8       0x20 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
+                0x0000000000042ca8                exit
+ .text          0x0000000000042cc8        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
+ .text.memcmp   0x0000000000042cc8       0x30 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
+                0x0000000000042cc8                memcmp
+ .text          0x0000000000042cf8        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
  .text.__call_exitprocs
-                0x0000000000042d5c      0x190 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
-                0x0000000000042d5c                __call_exitprocs
- .text          0x0000000000042eec       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
-                0x0000000000042eec                _exit
+                0x0000000000042cf8      0x190 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
+                0x0000000000042cf8                __call_exitprocs
+ .text          0x0000000000042e88       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
+                0x0000000000042e88                _exit
  *(.gnu.warning.*)
  *(.fini)
                 [!provide]                        PROVIDE (__etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (_etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (etext, ABSOLUTE (.))
  *(.eh_frame_hdr)
-                0x0000000000042f20                . = ALIGN (0x4)
+                0x0000000000042ebc                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__preinit_array_start, ABSOLUTE (.))
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end, ABSOLUTE (.))
@@ -410,215 +408,215 @@ LOAD c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nio
  *(SORT(.dtors.*))
                 [!provide]                        PROVIDE (__DTOR_END__, ABSOLUTE (.))
  *(.jcr)
-                0x0000000000042f20                . = ALIGN (0x4)
+                0x0000000000042ebc                . = ALIGN (0x4)
 
-.rodata         0x0000000000042f20       0xb8
-                0x0000000000042f20                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
-                0x0000000000042f20                . = ALIGN (0x4)
+.rodata         0x0000000000042ebc       0xbc
+                0x0000000000042ebc                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
+                0x0000000000042ebc                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x0000000000042f20       0x7f obj/default/Src/main.o
- *fill*         0x0000000000042f9f        0x1 
+ .rodata        0x0000000000042ebc       0x83 obj/default/Src/main.o
+ *fill*         0x0000000000042f3f        0x1 
  .rodata.str1.4
-                0x0000000000042fa0        0x4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
+                0x0000000000042f40        0x4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
                                           0x2 (size before relaxing)
- .rodata        0x0000000000042fa4       0x11 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
- *fill*         0x0000000000042fb5        0x3 
- .rodata        0x0000000000042fb8       0x11 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
- *fill*         0x0000000000042fc9        0x3 
- .rodata        0x0000000000042fcc        0xa ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
+ .rodata        0x0000000000042f44       0x11 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
+ *fill*         0x0000000000042f55        0x3 
+ .rodata        0x0000000000042f58       0x11 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
+ *fill*         0x0000000000042f69        0x3 
+ .rodata        0x0000000000042f6c        0xa ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
  *(.rodata1)
-                0x0000000000042fd8                . = ALIGN (0x4)
- *fill*         0x0000000000042fd6        0x2 
-                0x0000000000042fd8                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
-                0x0000000000042f20                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
+                0x0000000000042f78                . = ALIGN (0x4)
+ *fill*         0x0000000000042f76        0x2 
+                0x0000000000042f78                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x0000000000042ebc                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
 
-.rwdata         0x0000000000042fd8      0x2f0 load address 0x00000000000432c8
-                0x0000000000042fd8                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
-                0x0000000000042fd8                . = ALIGN (0x4)
+.rwdata         0x0000000000042f78      0x2f0 load address 0x0000000000043268
+                0x0000000000042f78                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x0000000000042f78                . = ALIGN (0x4)
  *(.got.plt)
  *(.got)
  *(.data1)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x0000000000042fd8        0x0 ../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o
- .data          0x0000000000042fd8        0x0 obj/default/Src/button.o
- .data          0x0000000000042fd8        0xc obj/default/Src/display.o
-                0x0000000000042fd8                COM_ANODE_SEG_TABLE
- .data          0x0000000000042fe4        0x0 obj/default/Src/interrupt.o
- .data          0x0000000000042fe4        0x0 obj/default/Src/led.o
- .data          0x0000000000042fe4        0x0 obj/default/Src/main.o
- .data          0x0000000000042fe4        0x0 obj/default/Src/time_keeper.o
- .data          0x0000000000042fe4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
- .data          0x0000000000042fe4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
- .data          0x0000000000042fe4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
- .data          0x0000000000042fe4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
- .data          0x0000000000042fe4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
- .data          0x0000000000042fe4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
- .data          0x0000000000042fe4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
+ .data          0x0000000000042f78        0x0 ../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o
+ .data          0x0000000000042f78        0x0 obj/default/Src/button.o
+ .data          0x0000000000042f78        0xc obj/default/Src/display.o
+                0x0000000000042f78                COM_ANODE_SEG_TABLE
+ .data          0x0000000000042f84        0x0 obj/default/Src/interrupt.o
+ .data          0x0000000000042f84        0x0 obj/default/Src/led.o
+ .data          0x0000000000042f84        0x0 obj/default/Src/main.o
+ .data          0x0000000000042f84        0x0 obj/default/Src/time_keeper.o
+ .data          0x0000000000042f84        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
+ .data          0x0000000000042f84        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
+ .data          0x0000000000042f84        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
+ .data          0x0000000000042f84        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
+ .data          0x0000000000042f84        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
+ .data          0x0000000000042f84        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .data          0x0000000000042f84        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
  .data.impure_data
-                0x0000000000042fe4       0xe0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
- .data          0x00000000000430c4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
- .data          0x00000000000430c4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
- .data          0x00000000000430c4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
- .data          0x00000000000430c4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
- .data          0x00000000000430c4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .data          0x00000000000430c4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .data          0x00000000000430c4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .data          0x00000000000430c4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
- .data          0x00000000000430c4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
- .data          0x00000000000430c4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
- .data          0x00000000000430c4       0x2c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
- .data          0x00000000000430f0        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .data          0x00000000000430f0        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .data          0x00000000000430f0        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .data          0x00000000000430f0        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
- .data          0x00000000000430f0        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
- .data          0x00000000000430f0        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .data          0x00000000000430f0      0x1a8 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
-                0x00000000000430f0                alt_dev_null
-                0x0000000000043118                alt_fd_list
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
- .data          0x0000000000043298        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
- .data          0x0000000000043298        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
- .data          0x0000000000043298        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
- .data          0x0000000000043298        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
-                0x000000000004b298                _gp = ABSOLUTE ((. + 0x8000))
+                0x0000000000042f84       0xe0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
+ .data          0x0000000000043064        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
+ .data          0x0000000000043064        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
+ .data          0x0000000000043064        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
+ .data          0x0000000000043064        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .data          0x0000000000043064        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .data          0x0000000000043064        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .data          0x0000000000043064        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .data          0x0000000000043064        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
+ .data          0x0000000000043064        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
+ .data          0x0000000000043064        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
+ .data          0x0000000000043064       0x2c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .data          0x0000000000043090        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .data          0x0000000000043090        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .data          0x0000000000043090        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x0000000000043090        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+ .data          0x0000000000043090        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
+ .data          0x0000000000043090        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x0000000000043090      0x1a8 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
+                0x0000000000043090                alt_dev_null
+                0x00000000000430b8                alt_fd_list
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
+ .data          0x0000000000043238        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
+ .data          0x0000000000043238        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
+ .data          0x0000000000043238        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
+ .data          0x0000000000043238        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
+                0x000000000004b238                _gp = ABSOLUTE ((. + 0x8000))
                 [!provide]                        PROVIDE (gp, _gp)
  *(.rwdata .rwdata.*)
  *(.sdata .sdata.* .gnu.linkonce.s.*)
- .sdata         0x0000000000043298        0x1 obj/default/Src/time_keeper.o
-                0x0000000000043298                time_format
- *fill*         0x0000000000043299        0x3 
+ .sdata         0x0000000000043238        0x1 obj/default/Src/time_keeper.o
+                0x0000000000043238                time_format
+ *fill*         0x0000000000043239        0x3 
  .sdata._global_impure_ptr
-                0x000000000004329c        0x4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
-                0x000000000004329c                _global_impure_ptr
+                0x000000000004323c        0x4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
+                0x000000000004323c                _global_impure_ptr
  .sdata._impure_ptr
-                0x00000000000432a0        0x4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
-                0x00000000000432a0                _impure_ptr
- .sdata         0x00000000000432a4        0x4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
-                0x00000000000432a4                alt_priority_mask
- .sdata         0x00000000000432a8       0x14 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
-                0x00000000000432a8                alt_fs_list
-                0x00000000000432b0                alt_dev_list
-                0x00000000000432b8                alt_max_fd
- .sdata         0x00000000000432bc        0x4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
-                0x00000000000432bc                alt_errno
- .sdata         0x00000000000432c0        0x8 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
-                0x00000000000432c0                alt_alarm_list
+                0x0000000000043240        0x4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
+                0x0000000000043240                _impure_ptr
+ .sdata         0x0000000000043244        0x4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                0x0000000000043244                alt_priority_mask
+ .sdata         0x0000000000043248       0x14 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
+                0x0000000000043248                alt_fs_list
+                0x0000000000043250                alt_dev_list
+                0x0000000000043258                alt_max_fd
+ .sdata         0x000000000004325c        0x4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
+                0x000000000004325c                alt_errno
+ .sdata         0x0000000000043260        0x8 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
+                0x0000000000043260                alt_alarm_list
  *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
-                0x00000000000432c8                . = ALIGN (0x4)
-                0x00000000000432c8                _edata = ABSOLUTE (.)
+                0x0000000000043268                . = ALIGN (0x4)
+                0x0000000000043268                _edata = ABSOLUTE (.)
                 [!provide]                        PROVIDE (edata, ABSOLUTE (.))
-                0x00000000000432c8                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
-                0x00000000000432c8                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
+                0x0000000000043268                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
+                0x0000000000043268                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
 
-.bss            0x00000000000435b8      0x12c
-                0x00000000000435b8                __bss_start = ABSOLUTE (.)
+.bss            0x0000000000043558      0x12c
+                0x0000000000043558                __bss_start = ABSOLUTE (.)
                 [!provide]                        PROVIDE (__sbss_start, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_start, ABSOLUTE (.))
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
- .sbss          0x00000000000435b8        0x5 obj/default/Src/main.o
-                0x00000000000435b8                mode
- .sbss          0x00000000000435bd        0x6 obj/default/Src/time_keeper.o
-                0x00000000000435bd                alarm
-                0x00000000000435c0                clock
- *fill*         0x00000000000435c3        0x1 
- .sbss          0x00000000000435c4        0x4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
-                0x00000000000435c4                errno
- .sbss          0x00000000000435c8        0x4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
-                0x00000000000435c8                alt_irq_active
- .sbss          0x00000000000435cc        0xc ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
-                0x00000000000435cc                alt_argc
-                0x00000000000435d0                alt_argv
-                0x00000000000435d4                alt_envp
- .sbss          0x00000000000435d8        0x4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
-                0x00000000000435d8                alt_instruction_exception_handler
- .sbss          0x00000000000435dc        0x8 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
-                0x00000000000435dc                _alt_tick_rate
-                0x00000000000435e0                _alt_nticks
+ .sbss          0x0000000000043558        0x5 obj/default/Src/main.o
+                0x0000000000043558                mode
+ .sbss          0x000000000004355d        0x6 obj/default/Src/time_keeper.o
+                0x000000000004355d                alarm
+                0x0000000000043560                clock
+ *fill*         0x0000000000043563        0x1 
+ .sbss          0x0000000000043564        0x4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
+                0x0000000000043564                errno
+ .sbss          0x0000000000043568        0x4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                0x0000000000043568                alt_irq_active
+ .sbss          0x000000000004356c        0xc ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
+                0x000000000004356c                alt_argc
+                0x0000000000043570                alt_argv
+                0x0000000000043574                alt_envp
+ .sbss          0x0000000000043578        0x4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                0x0000000000043578                alt_instruction_exception_handler
+ .sbss          0x000000000004357c        0x8 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
+                0x000000000004357c                _alt_tick_rate
+                0x0000000000043580                _alt_nticks
  *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
  *(.scommon)
                 [!provide]                        PROVIDE (__sbss_end, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_end, ABSOLUTE (.))
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o
- .bss           0x00000000000435e4        0x0 obj/default/Src/button.o
- .bss           0x00000000000435e4        0x0 obj/default/Src/display.o
- .bss           0x00000000000435e4        0x0 obj/default/Src/interrupt.o
- .bss           0x00000000000435e4        0x0 obj/default/Src/led.o
- .bss           0x00000000000435e4        0x0 obj/default/Src/main.o
- .bss           0x00000000000435e4        0x0 obj/default/Src/time_keeper.o
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
- .bss           0x00000000000435e4        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
- .bss           0x00000000000435e4        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o
+ .bss           0x0000000000043584        0x0 obj/default/Src/button.o
+ .bss           0x0000000000043584        0x0 obj/default/Src/display.o
+ .bss           0x0000000000043584        0x0 obj/default/Src/interrupt.o
+ .bss           0x0000000000043584        0x0 obj/default/Src/led.o
+ .bss           0x0000000000043584        0x0 obj/default/Src/main.o
+ .bss           0x0000000000043584        0x0 obj/default/Src/time_keeper.o
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
+ .bss           0x0000000000043584        0x0 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
+ .bss           0x0000000000043584        0x0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
  *(COMMON)
- COMMON         0x00000000000435e4      0x100 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
-                0x00000000000435e4                alt_irq
-                0x00000000000436e4                . = ALIGN (0x4)
-                0x00000000000436e4                __bss_end = ABSOLUTE (.)
+ COMMON         0x0000000000043584      0x100 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                0x0000000000043584                alt_irq
+                0x0000000000043684                . = ALIGN (0x4)
+                0x0000000000043684                __bss_end = ABSOLUTE (.)
 
-.onchip_memory  0x00000000000436e4        0x0
+.onchip_memory  0x0000000000043684        0x0
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_start, ABSOLUTE (.))
  *(.onchip_memory .onchip_memory. onchip_memory.*)
-                0x00000000000436e4                . = ALIGN (0x4)
+                0x0000000000043684                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_end, ABSOLUTE (.))
-                0x00000000000436e4                _end = ABSOLUTE (.)
-                0x00000000000436e4                end = ABSOLUTE (.)
-                0x00000000000436e4                __alt_stack_base = ABSOLUTE (.)
+                0x0000000000043684                _end = ABSOLUTE (.)
+                0x0000000000043684                end = ABSOLUTE (.)
+                0x0000000000043684                __alt_stack_base = ABSOLUTE (.)
                 [!provide]                        PROVIDE (_alt_partition_onchip_memory_load_addr, LOADADDR (.onchip_memory))
 
 .stab
@@ -806,302 +804,302 @@ LOAD c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nio
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x828a
+.debug_info     0x0000000000000000     0x8293
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000       0xb7 ../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o
  .debug_info    0x00000000000000b7      0x1dc obj/default/Src/display.o
- .debug_info    0x0000000000000293      0x112 obj/default/Src/interrupt.o
- .debug_info    0x00000000000003a5       0xd8 obj/default/Src/led.o
- .debug_info    0x000000000000047d      0x17d obj/default/Src/main.o
- .debug_info    0x00000000000005fa      0x301 obj/default/Src/time_keeper.o
- .debug_info    0x00000000000008fb      0x2c6 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
- .debug_info    0x0000000000000bc1      0x699 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
- .debug_info    0x000000000000125a      0x66d c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
- .debug_info    0x00000000000018c7       0xc9 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
- .debug_info    0x0000000000001990      0xb2b c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
- .debug_info    0x00000000000024bb      0x62b c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
- .debug_info    0x0000000000002ae6      0x5a9 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
- .debug_info    0x000000000000308f      0x630 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
- .debug_info    0x00000000000036bf       0x8a c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
- .debug_info    0x0000000000003749      0x350 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
- .debug_info    0x0000000000003a99      0x1ef ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
- .debug_info    0x0000000000003c88       0xc0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .debug_info    0x0000000000003d48      0x187 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .debug_info    0x0000000000003ecf       0x88 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .debug_info    0x0000000000003f57      0x145 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
- .debug_info    0x000000000000409c      0x131 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
- .debug_info    0x00000000000041cd      0x4b7 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
- .debug_info    0x0000000000004684      0x3df ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_info    0x0000000000004a63      0x3a7 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .debug_info    0x0000000000004e0a      0x1b2 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_info    0x0000000000004fbc      0x195 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_info    0x0000000000005151      0x226 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
- .debug_info    0x0000000000005377      0x321 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
- .debug_info    0x0000000000005698       0x92 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_info    0x000000000000572a      0x49c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_info    0x0000000000005bc6      0x1a9 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .debug_info    0x0000000000005d6f       0xa6 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
- .debug_info    0x0000000000005e15       0xc6 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .debug_info    0x0000000000005edb       0x92 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_info    0x0000000000005f6d      0x1e7 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
- .debug_info    0x0000000000006154      0x4a5 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
- .debug_info    0x00000000000065f9      0x3bb ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
- .debug_info    0x00000000000069b4      0x2b0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
- .debug_info    0x0000000000006c64      0x299 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
- .debug_info    0x0000000000006efd       0x92 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_info    0x0000000000006f8f      0x2e9 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
- .debug_info    0x0000000000007278      0x2e6 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
- .debug_info    0x000000000000755e      0x310 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
- .debug_info    0x000000000000786e       0xdc ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
- .debug_info    0x000000000000794a       0xe5 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
- .debug_info    0x0000000000007a2f       0xf4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
- .debug_info    0x0000000000007b23      0x67b c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
- .debug_info    0x000000000000819e       0xec ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
+ .debug_info    0x0000000000000293      0x100 obj/default/Src/interrupt.o
+ .debug_info    0x0000000000000393       0xd8 obj/default/Src/led.o
+ .debug_info    0x000000000000046b      0x198 obj/default/Src/main.o
+ .debug_info    0x0000000000000603      0x301 obj/default/Src/time_keeper.o
+ .debug_info    0x0000000000000904      0x2c6 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
+ .debug_info    0x0000000000000bca      0x699 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
+ .debug_info    0x0000000000001263      0x66d c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
+ .debug_info    0x00000000000018d0       0xc9 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
+ .debug_info    0x0000000000001999      0xb2b c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
+ .debug_info    0x00000000000024c4      0x62b c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_info    0x0000000000002aef      0x5a9 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
+ .debug_info    0x0000000000003098      0x630 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
+ .debug_info    0x00000000000036c8       0x8a c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
+ .debug_info    0x0000000000003752      0x350 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
+ .debug_info    0x0000000000003aa2      0x1ef ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .debug_info    0x0000000000003c91       0xc0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_info    0x0000000000003d51      0x187 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_info    0x0000000000003ed8       0x88 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_info    0x0000000000003f60      0x145 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_info    0x00000000000040a5      0x131 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_info    0x00000000000041d6      0x4b7 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
+ .debug_info    0x000000000000468d      0x3df ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x0000000000004a6c      0x3a7 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_info    0x0000000000004e13      0x1b2 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_info    0x0000000000004fc5      0x195 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_info    0x000000000000515a      0x226 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+ .debug_info    0x0000000000005380      0x321 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_info    0x00000000000056a1       0x92 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_info    0x0000000000005733      0x49c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_info    0x0000000000005bcf      0x1a9 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_info    0x0000000000005d78       0xa6 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_info    0x0000000000005e1e       0xc6 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_info    0x0000000000005ee4       0x92 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_info    0x0000000000005f76      0x1e7 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_info    0x000000000000615d      0x4a5 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_info    0x0000000000006602      0x3bb ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_info    0x00000000000069bd      0x2b0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_info    0x0000000000006c6d      0x299 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
+ .debug_info    0x0000000000006f06       0x92 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_info    0x0000000000006f98      0x2e9 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_info    0x0000000000007281      0x2e6 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_info    0x0000000000007567      0x310 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_info    0x0000000000007877       0xdc ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
+ .debug_info    0x0000000000007953       0xe5 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
+ .debug_info    0x0000000000007a38       0xf4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
+ .debug_info    0x0000000000007b2c      0x67b c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
+ .debug_info    0x00000000000081a7       0xec ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
 
-.debug_abbrev   0x0000000000000000     0x2dbb
+.debug_abbrev   0x0000000000000000     0x2dba
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000       0x12 ../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o
  .debug_abbrev  0x0000000000000012      0x109 obj/default/Src/display.o
- .debug_abbrev  0x000000000000011b       0xc2 obj/default/Src/interrupt.o
- .debug_abbrev  0x00000000000001dd       0x7f obj/default/Src/led.o
- .debug_abbrev  0x000000000000025c       0xc1 obj/default/Src/main.o
- .debug_abbrev  0x000000000000031d       0xe0 obj/default/Src/time_keeper.o
- .debug_abbrev  0x00000000000003fd      0x10e c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
- .debug_abbrev  0x000000000000050b      0x1ee c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
- .debug_abbrev  0x00000000000006f9      0x1d6 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
- .debug_abbrev  0x00000000000008cf       0x7f c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
- .debug_abbrev  0x000000000000094e      0x2a1 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
- .debug_abbrev  0x0000000000000bef      0x1bc c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
- .debug_abbrev  0x0000000000000dab      0x14a c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
- .debug_abbrev  0x0000000000000ef5      0x1a6 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
- .debug_abbrev  0x000000000000109b       0x37 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
- .debug_abbrev  0x00000000000010d2      0x163 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
- .debug_abbrev  0x0000000000001235      0x169 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
- .debug_abbrev  0x000000000000139e       0x12 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .debug_abbrev  0x00000000000013b0      0x122 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .debug_abbrev  0x00000000000014d2       0x40 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .debug_abbrev  0x0000000000001512       0x9f ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
- .debug_abbrev  0x00000000000015b1       0xba ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
- .debug_abbrev  0x000000000000166b      0x133 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
- .debug_abbrev  0x000000000000179e      0x157 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_abbrev  0x00000000000018f5       0xf7 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .debug_abbrev  0x00000000000019ec       0xd5 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_abbrev  0x0000000000001ac1       0xd5 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_abbrev  0x0000000000001b96      0x155 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
- .debug_abbrev  0x0000000000001ceb      0x11f ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
- .debug_abbrev  0x0000000000001e0a       0x42 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_abbrev  0x0000000000001e4c       0xd9 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_abbrev  0x0000000000001f25      0x114 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .debug_abbrev  0x0000000000002039       0x5a ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
- .debug_abbrev  0x0000000000002093       0x12 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .debug_abbrev  0x00000000000020a5       0x42 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_abbrev  0x00000000000020e7       0xdc ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
- .debug_abbrev  0x00000000000021c3      0x114 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
- .debug_abbrev  0x00000000000022d7      0x148 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
- .debug_abbrev  0x000000000000241f       0xde ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
- .debug_abbrev  0x00000000000024fd      0x15a ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
- .debug_abbrev  0x0000000000002657       0x42 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_abbrev  0x0000000000002699       0xf0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
- .debug_abbrev  0x0000000000002789       0xf0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
- .debug_abbrev  0x0000000000002879      0x10d ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
- .debug_abbrev  0x0000000000002986       0x8c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
- .debug_abbrev  0x0000000000002a12       0x8b c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
- .debug_abbrev  0x0000000000002a9d       0x7f c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
- .debug_abbrev  0x0000000000002b1c      0x1f6 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
- .debug_abbrev  0x0000000000002d12       0xa9 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
+ .debug_abbrev  0x000000000000011b       0xab obj/default/Src/interrupt.o
+ .debug_abbrev  0x00000000000001c6       0x7f obj/default/Src/led.o
+ .debug_abbrev  0x0000000000000245       0xd7 obj/default/Src/main.o
+ .debug_abbrev  0x000000000000031c       0xe0 obj/default/Src/time_keeper.o
+ .debug_abbrev  0x00000000000003fc      0x10e c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
+ .debug_abbrev  0x000000000000050a      0x1ee c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
+ .debug_abbrev  0x00000000000006f8      0x1d6 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
+ .debug_abbrev  0x00000000000008ce       0x7f c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
+ .debug_abbrev  0x000000000000094d      0x2a1 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
+ .debug_abbrev  0x0000000000000bee      0x1bc c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_abbrev  0x0000000000000daa      0x14a c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
+ .debug_abbrev  0x0000000000000ef4      0x1a6 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
+ .debug_abbrev  0x000000000000109a       0x37 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
+ .debug_abbrev  0x00000000000010d1      0x163 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
+ .debug_abbrev  0x0000000000001234      0x169 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .debug_abbrev  0x000000000000139d       0x12 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_abbrev  0x00000000000013af      0x122 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_abbrev  0x00000000000014d1       0x40 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_abbrev  0x0000000000001511       0x9f ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_abbrev  0x00000000000015b0       0xba ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_abbrev  0x000000000000166a      0x133 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
+ .debug_abbrev  0x000000000000179d      0x157 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_abbrev  0x00000000000018f4       0xf7 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_abbrev  0x00000000000019eb       0xd5 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_abbrev  0x0000000000001ac0       0xd5 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_abbrev  0x0000000000001b95      0x155 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+ .debug_abbrev  0x0000000000001cea      0x11f ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_abbrev  0x0000000000001e09       0x42 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_abbrev  0x0000000000001e4b       0xd9 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_abbrev  0x0000000000001f24      0x114 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_abbrev  0x0000000000002038       0x5a ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_abbrev  0x0000000000002092       0x12 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_abbrev  0x00000000000020a4       0x42 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_abbrev  0x00000000000020e6       0xdc ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_abbrev  0x00000000000021c2      0x114 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_abbrev  0x00000000000022d6      0x148 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_abbrev  0x000000000000241e       0xde ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_abbrev  0x00000000000024fc      0x15a ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
+ .debug_abbrev  0x0000000000002656       0x42 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_abbrev  0x0000000000002698       0xf0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_abbrev  0x0000000000002788       0xf0 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_abbrev  0x0000000000002878      0x10d ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_abbrev  0x0000000000002985       0x8c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
+ .debug_abbrev  0x0000000000002a11       0x8b c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
+ .debug_abbrev  0x0000000000002a9c       0x7f c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
+ .debug_abbrev  0x0000000000002b1b      0x1f6 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
+ .debug_abbrev  0x0000000000002d11       0xa9 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
 
-.debug_line     0x0000000000000000     0x3403
+.debug_line     0x0000000000000000     0x342e
  *(.debug_line)
  .debug_line    0x0000000000000000       0x6c ../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o
  .debug_line    0x000000000000006c        0x0 obj/default/Src/button.o
  .debug_line    0x000000000000006c      0x183 obj/default/Src/display.o
- .debug_line    0x00000000000001ef      0x142 obj/default/Src/interrupt.o
- .debug_line    0x0000000000000331      0x134 obj/default/Src/led.o
- .debug_line    0x0000000000000465      0x123 obj/default/Src/main.o
- .debug_line    0x0000000000000588      0x1c2 obj/default/Src/time_keeper.o
- .debug_line    0x000000000000074a      0x102 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
- .debug_line    0x000000000000084c      0x200 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
- .debug_line    0x0000000000000a4c      0x203 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
- .debug_line    0x0000000000000c4f      0x159 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
- .debug_line    0x0000000000000da8      0x34f c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
- .debug_line    0x00000000000010f7      0x1ed c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
- .debug_line    0x00000000000012e4      0x153 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
- .debug_line    0x0000000000001437      0x1ea c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
- .debug_line    0x0000000000001621       0x5c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
- .debug_line    0x000000000000167d       0xeb ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
- .debug_line    0x0000000000001768       0xdb ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
- .debug_line    0x0000000000001843       0x6b ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
- .debug_line    0x00000000000018ae       0xaa ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .debug_line    0x0000000000001958       0x50 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
- .debug_line    0x00000000000019a8       0x8e ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
- .debug_line    0x0000000000001a36       0x9e ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
- .debug_line    0x0000000000001ad4      0x1db ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
- .debug_line    0x0000000000001caf      0x142 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_line    0x0000000000001df1      0x112 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .debug_line    0x0000000000001f03       0xfd ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_line    0x0000000000002000       0xf4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_line    0x00000000000020f4       0xfd ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
- .debug_line    0x00000000000021f1      0x165 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
- .debug_line    0x0000000000002356       0x51 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_line    0x00000000000023a7       0xf8 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_line    0x000000000000249f       0xcf ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .debug_line    0x000000000000256e       0x51 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
- .debug_line    0x00000000000025bf       0xb3 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
- .debug_line    0x0000000000002672       0x50 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_line    0x00000000000026c2       0xba ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
- .debug_line    0x000000000000277c      0x133 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
- .debug_line    0x00000000000028af      0x128 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
- .debug_line    0x00000000000029d7       0xae ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
- .debug_line    0x0000000000002a85       0xff ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
- .debug_line    0x0000000000002b84       0x51 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_line    0x0000000000002bd5       0xb5 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
- .debug_line    0x0000000000002c8a       0xd1 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
- .debug_line    0x0000000000002d5b       0xd4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
- .debug_line    0x0000000000002e2f       0x81 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
- .debug_line    0x0000000000002eb0      0x156 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
- .debug_line    0x0000000000003006      0x15d c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
- .debug_line    0x0000000000003163      0x22f c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
- .debug_line    0x0000000000003392       0x71 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
+ .debug_line    0x00000000000001ef      0x137 obj/default/Src/interrupt.o
+ .debug_line    0x0000000000000326      0x134 obj/default/Src/led.o
+ .debug_line    0x000000000000045a      0x159 obj/default/Src/main.o
+ .debug_line    0x00000000000005b3      0x1c2 obj/default/Src/time_keeper.o
+ .debug_line    0x0000000000000775      0x102 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
+ .debug_line    0x0000000000000877      0x200 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
+ .debug_line    0x0000000000000a77      0x203 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
+ .debug_line    0x0000000000000c7a      0x159 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
+ .debug_line    0x0000000000000dd3      0x34f c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
+ .debug_line    0x0000000000001122      0x1ed c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_line    0x000000000000130f      0x153 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
+ .debug_line    0x0000000000001462      0x1ea c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
+ .debug_line    0x000000000000164c       0x5c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
+ .debug_line    0x00000000000016a8       0xeb ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
+ .debug_line    0x0000000000001793       0xdb ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .debug_line    0x000000000000186e       0x6b ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_line    0x00000000000018d9       0xaa ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_line    0x0000000000001983       0x50 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_line    0x00000000000019d3       0x8e ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_line    0x0000000000001a61       0x9e ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_line    0x0000000000001aff      0x1db ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
+ .debug_line    0x0000000000001cda      0x142 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_line    0x0000000000001e1c      0x112 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_line    0x0000000000001f2e       0xfd ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_line    0x000000000000202b       0xf4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_line    0x000000000000211f       0xfd ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+ .debug_line    0x000000000000221c      0x165 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_line    0x0000000000002381       0x51 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_line    0x00000000000023d2       0xf8 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_line    0x00000000000024ca       0xcf ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_line    0x0000000000002599       0x51 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_line    0x00000000000025ea       0xb3 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_line    0x000000000000269d       0x50 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_line    0x00000000000026ed       0xba ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_line    0x00000000000027a7      0x133 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_line    0x00000000000028da      0x128 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_line    0x0000000000002a02       0xae ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_line    0x0000000000002ab0       0xff ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
+ .debug_line    0x0000000000002baf       0x51 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_line    0x0000000000002c00       0xb5 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_line    0x0000000000002cb5       0xd1 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_line    0x0000000000002d86       0xd4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_line    0x0000000000002e5a       0x81 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
+ .debug_line    0x0000000000002edb      0x156 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
+ .debug_line    0x0000000000003031      0x15d c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
+ .debug_line    0x000000000000318e      0x22f c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
+ .debug_line    0x00000000000033bd       0x71 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
 
-.debug_frame    0x0000000000000000      0xfcc
+.debug_frame    0x0000000000000000      0xf7c
  *(.debug_frame)
  .debug_frame   0x0000000000000000       0xec obj/default/Src/display.o
- .debug_frame   0x00000000000000ec       0xac obj/default/Src/interrupt.o
- .debug_frame   0x0000000000000198       0x7c obj/default/Src/led.o
- .debug_frame   0x0000000000000214       0x54 obj/default/Src/main.o
- .debug_frame   0x0000000000000268      0x298 obj/default/Src/time_keeper.o
- .debug_frame   0x0000000000000500       0x50 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
- .debug_frame   0x0000000000000550       0x48 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
- .debug_frame   0x0000000000000598       0x48 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
- .debug_frame   0x00000000000005e0       0x20 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
- .debug_frame   0x0000000000000600       0x8c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
- .debug_frame   0x000000000000068c       0x58 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
- .debug_frame   0x00000000000006e4       0x38 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
- .debug_frame   0x000000000000071c       0xa4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
- .debug_frame   0x00000000000007c0       0x38 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
- .debug_frame   0x00000000000007f8       0x38 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
- .debug_frame   0x0000000000000830       0x5c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
- .debug_frame   0x000000000000088c       0x2c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
- .debug_frame   0x00000000000008b8       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
- .debug_frame   0x0000000000000918       0x88 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_frame   0x00000000000009a0       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
- .debug_frame   0x0000000000000a00       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
- .debug_frame   0x0000000000000a34       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_frame   0x0000000000000a68       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
- .debug_frame   0x0000000000000ac8       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
- .debug_frame   0x0000000000000b28       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_frame   0x0000000000000b5c       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
- .debug_frame   0x0000000000000b90       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
- .debug_frame   0x0000000000000bf0       0x38 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_frame   0x0000000000000c28       0x5c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
- .debug_frame   0x0000000000000c84       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
- .debug_frame   0x0000000000000ce4       0x84 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
- .debug_frame   0x0000000000000d68       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
- .debug_frame   0x0000000000000d9c       0x5c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
- .debug_frame   0x0000000000000df8       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
- .debug_frame   0x0000000000000e2c       0x38 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
- .debug_frame   0x0000000000000e64       0x38 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
- .debug_frame   0x0000000000000e9c       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
- .debug_frame   0x0000000000000ed0       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
- .debug_frame   0x0000000000000f04       0x28 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
- .debug_frame   0x0000000000000f2c       0x20 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
- .debug_frame   0x0000000000000f4c       0x54 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
- .debug_frame   0x0000000000000fa0       0x2c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
+ .debug_frame   0x00000000000000ec       0x5c obj/default/Src/interrupt.o
+ .debug_frame   0x0000000000000148       0x7c obj/default/Src/led.o
+ .debug_frame   0x00000000000001c4       0x54 obj/default/Src/main.o
+ .debug_frame   0x0000000000000218      0x298 obj/default/Src/time_keeper.o
+ .debug_frame   0x00000000000004b0       0x50 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
+ .debug_frame   0x0000000000000500       0x48 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
+ .debug_frame   0x0000000000000548       0x48 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
+ .debug_frame   0x0000000000000590       0x20 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
+ .debug_frame   0x00000000000005b0       0x8c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
+ .debug_frame   0x000000000000063c       0x58 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_frame   0x0000000000000694       0x38 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
+ .debug_frame   0x00000000000006cc       0xa4 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
+ .debug_frame   0x0000000000000770       0x38 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .debug_frame   0x00000000000007a8       0x38 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_frame   0x00000000000007e0       0x5c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_frame   0x000000000000083c       0x2c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_frame   0x0000000000000868       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
+ .debug_frame   0x00000000000008c8       0x88 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_frame   0x0000000000000950       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_frame   0x00000000000009b0       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_frame   0x00000000000009e4       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_frame   0x0000000000000a18       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+ .debug_frame   0x0000000000000a78       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_frame   0x0000000000000ad8       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_frame   0x0000000000000b0c       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_frame   0x0000000000000b40       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_frame   0x0000000000000ba0       0x38 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_frame   0x0000000000000bd8       0x5c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_frame   0x0000000000000c34       0x60 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_frame   0x0000000000000c94       0x84 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_frame   0x0000000000000d18       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_frame   0x0000000000000d4c       0x5c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
+ .debug_frame   0x0000000000000da8       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_frame   0x0000000000000ddc       0x38 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_frame   0x0000000000000e14       0x38 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_frame   0x0000000000000e4c       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_frame   0x0000000000000e80       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
+ .debug_frame   0x0000000000000eb4       0x28 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
+ .debug_frame   0x0000000000000edc       0x20 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
+ .debug_frame   0x0000000000000efc       0x54 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x0000000000000f50       0x2c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
 
-.debug_str      0x0000000000000000     0x1f83
+.debug_str      0x0000000000000000     0x1f69
  *(.debug_str)
  .debug_str     0x0000000000000000       0xd2 obj/default/Src/button.o
  .debug_str     0x00000000000000d2      0x121 obj/default/Src/display.o
                                         0x227 (size before relaxing)
- .debug_str     0x00000000000001f3       0x83 obj/default/Src/interrupt.o
-                                        0x1f3 (size before relaxing)
- .debug_str     0x0000000000000276       0x3a obj/default/Src/led.o
+ .debug_str     0x00000000000001f3       0x71 obj/default/Src/interrupt.o
+                                        0x1e1 (size before relaxing)
+ .debug_str     0x0000000000000264       0x3a obj/default/Src/led.o
                                         0x19c (size before relaxing)
- .debug_str     0x00000000000002b0       0x34 obj/default/Src/main.o
-                                        0x1d1 (size before relaxing)
- .debug_str     0x00000000000002e4      0x179 obj/default/Src/time_keeper.o
+ .debug_str     0x000000000000029e       0x2c obj/default/Src/main.o
+                                        0x1df (size before relaxing)
+ .debug_str     0x00000000000002ca      0x179 obj/default/Src/time_keeper.o
                                         0x2f8 (size before relaxing)
- .debug_str     0x000000000000045d      0x16d c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
+ .debug_str     0x0000000000000443      0x16d c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0\libgcc.a(lib2-divmod.o)
                                         0x1b8 (size before relaxing)
- .debug_str     0x00000000000005ca      0x40f c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
+ .debug_str     0x00000000000005b0      0x40f c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-printf.o)
                                         0x4ea (size before relaxing)
- .debug_str     0x00000000000009d9       0x60 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
+ .debug_str     0x00000000000009bf       0x60 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-puts.o)
                                         0x4b3 (size before relaxing)
- .debug_str     0x0000000000000a39       0xc4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
+ .debug_str     0x0000000000000a1f       0xc4 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-strlen.o)
                                         0x1cb (size before relaxing)
- .debug_str     0x0000000000000afd      0x1e9 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
+ .debug_str     0x0000000000000ae3      0x1e9 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-vfprintf.o)
                                         0x665 (size before relaxing)
- .debug_str     0x0000000000000ce6       0x60 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_str     0x0000000000000ccc       0x60 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-fvwrite_small_dev.o)
                                         0x4ba (size before relaxing)
- .debug_str     0x0000000000000d46       0xe1 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
+ .debug_str     0x0000000000000d2c       0xe1 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-impure.o)
                                         0x4a4 (size before relaxing)
- .debug_str     0x0000000000000e27       0x42 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
+ .debug_str     0x0000000000000e0d       0x42 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-writer.o)
                                         0x49e (size before relaxing)
- .debug_str     0x0000000000000e69       0x3c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
+ .debug_str     0x0000000000000e4f       0x3c c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-int_errno.o)
                                         0x1be (size before relaxing)
- .debug_str     0x0000000000000ea5      0x173 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
+ .debug_str     0x0000000000000e8b      0x173 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic.o)
                                         0x284 (size before relaxing)
- .debug_str     0x0000000000001018       0x4c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .debug_str     0x0000000000000ffe       0x4c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
                                         0x22e (size before relaxing)
- .debug_str     0x0000000000001064       0x3a ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_str     0x000000000000104a       0x3a ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_handler.o)
                                         0x1dd (size before relaxing)
- .debug_str     0x000000000000109e       0x17 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_str     0x0000000000001084       0x17 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_irq_vars.o)
                                         0x180 (size before relaxing)
- .debug_str     0x00000000000010b5       0xe9 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_str     0x000000000000109b       0xe9 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_load.o)
                                         0x258 (size before relaxing)
- .debug_str     0x000000000000119e       0x70 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_str     0x0000000000001184       0x70 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_main.o)
                                         0x1e3 (size before relaxing)
- .debug_str     0x000000000000120e      0x15f ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
+ .debug_str     0x00000000000011f4      0x15f ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_write.o)
                                         0x33e (size before relaxing)
- .debug_str     0x000000000000136d      0x138 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_str     0x0000000000001353      0x138 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_sys_init.o)
                                         0x352 (size before relaxing)
- .debug_str     0x00000000000014a5       0x70 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_str     0x000000000000148b       0x70 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
                                         0x31b (size before relaxing)
- .debug_str     0x0000000000001515       0x48 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_str     0x00000000000014fb       0x48 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
                                         0x265 (size before relaxing)
- .debug_str     0x000000000000155d       0x4a ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_str     0x0000000000001543       0x4a ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
                                         0x25b (size before relaxing)
- .debug_str     0x00000000000015a7       0x7f ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
+ .debug_str     0x000000000000158d       0x7f ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_avalon_timer_sc.o)
                                         0x291 (size before relaxing)
- .debug_str     0x0000000000001626       0x1b ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_str     0x000000000000160c       0x1b ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_close.o)
                                         0x251 (size before relaxing)
- .debug_str     0x0000000000001641       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_str     0x0000000000001627       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
                                         0x19b (size before relaxing)
- .debug_str     0x0000000000001675       0x50 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_str     0x000000000000165b       0x50 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev.o)
                                         0x34b (size before relaxing)
- .debug_str     0x00000000000016c5       0x45 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_str     0x00000000000016ab       0x45 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
                                         0x212 (size before relaxing)
- .debug_str     0x000000000000170a       0x14 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_str     0x00000000000016f0       0x14 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_errno.o)
                                         0x18b (size before relaxing)
- .debug_str     0x000000000000171e       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_str     0x0000000000001704       0x34 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
                                         0x19b (size before relaxing)
- .debug_str     0x0000000000001752      0x48b ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_str     0x0000000000001738      0x48b ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
                                         0x5e6 (size before relaxing)
- .debug_str     0x0000000000001bdd       0x56 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_str     0x0000000000001bc3       0x56 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_io_redirect.o)
                                         0x35c (size before relaxing)
- .debug_str     0x0000000000001c33       0x2f ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_str     0x0000000000001c19       0x2f ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_open.o)
                                         0x291 (size before relaxing)
- .debug_str     0x0000000000001c62       0x28 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_str     0x0000000000001c48       0x28 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_release_fd.o)
                                         0x219 (size before relaxing)
- .debug_str     0x0000000000001c8a       0x78 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
+ .debug_str     0x0000000000001c70       0x78 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_tick.o)
                                         0x298 (size before relaxing)
- .debug_str     0x0000000000001d02       0x3b ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_str     0x0000000000001ce8       0x3b ../alarm_clock_jukebox_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
                                         0x1a2 (size before relaxing)
- .debug_str     0x0000000000001d3d       0x24 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_str     0x0000000000001d23       0x24 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_dev.o)
                                         0x232 (size before relaxing)
- .debug_str     0x0000000000001d61       0x26 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_str     0x0000000000001d47       0x26 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_find_file.o)
                                         0x240 (size before relaxing)
- .debug_str     0x0000000000001d87       0x30 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_str     0x0000000000001d6d       0x30 ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_get_fd.o)
                                         0x262 (size before relaxing)
- .debug_str     0x0000000000001db7       0x2c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
+ .debug_str     0x0000000000001d9d       0x2c ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_icache_flush.o)
                                         0x1a1 (size before relaxing)
- .debug_str     0x0000000000001de3       0xd3 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
+ .debug_str     0x0000000000001dc9       0xd3 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-exit.o)
                                         0x1d6 (size before relaxing)
- .debug_str     0x0000000000001eb6       0x41 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
+ .debug_str     0x0000000000001e9c       0x41 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-memcmp.o)
                                         0x1c5 (size before relaxing)
- .debug_str     0x0000000000001ef7       0x62 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
+ .debug_str     0x0000000000001edd       0x62 c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib\libsmallc.a(lib_a-__call_atexit.o)
                                         0x4d1 (size before relaxing)
- .debug_str     0x0000000000001f59       0x2a ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
+ .debug_str     0x0000000000001f3f       0x2a ../alarm_clock_jukebox_bsp/\libhal_bsp.a(alt_exit.o)
                                         0x197 (size before relaxing)
 
 .debug_loc      0x0000000000000000     0x1308

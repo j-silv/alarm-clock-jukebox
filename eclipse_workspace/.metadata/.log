@@ -1129,3 +1129,9 @@ SEVERE: nios2-bsp-generate-files failed.
 
 !ENTRY com.altera.sbtgui.launch 1 0 2021-02-26 10:41:32.437
 !MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614330839 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-26 12:27:38.605
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x81100 --id=0x12345678 --timestamp=1614330839]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-26 12:27:41.932
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614330839 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
