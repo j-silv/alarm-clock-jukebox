@@ -21,7 +21,6 @@ entity qsys_system is
 		reset_reset_n                         : in  std_logic                    := '0';             --                          reset.reset_n
 		second0_external_connection_export    : out std_logic_vector(7 downto 0);                    --    second0_external_connection.export
 		second1_external_connection_export    : out std_logic_vector(7 downto 0);                    --    second1_external_connection.export
-		speaker_external_connection_export    : out std_logic;                                       --    speaker_external_connection.export
 		switches_external_connection_export   : in  std_logic_vector(9 downto 0) := (others => '0')  --   switches_external_connection.export
 	);
 end entity qsys_system;
@@ -58,19 +57,6 @@ architecture rtl of qsys_system is
 			dummy_ci_port                       : out std_logic                                         -- readra
 		);
 	end component qsys_system_NiosII_CPU;
-
-	component qsys_system_SYS_CLK_timer is
-		port (
-			clk        : in  std_logic                     := 'X';             -- clk
-			reset_n    : in  std_logic                     := 'X';             -- reset_n
-			address    : in  std_logic_vector(2 downto 0)  := (others => 'X'); -- address
-			writedata  : in  std_logic_vector(15 downto 0) := (others => 'X'); -- writedata
-			readdata   : out std_logic_vector(15 downto 0);                    -- readdata
-			chipselect : in  std_logic                     := 'X';             -- chipselect
-			write_n    : in  std_logic                     := 'X';             -- write_n
-			irq        : out std_logic                                         -- irq
-		);
-	end component qsys_system_SYS_CLK_timer;
 
 	component qsys_system_buttons is
 		port (
@@ -332,21 +318,11 @@ architecture rtl of qsys_system is
 			second1_s1_readdata                           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			second1_s1_writedata                          : out std_logic_vector(31 downto 0);                    -- writedata
 			second1_s1_chipselect                         : out std_logic;                                        -- chipselect
-			speaker_s1_address                            : out std_logic_vector(1 downto 0);                     -- address
-			speaker_s1_write                              : out std_logic;                                        -- write
-			speaker_s1_readdata                           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			speaker_s1_writedata                          : out std_logic_vector(31 downto 0);                    -- writedata
-			speaker_s1_chipselect                         : out std_logic;                                        -- chipselect
 			switches_s1_address                           : out std_logic_vector(1 downto 0);                     -- address
 			switches_s1_write                             : out std_logic;                                        -- write
 			switches_s1_readdata                          : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			switches_s1_writedata                         : out std_logic_vector(31 downto 0);                    -- writedata
 			switches_s1_chipselect                        : out std_logic;                                        -- chipselect
-			SYS_CLK_timer_s1_address                      : out std_logic_vector(2 downto 0);                     -- address
-			SYS_CLK_timer_s1_write                        : out std_logic;                                        -- write
-			SYS_CLK_timer_s1_readdata                     : in  std_logic_vector(15 downto 0) := (others => 'X'); -- readdata
-			SYS_CLK_timer_s1_writedata                    : out std_logic_vector(15 downto 0);                    -- writedata
-			SYS_CLK_timer_s1_chipselect                   : out std_logic;                                        -- chipselect
 			sysid_qsys_0_control_slave_address            : out std_logic_vector(0 downto 0);                     -- address
 			sysid_qsys_0_control_slave_readdata           : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			timer_pwm_s1_address                          : out std_logic_vector(2 downto 0);                     -- address
@@ -371,7 +347,6 @@ architecture rtl of qsys_system is
 			receiver2_irq : in  std_logic                     := 'X'; -- irq
 			receiver3_irq : in  std_logic                     := 'X'; -- irq
 			receiver4_irq : in  std_logic                     := 'X'; -- irq
-			receiver5_irq : in  std_logic                     := 'X'; -- irq
 			sender_irq    : out std_logic_vector(31 downto 0)         -- irq
 		);
 	end component qsys_system_irq_mapper;
@@ -551,11 +526,6 @@ architecture rtl of qsys_system is
 	signal mm_interconnect_0_onchip_memory_s1_write                        : std_logic;                     -- mm_interconnect_0:onchip_memory_s1_write -> onchip_memory:write
 	signal mm_interconnect_0_onchip_memory_s1_writedata                    : std_logic_vector(31 downto 0); -- mm_interconnect_0:onchip_memory_s1_writedata -> onchip_memory:writedata
 	signal mm_interconnect_0_onchip_memory_s1_clken                        : std_logic;                     -- mm_interconnect_0:onchip_memory_s1_clken -> onchip_memory:clken
-	signal mm_interconnect_0_sys_clk_timer_s1_chipselect                   : std_logic;                     -- mm_interconnect_0:SYS_CLK_timer_s1_chipselect -> SYS_CLK_timer:chipselect
-	signal mm_interconnect_0_sys_clk_timer_s1_readdata                     : std_logic_vector(15 downto 0); -- SYS_CLK_timer:readdata -> mm_interconnect_0:SYS_CLK_timer_s1_readdata
-	signal mm_interconnect_0_sys_clk_timer_s1_address                      : std_logic_vector(2 downto 0);  -- mm_interconnect_0:SYS_CLK_timer_s1_address -> SYS_CLK_timer:address
-	signal mm_interconnect_0_sys_clk_timer_s1_write                        : std_logic;                     -- mm_interconnect_0:SYS_CLK_timer_s1_write -> mm_interconnect_0_sys_clk_timer_s1_write:in
-	signal mm_interconnect_0_sys_clk_timer_s1_writedata                    : std_logic_vector(15 downto 0); -- mm_interconnect_0:SYS_CLK_timer_s1_writedata -> SYS_CLK_timer:writedata
 	signal mm_interconnect_0_switches_s1_chipselect                        : std_logic;                     -- mm_interconnect_0:switches_s1_chipselect -> switches:chipselect
 	signal mm_interconnect_0_switches_s1_readdata                          : std_logic_vector(31 downto 0); -- switches:readdata -> mm_interconnect_0:switches_s1_readdata
 	signal mm_interconnect_0_switches_s1_address                           : std_logic_vector(1 downto 0);  -- mm_interconnect_0:switches_s1_address -> switches:address
@@ -581,11 +551,6 @@ architecture rtl of qsys_system is
 	signal mm_interconnect_0_second0_s1_address                            : std_logic_vector(1 downto 0);  -- mm_interconnect_0:second0_s1_address -> second0:address
 	signal mm_interconnect_0_second0_s1_write                              : std_logic;                     -- mm_interconnect_0:second0_s1_write -> mm_interconnect_0_second0_s1_write:in
 	signal mm_interconnect_0_second0_s1_writedata                          : std_logic_vector(31 downto 0); -- mm_interconnect_0:second0_s1_writedata -> second0:writedata
-	signal mm_interconnect_0_speaker_s1_chipselect                         : std_logic;                     -- mm_interconnect_0:speaker_s1_chipselect -> speaker:chipselect
-	signal mm_interconnect_0_speaker_s1_readdata                           : std_logic_vector(31 downto 0); -- speaker:readdata -> mm_interconnect_0:speaker_s1_readdata
-	signal mm_interconnect_0_speaker_s1_address                            : std_logic_vector(1 downto 0);  -- mm_interconnect_0:speaker_s1_address -> speaker:address
-	signal mm_interconnect_0_speaker_s1_write                              : std_logic;                     -- mm_interconnect_0:speaker_s1_write -> mm_interconnect_0_speaker_s1_write:in
-	signal mm_interconnect_0_speaker_s1_writedata                          : std_logic_vector(31 downto 0); -- mm_interconnect_0:speaker_s1_writedata -> speaker:writedata
 	signal mm_interconnect_0_timer_second_s1_chipselect                    : std_logic;                     -- mm_interconnect_0:timer_second_s1_chipselect -> timer_second:chipselect
 	signal mm_interconnect_0_timer_second_s1_readdata                      : std_logic_vector(15 downto 0); -- timer_second:readdata -> mm_interconnect_0:timer_second_s1_readdata
 	signal mm_interconnect_0_timer_second_s1_address                       : std_logic_vector(2 downto 0);  -- mm_interconnect_0:timer_second_s1_address -> timer_second:address
@@ -626,12 +591,11 @@ architecture rtl of qsys_system is
 	signal mm_interconnect_0_timer_pwm_s1_address                          : std_logic_vector(2 downto 0);  -- mm_interconnect_0:timer_pwm_s1_address -> timer_pwm:address
 	signal mm_interconnect_0_timer_pwm_s1_write                            : std_logic;                     -- mm_interconnect_0:timer_pwm_s1_write -> mm_interconnect_0_timer_pwm_s1_write:in
 	signal mm_interconnect_0_timer_pwm_s1_writedata                        : std_logic_vector(15 downto 0); -- mm_interconnect_0:timer_pwm_s1_writedata -> timer_pwm:writedata
-	signal irq_mapper_receiver0_irq                                        : std_logic;                     -- SYS_CLK_timer:irq -> irq_mapper:receiver0_irq
-	signal irq_mapper_receiver1_irq                                        : std_logic;                     -- jtag_uart_0:av_irq -> irq_mapper:receiver1_irq
-	signal irq_mapper_receiver2_irq                                        : std_logic;                     -- timer_second:irq -> irq_mapper:receiver2_irq
-	signal irq_mapper_receiver3_irq                                        : std_logic;                     -- switches:irq -> irq_mapper:receiver3_irq
-	signal irq_mapper_receiver4_irq                                        : std_logic;                     -- buttons:irq -> irq_mapper:receiver4_irq
-	signal irq_mapper_receiver5_irq                                        : std_logic;                     -- timer_pwm:irq -> irq_mapper:receiver5_irq
+	signal irq_mapper_receiver0_irq                                        : std_logic;                     -- jtag_uart_0:av_irq -> irq_mapper:receiver0_irq
+	signal irq_mapper_receiver1_irq                                        : std_logic;                     -- timer_second:irq -> irq_mapper:receiver1_irq
+	signal irq_mapper_receiver2_irq                                        : std_logic;                     -- switches:irq -> irq_mapper:receiver2_irq
+	signal irq_mapper_receiver3_irq                                        : std_logic;                     -- buttons:irq -> irq_mapper:receiver3_irq
+	signal irq_mapper_receiver4_irq                                        : std_logic;                     -- timer_pwm:irq -> irq_mapper:receiver4_irq
 	signal niosii_cpu_irq_irq                                              : std_logic_vector(31 downto 0); -- irq_mapper:sender_irq -> NiosII_CPU:irq
 	signal rst_controller_reset_out_reset                                  : std_logic;                     -- rst_controller:reset_out -> [irq_mapper:reset, mm_interconnect_0:NiosII_CPU_reset_reset_bridge_in_reset_reset, onchip_memory:reset, rst_controller_reset_out_reset:in]
 	signal rst_controller_reset_out_reset_req                              : std_logic;                     -- rst_controller:reset_req -> [NiosII_CPU:reset_req, onchip_memory:reset_req, rst_translator:reset_req_in]
@@ -640,13 +604,11 @@ architecture rtl of qsys_system is
 	signal reset_reset_n_ports_inv                                         : std_logic;                     -- reset_reset_n:inv -> [rst_controller:reset_in0, rst_controller_001:reset_in0]
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read_ports_inv  : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read:inv -> jtag_uart_0:av_read_n
 	signal mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv : std_logic;                     -- mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write:inv -> jtag_uart_0:av_write_n
-	signal mm_interconnect_0_sys_clk_timer_s1_write_ports_inv              : std_logic;                     -- mm_interconnect_0_sys_clk_timer_s1_write:inv -> SYS_CLK_timer:write_n
 	signal mm_interconnect_0_switches_s1_write_ports_inv                   : std_logic;                     -- mm_interconnect_0_switches_s1_write:inv -> switches:write_n
 	signal mm_interconnect_0_led_piano_s1_write_ports_inv                  : std_logic;                     -- mm_interconnect_0_led_piano_s1_write:inv -> led_piano:write_n
 	signal mm_interconnect_0_hour0_s1_write_ports_inv                      : std_logic;                     -- mm_interconnect_0_hour0_s1_write:inv -> hour0:write_n
 	signal mm_interconnect_0_minute0_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_minute0_s1_write:inv -> minute0:write_n
 	signal mm_interconnect_0_second0_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_second0_s1_write:inv -> second0:write_n
-	signal mm_interconnect_0_speaker_s1_write_ports_inv                    : std_logic;                     -- mm_interconnect_0_speaker_s1_write:inv -> speaker:write_n
 	signal mm_interconnect_0_timer_second_s1_write_ports_inv               : std_logic;                     -- mm_interconnect_0_timer_second_s1_write:inv -> timer_second:write_n
 	signal mm_interconnect_0_led_alarm_s1_write_ports_inv                  : std_logic;                     -- mm_interconnect_0_led_alarm_s1_write:inv -> led_alarm:write_n
 	signal mm_interconnect_0_led_status_s1_write_ports_inv                 : std_logic;                     -- mm_interconnect_0_led_status_s1_write:inv -> led_status:write_n
@@ -656,7 +618,7 @@ architecture rtl of qsys_system is
 	signal mm_interconnect_0_hour1_s1_write_ports_inv                      : std_logic;                     -- mm_interconnect_0_hour1_s1_write:inv -> hour1:write_n
 	signal mm_interconnect_0_timer_pwm_s1_write_ports_inv                  : std_logic;                     -- mm_interconnect_0_timer_pwm_s1_write:inv -> timer_pwm:write_n
 	signal rst_controller_reset_out_reset_ports_inv                        : std_logic;                     -- rst_controller_reset_out_reset:inv -> NiosII_CPU:reset_n
-	signal rst_controller_001_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [SYS_CLK_timer:reset_n, buttons:reset_n, hour0:reset_n, hour1:reset_n, jtag_uart_0:rst_n, led_alarm:reset_n, led_piano:reset_n, led_status:reset_n, minute0:reset_n, minute1:reset_n, pwm:resetn, second0:reset_n, second1:reset_n, speaker:reset_n, switches:reset_n, sysid_qsys_0:reset_n, timer_pwm:reset_n, timer_second:reset_n]
+	signal rst_controller_001_reset_out_reset_ports_inv                    : std_logic;                     -- rst_controller_001_reset_out_reset:inv -> [buttons:reset_n, hour0:reset_n, hour1:reset_n, jtag_uart_0:rst_n, led_alarm:reset_n, led_piano:reset_n, led_status:reset_n, minute0:reset_n, minute1:reset_n, pwm:resetn, second0:reset_n, second1:reset_n, switches:reset_n, sysid_qsys_0:reset_n, timer_pwm:reset_n, timer_second:reset_n]
 
 begin
 
@@ -691,18 +653,6 @@ begin
 			dummy_ci_port                       => open                                                      -- custom_instruction_master.readra
 		);
 
-	sys_clk_timer : component qsys_system_SYS_CLK_timer
-		port map (
-			clk        => clk_clk,                                            --   clk.clk
-			reset_n    => rst_controller_001_reset_out_reset_ports_inv,       -- reset.reset_n
-			address    => mm_interconnect_0_sys_clk_timer_s1_address,         --    s1.address
-			writedata  => mm_interconnect_0_sys_clk_timer_s1_writedata,       --      .writedata
-			readdata   => mm_interconnect_0_sys_clk_timer_s1_readdata,        --      .readdata
-			chipselect => mm_interconnect_0_sys_clk_timer_s1_chipselect,      --      .chipselect
-			write_n    => mm_interconnect_0_sys_clk_timer_s1_write_ports_inv, --      .write_n
-			irq        => irq_mapper_receiver0_irq                            --   irq.irq
-		);
-
 	buttons : component qsys_system_buttons
 		port map (
 			clk        => clk_clk,                                      --                 clk.clk
@@ -713,7 +663,7 @@ begin
 			chipselect => mm_interconnect_0_buttons_s1_chipselect,      --                    .chipselect
 			readdata   => mm_interconnect_0_buttons_s1_readdata,        --                    .readdata
 			in_port    => buttons_external_connection_export,           -- external_connection.export
-			irq        => irq_mapper_receiver4_irq                      --                 irq.irq
+			irq        => irq_mapper_receiver3_irq                      --                 irq.irq
 		);
 
 	hour0 : component qsys_system_hour0
@@ -751,7 +701,7 @@ begin
 			av_write_n     => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv, --                  .write_n
 			av_writedata   => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata,       --                  .writedata
 			av_waitrequest => mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest,     --                  .waitrequest
-			av_irq         => irq_mapper_receiver1_irq                                         --               irq.irq
+			av_irq         => irq_mapper_receiver0_irq                                         --               irq.irq
 		);
 
 	led_alarm : component qsys_system_led_alarm
@@ -870,18 +820,6 @@ begin
 			out_port   => second1_external_connection_export            -- external_connection.export
 		);
 
-	speaker : component qsys_system_led_alarm
-		port map (
-			clk        => clk_clk,                                      --                 clk.clk
-			reset_n    => rst_controller_001_reset_out_reset_ports_inv, --               reset.reset_n
-			address    => mm_interconnect_0_speaker_s1_address,         --                  s1.address
-			write_n    => mm_interconnect_0_speaker_s1_write_ports_inv, --                    .write_n
-			writedata  => mm_interconnect_0_speaker_s1_writedata,       --                    .writedata
-			chipselect => mm_interconnect_0_speaker_s1_chipselect,      --                    .chipselect
-			readdata   => mm_interconnect_0_speaker_s1_readdata,        --                    .readdata
-			out_port   => speaker_external_connection_export            -- external_connection.export
-		);
-
 	switches : component qsys_system_switches
 		port map (
 			clk        => clk_clk,                                       --                 clk.clk
@@ -892,7 +830,7 @@ begin
 			chipselect => mm_interconnect_0_switches_s1_chipselect,      --                    .chipselect
 			readdata   => mm_interconnect_0_switches_s1_readdata,        --                    .readdata
 			in_port    => switches_external_connection_export,           -- external_connection.export
-			irq        => irq_mapper_receiver3_irq                       --                 irq.irq
+			irq        => irq_mapper_receiver2_irq                       --                 irq.irq
 		);
 
 	sysid_qsys_0 : component qsys_system_sysid_qsys_0
@@ -912,7 +850,7 @@ begin
 			readdata   => mm_interconnect_0_timer_pwm_s1_readdata,        --      .readdata
 			chipselect => mm_interconnect_0_timer_pwm_s1_chipselect,      --      .chipselect
 			write_n    => mm_interconnect_0_timer_pwm_s1_write_ports_inv, --      .write_n
-			irq        => irq_mapper_receiver5_irq                        --   irq.irq
+			irq        => irq_mapper_receiver4_irq                        --   irq.irq
 		);
 
 	timer_second : component qsys_system_timer_second
@@ -924,7 +862,7 @@ begin
 			readdata   => mm_interconnect_0_timer_second_s1_readdata,        --      .readdata
 			chipselect => mm_interconnect_0_timer_second_s1_chipselect,      --      .chipselect
 			write_n    => mm_interconnect_0_timer_second_s1_write_ports_inv, --      .write_n
-			irq        => irq_mapper_receiver2_irq                           --   irq.irq
+			irq        => irq_mapper_receiver1_irq                           --   irq.irq
 		);
 
 	mm_interconnect_0 : component qsys_system_mm_interconnect_0
@@ -1023,21 +961,11 @@ begin
 			second1_s1_readdata                           => mm_interconnect_0_second1_s1_readdata,                       --                                        .readdata
 			second1_s1_writedata                          => mm_interconnect_0_second1_s1_writedata,                      --                                        .writedata
 			second1_s1_chipselect                         => mm_interconnect_0_second1_s1_chipselect,                     --                                        .chipselect
-			speaker_s1_address                            => mm_interconnect_0_speaker_s1_address,                        --                              speaker_s1.address
-			speaker_s1_write                              => mm_interconnect_0_speaker_s1_write,                          --                                        .write
-			speaker_s1_readdata                           => mm_interconnect_0_speaker_s1_readdata,                       --                                        .readdata
-			speaker_s1_writedata                          => mm_interconnect_0_speaker_s1_writedata,                      --                                        .writedata
-			speaker_s1_chipselect                         => mm_interconnect_0_speaker_s1_chipselect,                     --                                        .chipselect
 			switches_s1_address                           => mm_interconnect_0_switches_s1_address,                       --                             switches_s1.address
 			switches_s1_write                             => mm_interconnect_0_switches_s1_write,                         --                                        .write
 			switches_s1_readdata                          => mm_interconnect_0_switches_s1_readdata,                      --                                        .readdata
 			switches_s1_writedata                         => mm_interconnect_0_switches_s1_writedata,                     --                                        .writedata
 			switches_s1_chipselect                        => mm_interconnect_0_switches_s1_chipselect,                    --                                        .chipselect
-			SYS_CLK_timer_s1_address                      => mm_interconnect_0_sys_clk_timer_s1_address,                  --                        SYS_CLK_timer_s1.address
-			SYS_CLK_timer_s1_write                        => mm_interconnect_0_sys_clk_timer_s1_write,                    --                                        .write
-			SYS_CLK_timer_s1_readdata                     => mm_interconnect_0_sys_clk_timer_s1_readdata,                 --                                        .readdata
-			SYS_CLK_timer_s1_writedata                    => mm_interconnect_0_sys_clk_timer_s1_writedata,                --                                        .writedata
-			SYS_CLK_timer_s1_chipselect                   => mm_interconnect_0_sys_clk_timer_s1_chipselect,               --                                        .chipselect
 			sysid_qsys_0_control_slave_address            => mm_interconnect_0_sysid_qsys_0_control_slave_address,        --              sysid_qsys_0_control_slave.address
 			sysid_qsys_0_control_slave_readdata           => mm_interconnect_0_sysid_qsys_0_control_slave_readdata,       --                                        .readdata
 			timer_pwm_s1_address                          => mm_interconnect_0_timer_pwm_s1_address,                      --                            timer_pwm_s1.address
@@ -1061,7 +989,6 @@ begin
 			receiver2_irq => irq_mapper_receiver2_irq,       -- receiver2.irq
 			receiver3_irq => irq_mapper_receiver3_irq,       -- receiver3.irq
 			receiver4_irq => irq_mapper_receiver4_irq,       -- receiver4.irq
-			receiver5_irq => irq_mapper_receiver5_irq,       -- receiver5.irq
 			sender_irq    => niosii_cpu_irq_irq              --    sender.irq
 		);
 
@@ -1201,8 +1128,6 @@ begin
 
 	mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write_ports_inv <= not mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write;
 
-	mm_interconnect_0_sys_clk_timer_s1_write_ports_inv <= not mm_interconnect_0_sys_clk_timer_s1_write;
-
 	mm_interconnect_0_switches_s1_write_ports_inv <= not mm_interconnect_0_switches_s1_write;
 
 	mm_interconnect_0_led_piano_s1_write_ports_inv <= not mm_interconnect_0_led_piano_s1_write;
@@ -1212,8 +1137,6 @@ begin
 	mm_interconnect_0_minute0_s1_write_ports_inv <= not mm_interconnect_0_minute0_s1_write;
 
 	mm_interconnect_0_second0_s1_write_ports_inv <= not mm_interconnect_0_second0_s1_write;
-
-	mm_interconnect_0_speaker_s1_write_ports_inv <= not mm_interconnect_0_speaker_s1_write;
 
 	mm_interconnect_0_timer_second_s1_write_ports_inv <= not mm_interconnect_0_timer_second_s1_write;
 

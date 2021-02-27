@@ -1726,3 +1726,67 @@ Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
 
 !ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 22:02:54.758
 !MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81130 --id=0x12345678 --timestamp=1614455647 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
+
+!ENTRY com.altera.sbtgui.core 4 0 2021-02-27 22:41:45.760
+!MESSAGE Error executing 'nios2-bsp-generate-files --bsp-dir . --settings settings.bsp', unexpected return code 1.
+
+Error message:
+
+SEVERE: [Error] hal: <b>hal.sys_clk_timer</b> "SYS_CLK_timer" is out of range: "timer_pwm", "timer_second", "none"
+SEVERE: [Error] hal: <b>hal.sys_clk_timer</b> "SYS_CLK_timer" is out of range: "timer_pwm", "timer_second", "none"
+SEVERE: nios2-bsp-generate-files failed.
+
+
+!ENTRY com.altera.sbtgui.launch 4 0 2021-02-27 22:44:45.424
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception: System ID mismatch - connected: "0x0", expected: "0x12345678". 
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.assertTrue(SystemConsoleConnectionModel.java:645)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateSystemId(SystemConsoleConnectionModel.java:607)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:511)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2021-02-27 22:44:45.434
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception: System ID mismatch - connected: "0x0", expected: "0x12345678". 
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.assertTrue(SystemConsoleConnectionModel.java:645)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateSystemId(SystemConsoleConnectionModel.java:607)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:511)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 22:45:45.306
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x81100 --id=0x12345678 --timestamp=1614460564]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 22:45:48.428
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614460564 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 22:48:37.654
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x81100 --id=0x12345678 --timestamp=1614460564]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 22:48:40.722
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614460564 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 22:49:46.745
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x81100 --id=0x12345678 --timestamp=1614460564]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 22:49:49.823
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614460564 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 22:51:02.685
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x81100 --id=0x12345678 --timestamp=1614460564]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 22:51:05.870
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614460564 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]

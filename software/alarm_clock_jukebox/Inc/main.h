@@ -122,10 +122,8 @@ void stopSong(void);
 uint8_t getVolume(void);
 uint8_t upVolume(void);
 uint8_t downVolume(void);
-
-// test pwm
+void default500HzSquareWave(void);
 void testPWM(void);
-
 
 
 #endif

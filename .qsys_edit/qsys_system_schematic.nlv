@@ -3,43 +3,46 @@
 preplace inst qsys_system.speaker -pg 1 -lvl 3 -y 2160
 preplace inst qsys_system.timer_second -pg 1 -lvl 3 -y 2560
 preplace inst qsys_system.hour0 -pg 1 -lvl 3 -y 30
-preplace inst qsys_system.second0 -pg 1 -lvl 3 -y 440
-preplace inst qsys_system.hour1 -pg 1 -lvl 3 -y 130
-preplace inst qsys_system.second1 -pg 1 -lvl 3 -y 540
-preplace inst qsys_system.minute0 -pg 1 -lvl 3 -y 240
+preplace inst qsys_system.timer_pwm -pg 1 -lvl 3 -y 2010
+preplace inst qsys_system.second0 -pg 1 -lvl 3 -y 530
+preplace inst qsys_system.hour1 -pg 1 -lvl 3 -y 230
+preplace inst qsys_system.second1 -pg 1 -lvl 3 -y 630
+preplace inst qsys_system.minute0 -pg 1 -lvl 3 -y 330
 preplace inst qsys_system.onchip_memory -pg 1 -lvl 3 -y 2480
-preplace inst qsys_system.minute1 -pg 1 -lvl 3 -y 340
+preplace inst qsys_system.minute1 -pg 1 -lvl 3 -y 430
 preplace inst qsys_system.NiosII_CPU.cpu -pg 1
-preplace inst qsys_system.buttons -pg 1 -lvl 3 -y 940
-preplace inst qsys_system.SYS_CLK_timer -pg 1 -lvl 3 -y 1060
+preplace inst qsys_system.buttons -pg 1 -lvl 3 -y 1030
+preplace inst qsys_system.SYS_CLK_timer -pg 1 -lvl 3 -y 1150
 preplace inst qsys_system.switches -pg 1 -lvl 3 -y 2260
-preplace inst qsys_system.led_status -pg 1 -lvl 3 -y 840
+preplace inst qsys_system.led_status -pg 1 -lvl 3 -y 930
 preplace inst qsys_system.NiosII_CPU.reset_bridge -pg 1
 preplace inst qsys_system.sysid_qsys_0 -pg 1 -lvl 3 -y 1560
 preplace inst qsys_system.jtag_uart_0 -pg 1 -lvl 3 -y 1260
+preplace inst qsys_system.pwm -pg 1 -lvl 3 -y 130
 preplace inst qsys_system.NiosII_CPU.clock_bridge -pg 1
 preplace inst qsys_system.NiosII_CPU -pg 1 -lvl 2 -y 1220
-preplace inst qsys_system.led_piano -pg 1 -lvl 3 -y 740
-preplace inst qsys_system.led_alarm -pg 1 -lvl 3 -y 640
+preplace inst qsys_system.led_piano -pg 1 -lvl 3 -y 830
+preplace inst qsys_system.led_alarm -pg 1 -lvl 3 -y 730
 preplace inst qsys_system.clk_0 -pg 1 -lvl 1 -y 1240
 preplace inst qsys_system -pg 1 -lvl 1 -y 40 -regy -20
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)hour1.external_connection,(SLAVE)qsys_system.hour1_external_connection) 1 0 3 NJ 160 NJ 160 NJ
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)second1.external_connection,(SLAVE)qsys_system.second1_external_connection) 1 0 3 NJ 570 NJ 570 NJ
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)qsys_system.reset) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>qsys_system</net_container>(SLAVE)jtag_uart_0.irq,(SLAVE)timer_second.irq,(SLAVE)buttons.irq,(SLAVE)switches.irq,(MASTER)NiosII_CPU.irq,(SLAVE)SYS_CLK_timer.irq) 1 2 1 870
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)second1.external_connection,(SLAVE)qsys_system.second1_external_connection) 1 0 3 NJ 660 NJ 660 NJ
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)minute1.external_connection,(SLAVE)qsys_system.minute1_external_connection) 1 0 3 NJ 460 NJ 460 NJ
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)led_status.external_connection,(SLAVE)qsys_system.led_status_external_connection) 1 0 3 NJ 960 NJ 960 NJ
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.hour1_external_connection,(SLAVE)hour1.external_connection) 1 0 3 NJ 260 NJ 260 NJ
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.hour0_external_connection,(SLAVE)hour0.external_connection) 1 0 3 NJ 60 NJ 60 NJ
+preplace netloc INTERCONNECT<net_container>qsys_system</net_container>(SLAVE)NiosII_CPU.reset,(SLAVE)sysid_qsys_0.reset,(SLAVE)SYS_CLK_timer.reset,(SLAVE)led_status.reset,(MASTER)NiosII_CPU.debug_reset_request,(SLAVE)hour1.reset,(SLAVE)timer_second.reset,(SLAVE)pwm.resetn,(SLAVE)second1.reset,(SLAVE)minute0.reset,(SLAVE)second0.reset,(SLAVE)speaker.reset,(SLAVE)hour0.reset,(SLAVE)led_alarm.reset,(SLAVE)buttons.reset,(SLAVE)jtag_uart_0.reset,(SLAVE)minute1.reset,(SLAVE)timer_pwm.reset,(MASTER)clk_0.clk_reset,(SLAVE)onchip_memory.reset1,(SLAVE)switches.reset,(SLAVE)led_piano.reset) 1 1 2 430 1180 810
 preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.speaker_external_connection,(SLAVE)speaker.external_connection) 1 0 3 NJ 2190 NJ 2190 NJ
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.minute1_external_connection,(SLAVE)minute1.external_connection) 1 0 3 NJ 370 NJ 370 NJ
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)hour0.external_connection,(SLAVE)qsys_system.hour0_external_connection) 1 0 3 NJ 60 NJ 60 NJ
-preplace netloc FAN_OUT<net_container>qsys_system</net_container>(SLAVE)buttons.clk,(SLAVE)speaker.clk,(SLAVE)second1.clk,(SLAVE)sysid_qsys_0.clk,(SLAVE)minute0.clk,(SLAVE)hour1.clk,(SLAVE)led_alarm.clk,(MASTER)clk_0.clk,(SLAVE)timer_second.clk,(SLAVE)SYS_CLK_timer.clk,(SLAVE)minute1.clk,(SLAVE)switches.clk,(SLAVE)hour0.clk,(SLAVE)onchip_memory.clk1,(SLAVE)led_status.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)NiosII_CPU.clk,(SLAVE)led_piano.clk,(SLAVE)second0.clk) 1 1 2 410 1160 850
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>qsys_system</net_container>(SLAVE)switches.irq,(SLAVE)timer_second.irq,(MASTER)NiosII_CPU.irq,(SLAVE)buttons.irq,(SLAVE)timer_pwm.irq,(SLAVE)SYS_CLK_timer.irq,(SLAVE)jtag_uart_0.irq) 1 2 1 870
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.second0_external_connection,(SLAVE)second0.external_connection) 1 0 3 NJ 560 NJ 560 NJ
 preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)clk_0.clk_in,(SLAVE)qsys_system.clk) 1 0 1 NJ
-preplace netloc INTERCONNECT<net_container>qsys_system</net_container>(SLAVE)hour0.reset,(SLAVE)second1.reset,(SLAVE)sysid_qsys_0.reset,(SLAVE)second0.reset,(SLAVE)switches.reset,(SLAVE)buttons.reset,(SLAVE)led_status.reset,(SLAVE)timer_second.reset,(SLAVE)NiosII_CPU.reset,(SLAVE)minute1.reset,(MASTER)clk_0.clk_reset,(SLAVE)led_piano.reset,(SLAVE)jtag_uart_0.reset,(SLAVE)hour1.reset,(MASTER)NiosII_CPU.debug_reset_request,(SLAVE)minute0.reset,(SLAVE)speaker.reset,(SLAVE)onchip_memory.reset1,(SLAVE)led_alarm.reset,(SLAVE)SYS_CLK_timer.reset) 1 1 2 430 1180 810
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.led_status_external_connection,(SLAVE)led_status.external_connection) 1 0 3 NJ 870 NJ 870 NJ
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)led_alarm.external_connection,(SLAVE)qsys_system.led_alarm_external_connection) 1 0 3 NJ 670 NJ 670 NJ
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.minute0_external_connection,(SLAVE)minute0.external_connection) 1 0 3 NJ 270 NJ 270 NJ
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.switches_external_connection,(SLAVE)switches.external_connection) 1 0 3 NJ 2290 NJ 2290 NJ
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)led_piano.external_connection,(SLAVE)qsys_system.ledr_external_connection) 1 0 3 NJ 770 NJ 770 NJ
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.buttons_external_connection,(SLAVE)buttons.external_connection) 1 0 3 NJ 970 NJ 970 NJ
-preplace netloc INTERCONNECT<net_container>qsys_system</net_container>(SLAVE)led_alarm.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)led_piano.s1,(SLAVE)NiosII_CPU.debug_mem_slave,(SLAVE)onchip_memory.s1,(SLAVE)second0.s1,(SLAVE)led_status.s1,(SLAVE)sysid_qsys_0.control_slave,(SLAVE)SYS_CLK_timer.s1,(SLAVE)timer_second.s1,(SLAVE)second1.s1,(SLAVE)minute0.s1,(SLAVE)buttons.s1,(SLAVE)minute1.s1,(MASTER)NiosII_CPU.data_master,(SLAVE)switches.s1,(SLAVE)hour0.s1,(SLAVE)speaker.s1,(SLAVE)hour1.s1,(MASTER)NiosII_CPU.instruction_master) 1 1 2 450 2310 830
-preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)second0.external_connection,(SLAVE)qsys_system.second0_external_connection) 1 0 3 NJ 470 NJ 470 NJ
+preplace netloc INTERCONNECT<net_container>qsys_system</net_container>(SLAVE)sysid_qsys_0.control_slave,(SLAVE)SYS_CLK_timer.s1,(SLAVE)timer_second.s1,(SLAVE)NiosII_CPU.debug_mem_slave,(SLAVE)second0.s1,(SLAVE)hour1.s1,(SLAVE)buttons.s1,(SLAVE)led_status.s1,(SLAVE)pwm.control_slave,(SLAVE)timer_pwm.s1,(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)onchip_memory.s1,(MASTER)NiosII_CPU.instruction_master,(SLAVE)speaker.s1,(SLAVE)minute0.s1,(SLAVE)minute1.s1,(SLAVE)hour0.s1,(SLAVE)switches.s1,(SLAVE)led_piano.s1,(MASTER)NiosII_CPU.data_master,(SLAVE)led_alarm.s1,(SLAVE)second1.s1) 1 1 2 450 2310 830
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.led_piano_external_connection,(SLAVE)led_piano.external_connection) 1 0 3 NJ 860 NJ 860 NJ
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)led_alarm.external_connection,(SLAVE)qsys_system.led_alarm_external_connection) 1 0 3 NJ 760 NJ 760 NJ
+preplace netloc FAN_OUT<net_container>qsys_system</net_container>(MASTER)clk_0.clk,(SLAVE)led_piano.clk,(SLAVE)NiosII_CPU.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)hour1.clk,(SLAVE)speaker.clk,(SLAVE)buttons.clk,(SLAVE)onchip_memory.clk1,(SLAVE)pwm.clock,(SLAVE)minute1.clk,(SLAVE)hour0.clk,(SLAVE)timer_pwm.clk,(SLAVE)switches.clk,(SLAVE)led_status.clk,(SLAVE)led_alarm.clk,(SLAVE)second1.clk,(SLAVE)minute0.clk,(SLAVE)second0.clk,(SLAVE)timer_second.clk,(SLAVE)SYS_CLK_timer.clk,(SLAVE)sysid_qsys_0.clk) 1 1 2 410 1160 850
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.pwm_external_connection,(SLAVE)pwm.pwm_out) 1 0 3 NJ 180 NJ 180 NJ
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.minute0_external_connection,(SLAVE)minute0.external_connection) 1 0 3 NJ 360 NJ 360 NJ
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)switches.external_connection,(SLAVE)qsys_system.switches_external_connection) 1 0 3 NJ 2290 NJ 2290 NJ
+preplace netloc EXPORT<net_container>qsys_system</net_container>(SLAVE)qsys_system.buttons_external_connection,(SLAVE)buttons.external_connection) 1 0 3 NJ 1060 NJ 1060 NJ
 levelinfo -pg 1 0 200 1090
 levelinfo -hier qsys_system 210 240 570 930 1080

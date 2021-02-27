@@ -13,7 +13,6 @@
 			reset_reset_n                         : in  std_logic                    := 'X';             -- reset_n
 			second0_external_connection_export    : out std_logic_vector(7 downto 0);                    -- export
 			second1_external_connection_export    : out std_logic_vector(7 downto 0);                    -- export
-			speaker_external_connection_export    : out std_logic;                                       -- export
 			switches_external_connection_export   : in  std_logic_vector(9 downto 0) := (others => 'X')  -- export
 		);
 	end component qsys_system;

@@ -7,7 +7,8 @@ struct mode mode;
 
 int main(void) {
 
-  testPWM();
+  default500HzSquareWave();
+  while(1);
 
 
 

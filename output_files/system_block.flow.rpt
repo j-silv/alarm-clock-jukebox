@@ -1,5 +1,5 @@
 Flow report for system_block
-Sat Feb 27 21:52:22 2021
+Sat Feb 27 22:28:42 2021
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,18 +40,18 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sat Feb 27 21:52:02 2021       ;
+; Flow Status                        ; Successful - Sat Feb 27 22:28:24 2021       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; system_block                                ;
 ; Top-level Entity Name              ; system_block                                ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C6GES                            ;
 ; Timing Models                      ; Preliminary                                 ;
-; Total logic elements               ; 4,069 / 49,760 ( 8 % )                      ;
-;     Total combinational functions  ; 3,581 / 49,760 ( 7 % )                      ;
-;     Dedicated logic registers      ; 2,458 / 49,760 ( 5 % )                      ;
-; Total registers                    ; 2458                                        ;
-; Total pins                         ; 75 / 360 ( 21 % )                           ;
+; Total logic elements               ; 3,896 / 49,760 ( 8 % )                      ;
+;     Total combinational functions  ; 3,429 / 49,760 ( 7 % )                      ;
+;     Dedicated logic registers      ; 2,307 / 49,760 ( 5 % )                      ;
+; Total registers                    ; 2307                                        ;
+; Total pins                         ; 72 / 360 ( 20 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 1,339,456 / 1,677,312 ( 80 % )              ;
 ; Embedded Multiplier 9-bit elements ; 6 / 288 ( 2 % )                             ;
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/27/2021 21:48:37 ;
+; Start date & time ; 02/27/2021 22:25:17 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; system_block        ;
 +-------------------+---------------------+
@@ -77,7 +77,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+---------------------------------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                                         ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+---------------------------------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 57185453374949.161445891614080                                ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 57185453374949.161446111615304                                ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                            ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                             ; --            ; --          ; --         ;
 ; MISC_FILE                           ; qsys_system/synthesis/../qsys_system.cmp                      ; --            ; --          ; --         ;
@@ -90,7 +90,7 @@ refer to the applicable agreement for further details.
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                  ; --            ; --          ; --         ;
 ; SLD_FILE                            ; qsys_system/synthesis/qsys_system.regmap                      ; --            ; --          ; --         ;
 ; SLD_FILE                            ; qsys_system/synthesis/qsys_system.debuginfo                   ; --            ; --          ; --         ;
-; SLD_INFO                            ; QSYS_NAME qsys_system HAS_SOPCINFO 1 GENERATION_ID 1614455647 ; --            ; qsys_system ; --         ;
+; SLD_INFO                            ; QSYS_NAME qsys_system HAS_SOPCINFO 1 GENERATION_ID 1614460564 ; --            ; qsys_system ; --         ;
 ; SOPCINFO_FILE                       ; qsys_system/synthesis/../../qsys_system.sopcinfo              ; --            ; --          ; --         ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                            ; --            ; --          ; --         ;
 +-------------------------------------+---------------------------------------------------------------+---------------+-------------+------------+
@@ -101,11 +101,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:02:06     ; 1.0                     ; 5009 MB             ; 00:03:15                           ;
-; Fitter               ; 00:00:58     ; 1.3                     ; 5525 MB             ; 00:01:24                           ;
-; Assembler            ; 00:00:07     ; 1.0                     ; 4711 MB             ; 00:00:07                           ;
-; Timing Analyzer      ; 00:00:19     ; 1.6                     ; 4850 MB             ; 00:00:27                           ;
-; Total                ; 00:03:30     ; --                      ; --                  ; 00:05:13                           ;
+; Analysis & Synthesis ; 00:01:51     ; 1.0                     ; 5003 MB             ; 00:02:41                           ;
+; Fitter               ; 00:00:53     ; 1.3                     ; 5513 MB             ; 00:01:16                           ;
+; Assembler            ; 00:00:07     ; 1.0                     ; 4714 MB             ; 00:00:07                           ;
+; Timing Analyzer      ; 00:00:17     ; 1.6                     ; 4851 MB             ; 00:00:22                           ;
+; Total                ; 00:03:08     ; --                      ; --                  ; 00:04:26                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

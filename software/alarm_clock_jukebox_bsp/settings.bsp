@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Feb 27, 2021 9:20:04 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1614457204183</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Feb 27, 2021 10:42:28 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1614462148079</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\idontseeit\Desktop\Justins_Files\school\Master_MNE\M1S2\sys_embarque\alarm_clock_jukebox\software\alarm_clock_jukebox_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\qsys_system.sopcinfo</SopcDesignFile>
@@ -14,7 +14,7 @@
                 <SettingName>hal.sys_clk_timer</SettingName>
                 <Identifier>ALT_SYS_CLK</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>SYS_CLK_timer</Value>
+                <Value>none</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of the system clock timer device. This device provides a periodic interrupt ("tick") and is typically required for RTOS use. This setting defines the value of ALT_SYS_CLK in system.h.</Description>
@@ -917,98 +917,86 @@
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>SYS_CLK_timer</slaveDescriptor>
-                <addressRange>0x00081040 - 0x0008105F</addressRange>
-                <addressSpan>32</addressSpan>
-                <attributes>timer</attributes>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>pwm</slaveDescriptor>
-                <addressRange>0x00081060 - 0x0008106F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>hour1</slaveDescriptor>
-                <addressRange>0x00081070 - 0x0008107F</addressRange>
+                <addressRange>0x00081040 - 0x0008104F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>minute1</slaveDescriptor>
-                <addressRange>0x00081080 - 0x0008108F</addressRange>
+                <addressRange>0x00081050 - 0x0008105F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>second1</slaveDescriptor>
-                <addressRange>0x00081090 - 0x0008109F</addressRange>
+                <addressRange>0x00081060 - 0x0008106F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>buttons</slaveDescriptor>
-                <addressRange>0x000810A0 - 0x000810AF</addressRange>
+                <addressRange>0x00081070 - 0x0008107F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>led_status</slaveDescriptor>
-                <addressRange>0x000810B0 - 0x000810BF</addressRange>
+                <addressRange>0x00081080 - 0x0008108F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>led_alarm</slaveDescriptor>
-                <addressRange>0x000810C0 - 0x000810CF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>speaker</slaveDescriptor>
-                <addressRange>0x000810D0 - 0x000810DF</addressRange>
+                <addressRange>0x00081090 - 0x0008109F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>second0</slaveDescriptor>
-                <addressRange>0x000810E0 - 0x000810EF</addressRange>
+                <addressRange>0x000810A0 - 0x000810AF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>minute0</slaveDescriptor>
-                <addressRange>0x000810F0 - 0x000810FF</addressRange>
+                <addressRange>0x000810B0 - 0x000810BF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>hour0</slaveDescriptor>
-                <addressRange>0x00081100 - 0x0008110F</addressRange>
+                <addressRange>0x000810C0 - 0x000810CF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>led_piano</slaveDescriptor>
-                <addressRange>0x00081110 - 0x0008111F</addressRange>
+                <addressRange>0x000810D0 - 0x000810DF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>switches</slaveDescriptor>
-                <addressRange>0x00081120 - 0x0008112F</addressRange>
+                <addressRange>0x000810E0 - 0x000810EF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>pwm</slaveDescriptor>
+                <addressRange>0x000810F0 - 0x000810FF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>sysid_qsys_0</slaveDescriptor>
-                <addressRange>0x00081130 - 0x00081137</addressRange>
+                <addressRange>0x00081100 - 0x00081107</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x00081138 - 0x0008113F</addressRange>
+                <addressRange>0x00081108 - 0x0008110F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
