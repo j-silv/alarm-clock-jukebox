@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Feb 26, 2021 5:30:35 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1614357035720</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Feb 27, 2021 8:41:36 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1614411696749</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\idontseeit\Desktop\Justins_Files\school\Master_MNE\M1S2\sys_embarque\alarm_clock_jukebox\software\alarm_clock_jukebox_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\qsys_system.sopcinfo</SopcDesignFile>

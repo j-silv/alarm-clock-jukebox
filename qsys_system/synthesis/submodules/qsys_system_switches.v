@@ -81,7 +81,7 @@ reg     [ 31: 0] readdata;
     end
 
 
-  assign irq = |(data_in      & irq_mask);
+  assign irq = |(edge_capture & irq_mask);
   assign edge_capture_wr_strobe = chipselect && ~write_n && (address == 3);
   always @(posedge clk or negedge reset_n)
     begin

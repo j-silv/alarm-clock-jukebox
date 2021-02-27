@@ -4,7 +4,7 @@
  * Machine generated for CPU 'NiosII_CPU' in SOPC Builder design 'qsys_system'
  * SOPC Builder design path: ../../qsys_system.sopcinfo
  *
- * Generated: Fri Feb 26 17:30:37 CET 2021
+ * Generated: Sat Feb 27 08:41:38 CET 2021
  */
 
 /*
@@ -220,7 +220,7 @@
 #define BUTTONS_DATA_WIDTH 2
 #define BUTTONS_DO_TEST_BENCH_WIRING 0
 #define BUTTONS_DRIVEN_SIM_VALUE 0
-#define BUTTONS_EDGE_TYPE "FALLING"
+#define BUTTONS_EDGE_TYPE "RISING"
 #define BUTTONS_FREQ 50000000
 #define BUTTONS_HAS_IN 1
 #define BUTTONS_HAS_OUT 0
@@ -582,7 +582,7 @@
 #define SWITCHES_HAS_TRI 0
 #define SWITCHES_IRQ 2
 #define SWITCHES_IRQ_INTERRUPT_CONTROLLER_ID 0
-#define SWITCHES_IRQ_TYPE "LEVEL"
+#define SWITCHES_IRQ_TYPE "EDGE"
 #define SWITCHES_NAME "/dev/switches"
 #define SWITCHES_RESET_VALUE 0
 #define SWITCHES_SPAN 16
@@ -601,7 +601,7 @@
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1614345661
+#define SYSID_QSYS_0_TIMESTAMP 1614411081
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 

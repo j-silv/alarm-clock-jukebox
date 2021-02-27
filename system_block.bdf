@@ -146,7 +146,7 @@ refer to the applicable agreement for further details.
 	(output)
 	(rect -32 488 144 504)
 	(text "OUTPUT" (rect 137 0 175 10)(font "Arial" (font_size 6)))
-	(text "HEX4[7..0]" (rect 5 0 59 12)(font "Arial" ))
+	(text "HEX4[7..0]" (rect 5 0 58 12)(font "Arial" ))
 	(pt 176 8)
 	(drawing
 		(line (pt 176 8)(pt 124 8))
@@ -164,7 +164,7 @@ refer to the applicable agreement for further details.
 	(output)
 	(rect -32 528 144 544)
 	(text "OUTPUT" (rect 137 0 175 10)(font "Arial" (font_size 6)))
-	(text "HEX5[7..0]" (rect 5 0 59 12)(font "Arial" ))
+	(text "HEX5[7..0]" (rect 5 0 58 12)(font "Arial" ))
 	(pt 176 8)
 	(drawing
 		(line (pt 176 8)(pt 124 8))
@@ -182,7 +182,7 @@ refer to the applicable agreement for further details.
 	(output)
 	(rect -32 688 144 704)
 	(text "OUTPUT" (rect 137 0 175 10)(font "Arial" (font_size 6)))
-	(text "HEX2[7..0]" (rect 5 0 59 12)(font "Arial" ))
+	(text "HEX2[7..0]" (rect 5 0 58 12)(font "Arial" ))
 	(pt 176 8)
 	(drawing
 		(line (pt 176 8)(pt 124 8))
@@ -200,7 +200,7 @@ refer to the applicable agreement for further details.
 	(output)
 	(rect -32 728 144 744)
 	(text "OUTPUT" (rect 137 0 175 10)(font "Arial" (font_size 6)))
-	(text "HEX3[7..0]" (rect 5 0 59 12)(font "Arial" ))
+	(text "HEX3[7..0]" (rect 5 0 58 12)(font "Arial" ))
 	(pt 176 8)
 	(drawing
 		(line (pt 176 8)(pt 124 8))
@@ -218,7 +218,7 @@ refer to the applicable agreement for further details.
 	(output)
 	(rect -32 808 144 824)
 	(text "OUTPUT" (rect 137 0 175 10)(font "Arial" (font_size 6)))
-	(text "HEX0[7..0]" (rect 5 0 59 12)(font "Arial" ))
+	(text "HEX0[7..0]" (rect 5 0 58 12)(font "Arial" ))
 	(pt 176 8)
 	(drawing
 		(line (pt 176 8)(pt 124 8))
@@ -236,7 +236,7 @@ refer to the applicable agreement for further details.
 	(output)
 	(rect -32 848 144 864)
 	(text "OUTPUT" (rect 137 0 175 10)(font "Arial" (font_size 6)))
-	(text "HEX1[7..0]" (rect 5 0 55 17)(font "Intel Clear" ))
+	(text "HEX1[7..0]" (rect 5 0 54 17)(font "Intel Clear" ))
 	(pt 176 8)
 	(drawing
 		(line (pt 176 8)(pt 124 8))
