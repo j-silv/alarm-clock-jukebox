@@ -73,22 +73,38 @@ void timerSecondISR(void* isr_context) {
   struct time clock;
  
   if (mode.display == DISP_CLOCK) {
+
     if (mode.config.on == TRUE) {
       // since we're in config, we don't want to carry the digits
       clock = upClockSecond(CARRY_OFF);
     }
     else if (mode.config.on == FALSE) {
 
-      // since we're not in config, the time should normally count and carry
+      /* since we're not in config, the time should normally count and carry.
+      This also means that if the alarm is turned ON, we need to check if it */
       clock = upClockSecond(CARRY_ON);
+
+      if (mode.alarm == ON) {
+        // however, we do need to check whether or not the alarm should go off
+        struct time alarm;
+        alarm = getAlarmTime();
+
+        /* to avoid executing the following block of code everytime and to only call playSong() once, 
+        we have to check whether or not the time is currently at XX:XX:00. 
+        At 0 seconds, thats when the alarm will be activated */
+        if ( (clock.second == 0) && (alarm.hour == clock.hour) && (alarm.minute == clock.minute) ) {
+          // start the alarm!
+          playSong();
+        }
+      }
+
     }
     else {
-      printf("ERROR: mode.config.on is invalid\n");
+      printf("ERROR: mode.config.on has an invalid value\n");
     }
 
     // since the time is being displayed, we'll have to update the display
     updateDisplay(clock);
-
 
   }
   else {
@@ -156,7 +172,7 @@ void switchesISR(void* isr_context) {
           display.hour = DONT_DISPLAY;
           display.minute = DONT_DISPLAY;
           display.second = getSong();
-          // call playSong() here
+          playSong();
           break;
 
         default:
@@ -182,7 +198,7 @@ void switchesISR(void* isr_context) {
       and then a user decides to turn off said alarm, OR if a user changes from
       the song display menu to any other menu */
       if (mode_request.display != DISP_SONG) {
-        //stopSong();
+        stopSong();
       }
     }
 
@@ -295,7 +311,7 @@ void buttonsISR(void* isr_context) {
           else if (buttons_state == DOWN) {
             display.second = downSong();
           }
-          // call playSong() here
+          playSong();
           break;
 
         default:

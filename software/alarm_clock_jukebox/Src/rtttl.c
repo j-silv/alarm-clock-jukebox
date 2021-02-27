@@ -15,3 +15,13 @@ uint8_t downSong(void) {
   song_index--;
   return song_index;
 }
+
+void playSong(void) {
+  // not yet implemented
+  return;
+}
+
+void stopSong(void) {
+  // not yet implemented
+  return;
+}

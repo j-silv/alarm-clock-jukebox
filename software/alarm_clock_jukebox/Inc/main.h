@@ -115,6 +115,8 @@ struct mode determineMode(void);
 uint8_t getSong(void);
 uint8_t upSong(void);
 uint8_t downSong(void);
+void playSong(void);
+void stopSong(void);
 
 // pwm.c API
 uint8_t getVolume(void);

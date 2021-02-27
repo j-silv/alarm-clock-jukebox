@@ -7,5 +7,7 @@
 uint8_t getSong(void);
 uint8_t upSong(void);
 uint8_t downSong(void);
+void playSong(void);
+void stopSong(void);
 
 #endif
