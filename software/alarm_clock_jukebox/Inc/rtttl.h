@@ -5,5 +5,7 @@
 #include <stdint.h>
 
 uint8_t getSong(void);
+uint8_t upSong(void);
+uint8_t downSong(void);
 
 #endif

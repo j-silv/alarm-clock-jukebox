@@ -16,9 +16,9 @@ struct time upClockHour(void);
 struct time downClockSecond(uint8_t carry_setting);
 struct time downClockMinute(uint8_t carry_setting);
 struct time downClockHour(void);
-struct time upAlarmMinute();
+struct time upAlarmMinute(void);
 struct time upAlarmHour(void);
-struct time downAlarmMinute();
+struct time downAlarmMinute(void);
 struct time downAlarmHour(void);
 
 struct time{

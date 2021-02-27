@@ -11,10 +11,13 @@
 #include <sys/alt_irq.h>
 
 uint8_t timerSecondRegisterISR(void (*timerSecondISR)(void *isr_context));
-void timerSecondEnableInterrupt(void);
 uint8_t switchesRegisterISR(void (*switchesISR)(void *isr_context));
+uint8_t buttonsRegisterISR(void (*buttonsISR)(void *isr_context));
+void timerSecondEnableInterrupt(void);
 void switchesEnableInterrupt(void);
+void buttonsEnableInterrupt(void);
 
 #define SWITCHES_INTERRUPT_MASK 0xFFFF
+#define BUTTONS_INTERRUPT_MASK 0x3
 
 #endif

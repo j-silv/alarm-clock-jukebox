@@ -144,7 +144,6 @@ ELF := alarm_clock_jukebox.elf
 # Paths to C, C++, and assembly source files.
 C_SRCS += Src/main.c
 C_SRCS += Src/display.c
-C_SRCS += Src/button.c
 C_SRCS += Src/interrupt.c
 C_SRCS += Src/led.c
 C_SRCS += Src/time_keeper.c

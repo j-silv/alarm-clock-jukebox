@@ -34,6 +34,18 @@ uint8_t switchesRegisterISR(void (*switchesISR)(void *isr_context)) {
 }
 
 
+uint8_t buttonsRegisterISR(void (*buttonsISR)(void *isr_context)) {
+  uint8_t isr_register_status;
+
+  isr_register_status = alt_ic_isr_register(BUTTONS_IRQ_INTERRUPT_CONTROLLER_ID,
+                                            BUTTONS_IRQ,
+                                            buttonsISR,
+                                            NULL,
+                                            0x0);
+  return isr_register_status;
+}
+
+
 void switchesEnableInterrupt(void) {
   // enable all switches to fire interupts
   IOWR_ALTERA_AVALON_PIO_IRQ_MASK(SWITCHES_BASE, SWITCHES_INTERRUPT_MASK);
@@ -42,3 +54,10 @@ void switchesEnableInterrupt(void) {
   IOWR_ALTERA_AVALON_PIO_EDGE_CAP(SWITCHES_BASE, 0);
 }
 
+void buttonsEnableInterrupt(void) {
+  // enable all buttons to fire interupts
+  IOWR_ALTERA_AVALON_PIO_IRQ_MASK(BUTTONS_BASE, BUTTONS_INTERRUPT_MASK);
+  
+  // reset the edge capture register
+  IOWR_ALTERA_AVALON_PIO_EDGE_CAP(BUTTONS_BASE, 0);
+}

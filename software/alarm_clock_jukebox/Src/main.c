@@ -40,6 +40,14 @@ int main(void) {
    printf("ERROR: switchesISR unsuccessively registered!\n");
   }
 
+  if (buttonsRegisterISR(&buttonsISR) == ISR_REGISTRATION_SUCCESS) {
+    printf("buttonsISR successively registered!\n");
+    buttonsEnableInterrupt();
+  }
+  else {
+   printf("ERROR: buttonsISR unsuccessively registered!\n");
+  }
+
 
 
 
@@ -107,15 +115,6 @@ void switchesISR(void* isr_context) {
   struct mode mode_request;
 
   mode_request = determineMode();
-
-  /*// debugging purposes
-  printf("mode_request.invalid == %d\n", mode_request.invalid);
-  printf("mode_request.display == %d\n", mode_request.display);
-  printf("mode_request.config.on == %d\n", mode_request.config.on);
-  printf("mode_request.config.hour == %d\n", mode_request.config.hour);
-  printf("mode_request.config.minute == %d\n", mode_request.config.minute);
-  printf("mode_request.alarm == %d\n", mode_request.alarm);*/
-
 
   /* if an invalid mode is requested, nothing needs to change except for the mode struct
   if however a valid mode is requested, we have to determine what display to change to
@@ -201,6 +200,115 @@ void switchesISR(void* isr_context) {
   // make sure to update the mode struct before leaving ISR
   mode = mode_request;
   return;
+
+}
+
+
+/* This ISR lets us determine what sort of operation the user wants to perform for the
+correctly active display mode (increase/decrease clock time, song select, etc.).
+Once the requested operation is determined, the system will update the display to match what was requested */
+void buttonsISR(void* isr_context) {
+
+  // if the user is not currently configuring something (time, alarm, etc), then a button press won't do anything
+  if (mode.config.on == FALSE) {
+    printf("ERROR: Not currently in config mode! Button press ignored\n");
+    // we can't forget to reset edge capture register by writing to it though!
+    IOWR_ALTERA_AVALON_PIO_EDGE_CAP(BUTTONS_BASE, 0);
+    return;
+  }
+  else {
+    // determine the operation requested based on the buttons state
+    uint8_t buttons_state = IORD_ALTERA_AVALON_PIO_EDGE_CAP(BUTTONS_BASE);
+
+      /* temporary display struct for data transfer between modules.
+      although the struct's name is time, the information located 
+      in this struct is not necessarily time data. This struct could contain
+      volume or song information as well. */
+      struct time display;
+
+      /* what happens next is entirely dependant on what the current display mode is, whether or not 
+      the button press was an UP or DOWN operation, and finally if the config was for the minute or hour time units.
+      This scary case statement figures it out */
+      switch(mode.display) {
+
+        case DISP_CLOCK: 
+
+          if (buttons_state == UP) {
+            if (mode.config.hour == TRUE) {
+              display = upClockHour();
+            }
+            else if (mode.config.minute == TRUE) {
+              display = upClockMinute(CARRY_OFF);
+            }
+          }
+          else if (buttons_state == DOWN) {
+            if (mode.config.hour == TRUE) {
+              display = downClockHour();
+            }
+            else if (mode.config.minute == TRUE) {
+              display = downClockMinute(CARRY_OFF);
+            }
+          }
+          break;
+
+        case DISP_ALARM:
+
+          if (buttons_state == UP) {
+            if (mode.config.hour == TRUE) {
+              display = upAlarmHour();
+            }
+            else if (mode.config.minute == TRUE) {
+              display = upAlarmMinute();
+            }
+          }
+          else if (buttons_state == DOWN) {
+            if (mode.config.hour == TRUE) {
+              display = downAlarmHour();
+            }
+            else if (mode.config.minute == TRUE) {
+              display = downAlarmMinute();
+            }
+          }
+          break;
+
+
+        case DISP_VOLUME:
+
+          display.hour = DONT_DISPLAY;
+          display.minute = DONT_DISPLAY;
+          if (buttons_state == UP) {
+            display.second = upVolume();
+          }
+          else if (buttons_state == DOWN) {
+            display.second = downVolume();
+          }
+          
+          break;
+
+        case DISP_SONG:
+
+          display.hour = DONT_DISPLAY;
+          display.minute = DONT_DISPLAY;
+          if (buttons_state == UP) {
+            display.second = upSong();
+          }
+          else if (buttons_state == DOWN) {
+            display.second = downSong();
+          }
+          // call playSong() here
+          break;
+
+        default:
+          // if the switches.c module didn't mess up, this should never print!
+          printf("ERORR: The system is currently in an invalid display mode!!\n");
+      }
+
+      // since the display mode was changed, we'll have to update the display
+      updateDisplay(display);  
+    }
+
+  // we can't forget to reset edge capture register by writing to it!
+  IOWR_ALTERA_AVALON_PIO_EDGE_CAP(BUTTONS_BASE, 0);
 
 }
 

@@ -52,6 +52,14 @@ struct mode{
 #define CARRY_OFF 0
 #define CARRY_ON 1
 
+/* the button values that correspond to the requested operations
+-if the button state = 1, then the down button was pressed
+-if the button state = 2, then the up button was pressed
+-if both buttons were pressed (state = 3), then a reset operation was requested  */
+#define DOWN 1
+#define UP 2
+#define RESET 3
+
 #define ISR_REGISTRATION_SUCCESS 0
 #define ISR_REGISTRATION_FAILURE 1
 
@@ -64,12 +72,16 @@ want to show the seconds time unit). */
 // ISRs
 void timerSecondISR(void *isr_context);
 void switchesISR(void *isr_context);
+void buttonsISR(void *isr_context);
+
 
 // interrupt.c API
 uint8_t timerSecondRegisterISR(void (*timerSecondISR)(void *isr_context));
-void timerSecondEnableInterrupt(void);
 uint8_t switchesRegisterISR(void (*switchesISR)(void *isr_context));
+uint8_t buttonsRegisterISR(void (*buttonsISR)(void *isr_context));
+void timerSecondEnableInterrupt(void);
 void switchesEnableInterrupt(void);
+void buttonsEnableInterrupt(void);
 
 // led.c API
 void alarmLEDoff(void);
@@ -101,9 +113,13 @@ struct mode determineMode(void);
 
 // rtttl.c API
 uint8_t getSong(void);
+uint8_t upSong(void);
+uint8_t downSong(void);
 
 // pwm.c API
 uint8_t getVolume(void);
+uint8_t upVolume(void);
+uint8_t downVolume(void);
 
 
 

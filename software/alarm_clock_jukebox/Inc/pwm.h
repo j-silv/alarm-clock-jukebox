@@ -5,6 +5,8 @@
 #include <stdint.h>
 
 uint8_t getVolume(void);
+uint8_t upVolume(void);
+uint8_t downVolume(void);
 
 #endif
 

@@ -127,7 +127,7 @@ struct time getAlarmTime(void) {
 /*--------- up operations -------*/
 
 // MINUTES
-struct time upAlarmMinute() {
+struct time upAlarmMinute(void) {
   if (alarm.minute == (ONE_HOUR-1)) {
     alarm.minute = 0;
   }
@@ -151,7 +151,7 @@ struct time upAlarmHour(void) {
 /*--------- down operations -------*/
 
 // MINUTES
-struct time downAlarmMinute() {
+struct time downAlarmMinute(void) {
   if (alarm.minute == 0) {
     alarm.minute = (ONE_HOUR-1);
   }
