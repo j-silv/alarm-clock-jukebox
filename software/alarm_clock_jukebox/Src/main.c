@@ -7,13 +7,14 @@ struct mode mode;
 
 int main(void) {
 
-  // initialization
+  // initialization to "CLOCK" mode
   mode.invalid = FALSE;
-  mode.display = CLOCK_DISPLAY;
-  mode.alarm = NOT_ARMED;
+  mode.display = DISP_CLOCK;
+  mode.alarm = OFF;
   mode.config.on = FALSE;
   mode.config.hour = FALSE;
   mode.config.minute = FALSE;
+
   alarmLEDoff();
   resetClockTime();
   resetAlarmTime();
@@ -62,7 +63,7 @@ void timerSecondISR(void* isr_context) {
   alarmLEDtoggle();
 
  
-  if (mode.display == CLOCK_DISPLAY) {
+  if (mode.display == DISP_CLOCK) {
     // temporary time struct for data transfer between modules
     struct time clock;
 

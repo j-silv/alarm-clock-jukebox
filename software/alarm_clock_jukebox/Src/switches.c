@@ -14,7 +14,7 @@ struct mode determineMode(void) {
   volatile uint16_t switches_state_request = IORD_ALTERA_AVALON_PIO_DATA(SWITCHES_BASE);
 
   // check if the request is invalid
-  if (checkInvalidMode(switches_state_request) == INVALID_MODE) {
+  if (checkInvalidMode(switches_state_request) == INVALID) {
     mode.invalid = TRUE;
     return mode;
   }
@@ -56,10 +56,10 @@ uint8_t checkInvalidMode(uint16_t switches_state_request) {
   if the switch state is divisible by 2, then it is a valid state
   this means only one switch is currently active */
   if ( ((switches_state_request == 1) || (switches_state_request % 2) == 0) ) {
-    return VALID_MODE;
+    return VALID;
   }
 
   else {
-    return INVALID_MODE;
+    return INVALID;
   }
 }

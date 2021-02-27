@@ -28,8 +28,8 @@ struct time{
 
 #define ONE_HOUR 60
 #define ONE_MINUTE 60
-#define CARRY_ON 0
-#define CARRY_OFF 1
+#define CARRY_OFF 0
+#define CARRY_ON 1
 
 /* if one of the time struct members has 110 as its value, then 
 the corresponding digit will give a BCD value of 11 for the decimal

@@ -1,29 +1,6 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
-// macros
-#define FALSE 0
-#define TRUE 1
-#define NOT_ARMED 2
-#define ARMED 3
-#define CLOCK_DISPLAY 4
-#define ALARM_DISPLAY 5
-#define VOLUME_DISPLAY 6
-#define SONG_DISPLAY 7
-
-#define CARRY_ON 0
-#define CARRY_OFF 1
-#define SECOND 2
-#define MINUTE 3
-#define HOUR 4
-#define UP 5
-#define DOWN 6
-#define CLOCK 7
-#define ALARM 8
-
-#define ISR_REGISTRATION_SUCCESS 0
-#define ISR_REGISTRATION_FAILURE 1
-
 // C libraries
 #include <stdio.h>
 #include <stdint.h>
@@ -51,6 +28,32 @@ struct mode{
   uint8_t alarm;
   struct config config;
 };
+
+// macros
+// values possible for the mode struct members
+
+// mode.invalid = {FALSE, TRUE}
+// mode.config.on = {FALSE, TRUE}
+// mode.config.hour = {FALSE, TRUE}
+// mode.config.minute = {FALSE, TRUE}
+#define FALSE 0 
+#define TRUE 1
+
+// mode.alarm = {OFF, ON}
+#define OFF 0
+#define ON 1
+
+// mode.display = {DISP_CLOCK, DISP_ALARM, DISP_VOLUME, DISP_SONG}
+#define DISP_CLOCK 0
+#define DISP_ALARM 1
+#define DISP_VOLUME 2
+#define DISP_SONG 3
+
+#define CARRY_OFF 0
+#define CARRY_ON 1
+
+#define ISR_REGISTRATION_SUCCESS 0
+#define ISR_REGISTRATION_FAILURE 1
 
 // ISRs
 void timerSecondISR(void *isr_context);

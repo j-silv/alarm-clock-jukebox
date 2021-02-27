@@ -3,6 +3,7 @@
 
 // C libraries
 #include <stdint.h>
+#include <stdbool.h>
 
 // altera bsp
 #include "system.h"
@@ -21,18 +22,27 @@ struct mode{
 };
 
 // values possible for the mode struct members
-#define FALSE 0
+
+// mode.invalid = {FALSE, TRUE}
+// mode.config.on = {FALSE, TRUE}
+// mode.config.hour = {FALSE, TRUE}
+// mode.config.minute = {FALSE, TRUE}
+#define FALSE 0 
 #define TRUE 1
-#define NOT_ARMED 2
-#define ARMED 3
-#define CLOCK_DISPLAY 4
-#define ALARM_DISPLAY 5
-#define VOLUME_DISPLAY 6
-#define SONG_DISPLAY 7
+
+// mode.alarm = {OFF, ON}
+#define OFF 0
+#define ON 1
+
+// mode.display = {DISP_CLOCK, DISP_ALARM, DISP_VOLUME, DISP_SONG}
+#define DISP_CLOCK 0
+#define DISP_ALARM 1
+#define DISP_VOLUME 2
+#define DISP_SONG 3
 
 // error handling when an invalid mode is requested
-#define INVALID_MODE 8
-#define VALID_MODE 9
+#define VALID 0
+#define INVALID 1
 
 struct mode determineMode(void);
 uint8_t checkInvalidMode(uint16_t switches_state_request);
@@ -52,31 +62,29 @@ uint8_t checkInvalidMode(uint16_t switches_state_request);
 // SWITCH 1: switch ON - > config clock minute
 // SWITCH 0: switch ON - > alarm on
 
-// each mode as determined by the switches
-#define CLOCK              0b0000000000      
-#define CONFIG_CLOCK_MIN   0b0000000001
-#define CONFIG_CLOCK_HR    0b0000000010
-#define CONFIG_ALARM_MIN   0b0000000100
-#define CONFIG_ALARM_HR    0b0000001000
-#define CONFIG_SONG        0b0000010000
-#define CONFIG_VOLUME      0b0000100000
-#define ALARM              0b1000000000
-
-// --------- valid modes ----------
+// each mode as determined by the switches (prefix SW to indicate SWITCHES)
+#define SW_CLOCK              0b0000000000      
+#define SW_CONFIG_CLOCK_MIN   0b0000000001
+#define SW_CONFIG_CLOCK_HR    0b0000000010
+#define SW_CONFIG_ALARM_MIN   0b0000000100
+#define SW_CONFIG_ALARM_HR    0b0000001000
+#define SW_CONFIG_SONG        0b0000010000
+#define SW_CONFIG_VOLUME      0b0000100000
+#define SW_ALARM              0b1000000000
 
 #define NUM_VALID_MODES 8
 #define NUM_MODE_STRUCT_MEMBERS 6
 
 const uint16_t mode_lookup_table[NUM_VALID_MODES][NUM_MODE_STRUCT_MEMBERS] = {
-  //  MODE               DISPLAY         CONFIG.ON  CONFIG.HOUR  CONFIG.MINUTE  ALARM
-  {   CLOCK,             CLOCK_DISPLAY,  FALSE,     FALSE,       FALSE,         NOT_ARMED  },
-  {   CONFIG_CLOCK_MIN,  CLOCK_DISPLAY,  TRUE,      FALSE,       TRUE,          NOT_ARMED  },
-  {   CONFIG_CLOCK_HR,   CLOCK_DISPLAY,  TRUE,      TRUE,        FALSE,         NOT_ARMED  },
-  {   CONFIG_ALARM_MIN,  ALARM_DISPLAY,  TRUE,      FALSE,       TRUE,          NOT_ARMED  },
-  {   CONFIG_ALARM_HR,   ALARM_DISPLAY,  TRUE,      TRUE,        FALSE,         NOT_ARMED  },
-  {   CONFIG_SONG,       SONG_DISPLAY,   TRUE,      FALSE,       FALSE,         NOT_ARMED  },
-  {   CONFIG_VOLUME,     VOLUME_DISPLAY, TRUE,      FALSE,       FALSE,         NOT_ARMED  },
-  {   ALARM,             CLOCK_DISPLAY,  FALSE,     FALSE,       FALSE,         ARMED      },
+  //  MODE                  DISPLAY        CONFIG.ON  CONFIG.HOUR  CONFIG.MINUTE  ALARM
+  {   SW_CLOCK,             DISP_CLOCK,    FALSE,     FALSE,       FALSE,         OFF  },
+  {   SW_CONFIG_CLOCK_MIN,  DISP_CLOCK,    TRUE,      FALSE,       TRUE,          OFF  },
+  {   SW_CONFIG_CLOCK_HR,   DISP_CLOCK,    TRUE,      TRUE,        FALSE,         OFF  },
+  {   SW_CONFIG_ALARM_MIN,  DISP_ALARM,    TRUE,      FALSE,       TRUE,          OFF  },
+  {   SW_CONFIG_ALARM_HR,   DISP_ALARM,    TRUE,      TRUE,        FALSE,         OFF  },
+  {   SW_CONFIG_SONG,       DISP_SONG,     TRUE,      FALSE,       FALSE,         OFF  },
+  {   SW_CONFIG_VOLUME,     DISP_VOLUME,   TRUE,      FALSE,       FALSE,         OFF  },
+  {   SW_ALARM,             DISP_CLOCK,    FALSE,     FALSE,       FALSE,         ON   },
 };
 
 // --------- invalid modes ----------
