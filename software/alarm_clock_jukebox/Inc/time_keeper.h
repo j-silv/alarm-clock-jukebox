@@ -8,6 +8,8 @@
 // API
 void resetClockTime(void);
 void resetAlarmTime(void);
+struct time getClockTime(void);
+struct time getAlarmTime(void);
 struct time upClockSecond(uint8_t carry_setting);
 struct time upClockMinute(uint8_t carry_setting);
 struct time upClockHour(void);
@@ -31,17 +33,16 @@ struct time{
 #define CARRY_OFF 0
 #define CARRY_ON 1
 
-/* if one of the time struct members has 110 as its value, then 
-the corresponding digit will give a BCD value of 11 for the decimal
-place digit and 10 for the ones place. the COM_ANODE_SEG[] array
-will then access indexes 11 and 10, which are 0xFF and turn off the digits */
-#define DIGITS_OFF 110
+/* this is a macro for the time struct, which will explicitly let the display module know to
+not display the digits for a particular time unit (for example, in alarm config mode, we don't
+want to show the seconds time unit). */
+#define DONT_DISPLAY 100
 
 /* default time that the clock is set to is used for debugging purposes (carry tests)
 ... however in theory it could be set to the computer's current time at programming time 
 with some C magic */
 const uint8_t reset_clock_value [] = {
-  23, // hour
+  11, // hour
   59, // minute
   0   // second
 };

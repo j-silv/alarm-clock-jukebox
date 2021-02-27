@@ -149,6 +149,8 @@ C_SRCS += Src/interrupt.c
 C_SRCS += Src/led.c
 C_SRCS += Src/time_keeper.c
 C_SRCS += Src/switches.c
+C_SRCS += Src/pwm.c
+C_SRCS += Src/rtttl.c
 CXX_SRCS :=
 ASM_SRCS :=
 

@@ -55,6 +55,12 @@ struct mode{
 #define ISR_REGISTRATION_SUCCESS 0
 #define ISR_REGISTRATION_FAILURE 1
 
+/* this is a macro for the time struct, which will explicitly let the display module know to
+not display the digits for a particular time unit (for example, in alarm config mode, we don't
+want to show the seconds time unit). */
+#define DONT_DISPLAY 100
+
+
 // ISRs
 void timerSecondISR(void *isr_context);
 void switchesISR(void *isr_context);
@@ -70,9 +76,11 @@ void alarmLEDoff(void);
 void alarmLEDon(void);
 void alarmLEDtoggle(void);
 
-// time.c API
+// time_keeper.c API
 void resetClockTime(void);
 void resetAlarmTime(void);
+struct time getClockTime(void);
+struct time getAlarmTime(void);
 struct time upClockSecond(uint8_t carry_setting);
 struct time upClockMinute(uint8_t carry_setting);
 struct time upClockHour(void);
@@ -90,6 +98,12 @@ void updateDisplay(struct time time);
 
 // switches.c API
 struct mode determineMode(void);
+
+// rtttl.c API
+uint8_t getSong(void);
+
+// pwm.c API
+uint8_t getVolume(void);
 
 
 

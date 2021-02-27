@@ -20,13 +20,37 @@ void updateDisplay(struct time time) {
   uint8_t bcd[6];
   uint8_t ledseg[6];
 
-  // determine BCD values for hours, minutes, seconds
-  bcd[5] = time.hour/10;
-  bcd[4] = time.hour - bcd[5]*10;
-  bcd[3] = time.minute/10;
-  bcd[2] = time.minute - bcd[3]*10;
-  bcd[1] = time.second/10;
-  bcd[0] = time.second - bcd[1]*10;
+  /* determine BCD values for hours, minutes, seconds...
+  it's possible that the particular time struct member was set to a predefined
+  DIGITS_OFF value, which signifies that the display should CLEAR the associated time unit digits..
+  this is a sort of hacky way to check, but for right now it's fine.*/
+
+  if (time.hour == DONT_DISPLAY) {
+    bcd[5] = DIGITS_OFF;
+    bcd[4] = DIGITS_OFF;
+  }
+  else {
+    bcd[5] = time.hour/10;
+    bcd[4] = time.hour - bcd[5]*10;
+  }
+  if (time.minute == DONT_DISPLAY) {
+    bcd[3] = DIGITS_OFF;
+    bcd[2] = DIGITS_OFF;
+  }
+  else {
+    bcd[3] = time.minute/10;
+    bcd[2] = time.minute - bcd[3]*10;
+  }
+
+  if (time.second == DONT_DISPLAY) {
+    bcd[1] = DIGITS_OFF;
+    bcd[0] = DIGITS_OFF;
+  }
+
+  else {
+    bcd[1] = time.second/10;
+    bcd[0] = time.second - bcd[1]*10;
+  }
 
   // convert BCD values to LED segment values
   ledseg[5] = COM_ANODE_SEG_TABLE[(bcd[5])];

@@ -1803,6 +1803,26 @@
 						<entry kind="macro" name="SMALL_C_LIB" value=""/>
 						<entry kind="macro" name="__hal__" value=""/>
 					</resource>
+					<resource project-relative-path="Src/pwm.c">
+						<entry kind="includePath" name="/alarm_clock_jukebox_bsp/HAL/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="includePath" name="/alarm_clock_jukebox_bsp">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="includePath" name="/alarm_clock_jukebox_bsp/drivers/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/Inc">
+							<flag value="VALUE_WORKSPACE_PATH"/>
+						</entry>
+						<entry kind="macro" name="ALT_NO_C_PLUS_PLUS" value=""/>
+						<entry kind="macro" name="ALT_NO_INSTRUCTION_EMULATION" value=""/>
+						<entry kind="macro" name="ALT_SINGLE_THREADED" value=""/>
+						<entry kind="macro" name="ALT_USE_SMALL_DRIVERS" value=""/>
+						<entry kind="macro" name="SMALL_C_LIB" value=""/>
+						<entry kind="macro" name="__hal__" value=""/>
+					</resource>
 					<resource project-relative-path="drivers/src/altera_avalon_jtag_uart_fd.c">
 						<entry kind="includePath" name="/alarm_clock_jukebox_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
@@ -1931,6 +1951,26 @@
 						</entry>
 						<entry kind="includePath" name="/alarm_clock_jukebox_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="macro" name="ALT_NO_C_PLUS_PLUS" value=""/>
+						<entry kind="macro" name="ALT_NO_INSTRUCTION_EMULATION" value=""/>
+						<entry kind="macro" name="ALT_SINGLE_THREADED" value=""/>
+						<entry kind="macro" name="ALT_USE_SMALL_DRIVERS" value=""/>
+						<entry kind="macro" name="SMALL_C_LIB" value=""/>
+						<entry kind="macro" name="__hal__" value=""/>
+					</resource>
+					<resource project-relative-path="Src/rtttl.c">
+						<entry kind="includePath" name="/alarm_clock_jukebox_bsp/HAL/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="includePath" name="/alarm_clock_jukebox_bsp">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="includePath" name="/alarm_clock_jukebox_bsp/drivers/inc">
+							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
+						</entry>
+						<entry kind="includePath" name="/${ProjName}/Inc">
+							<flag value="VALUE_WORKSPACE_PATH"/>
 						</entry>
 						<entry kind="macro" name="ALT_NO_C_PLUS_PLUS" value=""/>
 						<entry kind="macro" name="ALT_NO_INSTRUCTION_EMULATION" value=""/>

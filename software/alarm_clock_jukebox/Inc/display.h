@@ -38,11 +38,10 @@ dec   binary    hex
 */
 
 // array position [0] corresponds to displaying 0, [1] -> 1, etc.
-// position [10] and position [11] -> all segments are OFF. If a member of the time
-// struct has a BCD value of 10 or 11, then after BCD to LED conversion, the resulting digits
-// will be off (for ex, if seconds = 110, then bcd[1] = 11, and bcd[0] = 10. Thus after referencing
-// the COM_ANODE_SEG_TABLE, they will both be 0)
-const uint8_t COM_ANODE_SEG_TABLE[] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0xFF,0xFF};
+// position [10] -> all segments are OFF. If a member of the time
+// struct has a BCD value of 10, then after BCD to LED conversion, the resulting digits for that time unit
+// will be off. Thus after referencing the COM_ANODE_SEG_TABLE, those time unit digits will be OFF
+const uint8_t COM_ANODE_SEG_TABLE[] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0xFF};
 
 #define RESET_DISPLAY_VALUE 0xC0
 
@@ -54,6 +53,15 @@ const uint8_t COM_ANODE_SEG_TABLE[] = {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0
 #define NUM_TIME_UNITS 3
 // what is the precision of each time unit (how many digits for each time unit)
 #define NUM_DIGITS_FOR_UNIT 2
+
+/* this is a macro for the time struct, which will explicitly let the display module know to
+not display the digits for a particular time unit (for example, in alarm config mode, we don't
+want to show the seconds time unit). */
+#define DONT_DISPLAY 100
+
+/* if the DONT_DISPLAY macro was detected within one of the time struct members, this macro gives the index
+of the COM_ANODE_SEG_TABLE where the LED segments will be turned off. */
+#define DIGITS_OFF 10
 
 struct time{
   uint8_t hour;

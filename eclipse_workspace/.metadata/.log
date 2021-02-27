@@ -1382,3 +1382,40 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 10:35:20.471
 !MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614411081 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 13:37:56.306
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x81100 --id=0x12345678 --timestamp=1614411081]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 13:37:59.610
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614411081 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 14:19:39.024
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 14:19:40.183
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x81100 --id=0x12345678 --timestamp=1614411081]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 14:19:43.525
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614411081 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 14:29:31.010
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 14:29:32.084
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --sidp=0x81100 --id=0x12345678 --timestamp=1614411081 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 14:29:36.328
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --tcpport=auto --sidp=0x81100 --id=0x12345678 --timestamp=1614411081]
+
+!ENTRY org.eclipse.cdt.debug.mi.core 4 42 2021-02-27 14:38:01.607
+!MESSAGE Internal Error
+!STACK 0
+org.eclipse.cdt.debug.mi.core.cdi.MI2CDIException: Inferior terminated[]
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.getMIShareds(SharedLibraryManager.java:123)
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.updateState(SharedLibraryManager.java:189)
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.update(SharedLibraryManager.java:137)
+	at org.eclipse.cdt.debug.mi.core.cdi.EventManager.processSuspendedEvent(EventManager.java:329)
+	at org.eclipse.cdt.debug.mi.core.cdi.EventManager.update(EventManager.java:101)
+	at java.util.Observable.notifyObservers(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.MISession.notifyObservers(MISession.java:797)
+	at org.eclipse.cdt.debug.mi.core.EventThread.run(EventThread.java:47)

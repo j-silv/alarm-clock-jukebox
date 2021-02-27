@@ -17,6 +17,10 @@ void resetClockTime(void) {
   clock.second = reset_clock_value[2];
 }
 
+struct time getClockTime(void) {
+  return clock;
+}
+
 /*--------- up operations -------*/
 
 // SECONDS
@@ -112,8 +116,12 @@ void resetAlarmTime(void) {
   // value assignment won't work
   alarm =  (struct time){0};
 
-  // we explicitly turn the second digits off
-  alarm.second = DIGITS_OFF;
+  // we explicitly request that the seconds are not displayed
+  alarm.second = DONT_DISPLAY;
+}
+
+struct time getAlarmTime(void) {
+  return alarm;
 }
 
 /*--------- up operations -------*/
