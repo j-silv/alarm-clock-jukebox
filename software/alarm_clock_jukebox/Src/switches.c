@@ -49,17 +49,66 @@ struct mode determineMode(void) {
 }
 
 uint8_t checkInvalidMode(uint16_t switches_state_request) {
-  /* check edge case -> if the switches_state is equal to 1, then this is a valid state
-  we have to check this, because, for example, 5 mod 2 = 1 mod 2 = 1, whereas
-  the latter is a valid state, but the former is not!
+  // check if an unused switch was turned on
+  uint8_t i = 0;
 
-  if the switch state is divisible by 2, then it is a valid state
-  this means only one switch is currently active */
-  if ( ((switches_state_request == 1) || (switches_state_request % 2) == 0) ) {
+  do {
+    // if the entire array of unused_switches was searched but an
+    // unused switch was not activated, then exit while loop
+    if (i == NUM_UNUSED_SWITCHES) {
+      break;
+    }
+    // if an unused switch was activated, exit function and indicate that
+    // an invalid mode was selected
+    else if (switches_state_request == unused_switches[i]) {
+      return INVALID;
+    }
+
+    // increment index of unused_switches array
+    i++;
+
+  } while(1);
+
+  // now that we know an unused switch is not activated, we need to verify that 
+  // the used switches are in a valid configuration
+  if ( isPowerOfTwoOrZero(switches_state_request) == TRUE ) {
     return VALID;
   }
 
   else {
     return INVALID;
+  }
+}
+
+
+/***** Determining whether or not a single switch is active (valid mode) ****
+
+if the switch state is a power of 2 or 0, then
+it is a valid mode. Otherwise more than one switch is activated, which 
+means that the mode requested is invalid....
+---------------------------------------------
+example with 3 bits: 000
+
+valid modes (power of 2 or 0)       : 0, 1, 2, 4
+invalid modes (not power of 2 or 0) : 3, 5, 6, 7
+
+0 & -1  = 0 -> valid!
+1 & 0   = 0 -> valid!
+2 & 1   = 0 -> valid!
+4 & 3   = 0 -> valid!
+
+3 & 2  != 0 -> invalid!
+5 & 4  != 0 -> invalid!
+6 & 5  != 0 -> invalid!
+7 & 6  != 0 -> invalid!
+---------------------------------------------
+*/ 
+
+uint8_t isPowerOfTwoOrZero(uint16_t value) {
+  if ((value & (value-1)) == 0) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
   }
 }

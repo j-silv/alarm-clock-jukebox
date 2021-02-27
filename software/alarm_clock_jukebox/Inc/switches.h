@@ -46,6 +46,7 @@ struct mode{
 
 struct mode determineMode(void);
 uint8_t checkInvalidMode(uint16_t switches_state_request);
+uint8_t isPowerOfTwoOrZero(uint16_t value);
 
 //      |SWITCHES|
 // | = = = = = = = = = = = |
@@ -72,6 +73,14 @@ uint8_t checkInvalidMode(uint16_t switches_state_request);
 #define SW_CONFIG_VOLUME      0b0000100000
 #define SW_ALARM              0b1000000000
 
+// unimplemented modes are for the following switches:
+const uint16_t unused_switches[] = {
+                              0b0001000000, 
+                              0b0010000000, 
+                              0b0100000000
+};
+
+#define NUM_UNUSED_SWITCHES 3
 #define NUM_VALID_MODES 8
 #define NUM_MODE_STRUCT_MEMBERS 6
 

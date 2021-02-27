@@ -1364,3 +1364,21 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 09:36:42.830
 !MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614411081 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 09:57:31.685
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 09:57:32.629
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x81100 --id=0x12345678 --timestamp=1614411081]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 09:57:35.716
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614411081 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 10:35:16.106
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 10:35:17.139
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop --sidp=0x81100 --id=0x12345678 --timestamp=1614411081]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2021-02-27 10:35:20.471
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x81100 --id=0x12345678 --timestamp=1614411081 /cygdrive/c/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox/alarm_clock_jukebox.elf]
