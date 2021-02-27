@@ -7,6 +7,11 @@ struct mode mode;
 
 int main(void) {
 
+  testPWM();
+
+
+
+
   // initialization to "CLOCK" mode
   mode.invalid = FALSE;
   mode.display = DISP_CLOCK;

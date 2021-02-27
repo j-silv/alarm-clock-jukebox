@@ -1,25 +1,53 @@
-15:31:05 **** Incremental Build of configuration Nios II for project alarm_clock_jukebox ****
+22:01:07 **** Build of configuration Nios II for project alarm_clock_jukebox ****
 make all 
 Info: Building ../alarm_clock_jukebox_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../alarm_clock_jukebox_bsp/
 [BSP build complete]
+Info: Compiling Src/altera_avalon_pwm_routines.c to obj/default/Src/altera_avalon_pwm_routines.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/altera_avalon_pwm_routines.o Src/altera_avalon_pwm_routines.c
+Info: Compiling Src/display.c to obj/default/Src/display.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/display.o Src/display.c
+Info: Compiling Src/hello_altera_avalon_pwm.c to obj/default/Src/hello_altera_avalon_pwm.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/hello_altera_avalon_pwm.o Src/hello_altera_avalon_pwm.c
+Src/hello_altera_avalon_pwm.c: In function 'testPWM':
+Src/hello_altera_avalon_pwm.c:69:8: warning: 'return' with a value, in function returning void
+ return 0;
+        ^
+Info: Compiling Src/interrupt.c to obj/default/Src/interrupt.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/interrupt.o Src/interrupt.c
+Info: Compiling Src/led.c to obj/default/Src/led.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/led.o Src/led.c
 Info: Compiling Src/main.c to obj/default/Src/main.o
 nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/main.o Src/main.c
+Info: Compiling Src/pwm.c to obj/default/Src/pwm.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/pwm.o Src/pwm.c
+Info: Compiling Src/rtttl.c to obj/default/Src/rtttl.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/rtttl.o Src/rtttl.c
+Info: Compiling Src/switches.c to obj/default/Src/switches.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/switches.o Src/switches.c
+Info: Compiling Src/time_keeper.c to obj/default/Src/time_keeper.o
+nios2-elf-gcc -xc -MP -MMD -c -I../alarm_clock_jukebox_bsp//HAL/inc -I../alarm_clock_jukebox_bsp/ -I../alarm_clock_jukebox_bsp//drivers/inc -IInc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/Src/time_keeper.o Src/time_keeper.c
 Info: Linking alarm_clock_jukebox.elf
-nios2-elf-g++  -T'../alarm_clock_jukebox_bsp//linker.x' -msys-crt0='../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../alarm_clock_jukebox_bsp/  -msmallc  -Wl,-Map=alarm_clock_jukebox.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o alarm_clock_jukebox.elf obj/default/Src/display.o obj/default/Src/interrupt.o obj/default/Src/led.o obj/default/Src/main.o obj/default/Src/pwm.o obj/default/Src/rtttl.o obj/default/Src/switches.o obj/default/Src/time_keeper.o -lm -msys-lib=m
-nios2-elf-insert alarm_clock_jukebox.elf --thread_model hal --cpu_name NiosII_CPU --qsys true --simulation_enabled false --id 305419896 --sidp 0x81100 --timestamp 1614411081 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name qsys_system --quartus_project_dir "C:/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox" --jdi ../..//output_files/system_block.jdi --sopcinfo C:/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox_bsp/../../qsys_system.sopcinfo
-Info: (alarm_clock_jukebox.elf) 16 KBytes program size (code + initialized data).
-Info:                           142 KBytes free for stack + heap.
+nios2-elf-g++  -T'../alarm_clock_jukebox_bsp//linker.x' -msys-crt0='../alarm_clock_jukebox_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../alarm_clock_jukebox_bsp/  -msmallc  -Wl,-Map=alarm_clock_jukebox.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o alarm_clock_jukebox.elf obj/default/Src/altera_avalon_pwm_routines.o obj/default/Src/display.o obj/default/Src/hello_altera_avalon_pwm.o obj/default/Src/interrupt.o obj/default/Src/led.o obj/default/Src/main.o obj/default/Src/pwm.o obj/default/Src/rtttl.o obj/default/Src/switches.o obj/default/Src/time_keeper.o -lm -msys-lib=m
+nios2-elf-insert alarm_clock_jukebox.elf --thread_model hal --cpu_name NiosII_CPU --qsys true --simulation_enabled false --id 305419896 --sidp 0x81130 --timestamp 1614455647 --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name qsys_system --quartus_project_dir "C:/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox" --jdi ../..//output_files/system_block.jdi --sopcinfo C:/Users/idontseeit/Desktop/Justins_Files/school/Master_MNE/M1S2/sys_embarque/alarm_clock_jukebox/software/alarm_clock_jukebox_bsp/../../qsys_system.sopcinfo
+Info: (alarm_clock_jukebox.elf) 18 KBytes program size (code + initialized data).
+Info:                           140 KBytes free for stack + heap.
 Info: Creating alarm_clock_jukebox.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source alarm_clock_jukebox.elf >alarm_clock_jukebox.objdump
 [alarm_clock_jukebox build complete]
-15:31:16 **** Build of configuration Nios II for project alarm_clock_jukebox ****
+22:01:54 **** Build of configuration Nios II for project alarm_clock_jukebox ****
 make all 
 Info: Building ../alarm_clock_jukebox_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../alarm_clock_jukebox_bsp/
 [BSP build complete]
 [alarm_clock_jukebox build complete]
-15:31:20 **** Incremental Build of configuration Nios II for project alarm_clock_jukebox ****
+22:02:31 **** Build of configuration Nios II for project alarm_clock_jukebox ****
+make all 
+Info: Building ../alarm_clock_jukebox_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../alarm_clock_jukebox_bsp/
+[BSP build complete]
+[alarm_clock_jukebox build complete]
+22:02:47 **** Incremental Build of configuration Nios II for project alarm_clock_jukebox ****
 make all 
 Info: Building ../alarm_clock_jukebox_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../alarm_clock_jukebox_bsp/

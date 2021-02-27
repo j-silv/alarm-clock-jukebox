@@ -5,10 +5,11 @@
 			hour0_external_connection_export      : out std_logic_vector(7 downto 0);                    -- export
 			hour1_external_connection_export      : out std_logic_vector(7 downto 0);                    -- export
 			led_alarm_external_connection_export  : out std_logic;                                       -- export
+			led_piano_external_connection_export  : out std_logic_vector(6 downto 0);                    -- export
 			led_status_external_connection_export : out std_logic_vector(1 downto 0);                    -- export
-			ledr_external_connection_export       : out std_logic_vector(6 downto 0);                    -- export
 			minute0_external_connection_export    : out std_logic_vector(7 downto 0);                    -- export
 			minute1_external_connection_export    : out std_logic_vector(7 downto 0);                    -- export
+			pwm_external_connection_export        : out std_logic;                                       -- export
 			reset_reset_n                         : in  std_logic                    := 'X';             -- reset_n
 			second0_external_connection_export    : out std_logic_vector(7 downto 0);                    -- export
 			second1_external_connection_export    : out std_logic_vector(7 downto 0);                    -- export

@@ -1,6 +1,6 @@
-15:00:11 **** Incremental Build of configuration Nios II for project alarm_clock_jukebox_bsp ****
+21:29:11 **** Build of configuration Nios II for project alarm_clock_jukebox_bsp ****
 make all 
 [BSP build complete]
 
-15:00:14 Build Finished (took 3s.160ms)
+21:29:16 Build Finished (took 4s.259ms)
 

@@ -150,6 +150,8 @@ C_SRCS += Src/time_keeper.c
 C_SRCS += Src/switches.c
 C_SRCS += Src/pwm.c
 C_SRCS += Src/rtttl.c
+C_SRCS += Src/altera_avalon_pwm_routines.c
+C_SRCS += Src/hello_altera_avalon_pwm.c
 CXX_SRCS :=
 ASM_SRCS :=
 
