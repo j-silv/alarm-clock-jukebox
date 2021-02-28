@@ -29,6 +29,12 @@ struct mode{
   struct config config;
 };
 
+struct note_info {
+  int frequency;
+  int duration;
+  int endofsong;
+};
+
 // macros
 // values possible for the mode struct members
 
@@ -73,15 +79,23 @@ want to show the seconds time unit). */
 void timerSecondISR(void *isr_context);
 void switchesISR(void *isr_context);
 void buttonsISR(void *isr_context);
+void timerPWMISR(void *isr_context);
 
 
 // interrupt.c API
+
 uint8_t timerSecondRegisterISR(void (*timerSecondISR)(void *isr_context));
-uint8_t switchesRegisterISR(void (*switchesISR)(void *isr_context));
-uint8_t buttonsRegisterISR(void (*buttonsISR)(void *isr_context));
 void timerSecondEnableInterrupt(void);
-void switchesEnableInterrupt(void);
+
+uint8_t buttonsRegisterISR(void (*buttonsISR)(void *isr_context));
 void buttonsEnableInterrupt(void);
+
+uint8_t switchesRegisterISR(void (*switchesISR)(void *isr_context));
+void switchesEnableInterrupt(void);
+
+uint8_t timerPWMRegisterISR(void (*timerPWMISR)(void *isr_context));
+void timerPWMEnableInterrupt(int timeout);
+void timerPWMDisableInterrupt(void);
 
 // led.c API
 void alarmLEDoff(void);
@@ -115,8 +129,8 @@ struct mode determineMode(void);
 uint8_t getSong(void);
 uint8_t upSong(void);
 uint8_t downSong(void);
-void playSong(void);
-void stopSong(void);
+struct note_info playSong(void);
+struct note_info getNote(void);
 
 // pwm.c API
 uint8_t getVolume(void);
@@ -124,6 +138,8 @@ uint8_t upVolume(void);
 uint8_t downVolume(void);
 void default500HzSquareWave(void);
 void testPWM(void);
+void stopPWM(void);
+void writePWM(int frequency);
 
 
 #endif

@@ -8,6 +8,8 @@
 #include "system.h"
 #include <stdio.h>
 
+#define NIOS_CLOCK_FREQ 50000000
+
 uint8_t getVolume(void);
 uint8_t upVolume(void);
 uint8_t downVolume(void);
@@ -15,6 +17,10 @@ void print_error(unsigned int address, int return_code);
 void check_return_code(unsigned int address, int return_code);
 void testPWM(void);
 void default500HzSquareWave(void);
+void stopPWM(void);
+void writePWM(int frequency);
+
+
 
 #endif
 

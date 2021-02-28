@@ -61,3 +61,37 @@ void buttonsEnableInterrupt(void) {
   // reset the edge capture register
   IOWR_ALTERA_AVALON_PIO_EDGE_CAP(BUTTONS_BASE, 0);
 }
+
+
+uint8_t timerPWMRegisterISR(void (*timerPWMISR)(void *isr_context)) {
+  uint8_t isr_register_status;
+
+  isr_register_status = alt_ic_isr_register(TIMER_PWM_IRQ_INTERRUPT_CONTROLLER_ID,
+                                            TIMER_PWM_IRQ,
+                                            timerPWMISR,
+                                            NULL,
+                                            0x0);
+  return isr_register_status;
+}
+
+void timerPWMEnableInterrupt(int timeout) {
+  // timeout is in miliseconds -> convert to seconds
+  // set period based on input timeout variable; writing to the period 
+  // registers stops the counter which automatically loads reigster value
+  uint32_t period = (NIOS_CLOCK_FREQ/1000)*timeout;
+
+  //write to high and low registers
+  IOWR_ALTERA_AVALON_TIMER_PERIODL(TIMER_PWM_BASE, period);
+  // shift by 16 to take into account high bits
+  IOWR_ALTERA_AVALON_TIMER_PERIODH(TIMER_PWM_BASE, (period >> AVALON_TIMER_PERIOD_WIDTH));
+
+  // start timer and enable interrupt
+  IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_PWM_BASE, 
+                 ALTERA_AVALON_TIMER_CONTROL_START_MSK
+               | ALTERA_AVALON_TIMER_CONTROL_ITO_MSK);
+}
+
+void timerPWMDisableInterrupt(void) {
+  // set ITO to 0 (thus disabling interrupts)
+  IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_PWM_BASE, 0);
+}
