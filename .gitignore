@@ -1,1 +1,14 @@
 *.flock
+
+# ignore visual studio code stuff
+*.vscode/
+*.code-workspace
+
+# ignore unnecessary Quartus/Eclipse files
+db/
+incremental_db/
+eclipse_workspace/
+.qsys_edit/
+qsys_system/
+
+
