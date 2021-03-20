@@ -8,7 +8,7 @@ The ringtones are played using RTTTL (Ring Tones Text Transfer Language).
 ## Navigating the repo:
 
 The C source code can be found in the software/ folder.
-The block diagrams for the device can be found in the diagrams/ folder.
+Schematics and software flowcharts for the device can be found in the diagrams/ folder.
 
 ## Features
 
