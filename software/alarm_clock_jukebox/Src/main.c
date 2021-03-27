@@ -7,7 +7,7 @@ struct mode mode;
 
 int main(void) {
 
-  // initialization to "CLOCK" mode
+  // modde initialization: free running clock mode
   mode.invalid = FALSE;
   mode.display = DISP_CLOCK;
   mode.alarm = OFF;
@@ -15,15 +15,13 @@ int main(void) {
   mode.config.hour = FALSE;
   mode.config.minute = FALSE;
 
+  // module intialization
   alarmLEDoff();
   resetClockTime();
   resetAlarmTime();
   resetDisplay();
 
-  /* the callback ISR is passed in for the registration. When the timer peripheral
-  fires its interrupt, timerSecondISR() will be called
-  timerSecondISR can be preceded with or without & (both pass in the function address); 
-  because a function’s name can also be used to get function's address */
+  // ISR registration
   if (timerSecondRegisterISR(&timerSecondISR) == ISR_REGISTRATION_SUCCESS) {
     printf("timerSecondISR successively registered!\n");
     timerSecondEnableInterrupt();
@@ -55,49 +53,46 @@ int main(void) {
    printf("ERROR: timerPWMISR unsuccessively registered!\n");
   }
 
-
-
   while(1) {}  
 }
 
 
 // -------------- ISR callbacks -------------------
 
-
-/* This is the main ISR that is called whenever the second timer fires its interrupt. 
-This ISR lets us update the time of the clock and depending on whether or not the user
+/* ISR: update the time of the clock and depending on whether or not the user
 is in config mode, carry the time digits. */
 void timerSecondISR(void* isr_context) {
 
-  /* The TO (timeout) bit is set to 1 when the internal counter reaches zero. Once set by a
-  timeout event, the TO bit stays set until explicitly cleared by a master peripheral. 
-  The TO bit is cleared by writing 0 to the status register. */
+  // clear timeout bit because the internal counter for the timer reached zero
   IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_SECOND_BASE, 0);
 
-  // temporary time struct for data transfer between modules and printf debugging
+  // temporary time struct for data transfer between modules and for printf debugging
   struct time clock;
  
   if (mode.display == DISP_CLOCK) {
-
     if (mode.config.on == TRUE) {
-      // since we're in config, we don't want to carry the digits
+
+      // digits should not carry over while configuring the time
       clock = upClockSecond(CARRY_OFF);
+
     }
     else if (mode.config.on == FALSE) {
 
-      /* since we're not in config, the time should normally count and carry.
-      This also means that if the alarm is turned ON, we need to check if it */
+      // since we're not in config mode, the time 
+      // should normally count and carry.
       clock = upClockSecond(CARRY_ON);
 
+      // check the alarm
       if (mode.alarm == ON) {
-        // however, we do need to check whether or not the alarm should go off
+
         struct time alarm;
         alarm = getAlarmTime();
 
         /* to avoid executing the following block of code everytime and to only call playSong() once, 
         we have to check whether or not the time is currently at XX:XX:00. 
-        At 0 seconds, thats when the alarm will be activated */
+        --> at 0 seconds, thats when the alarm will be activated */
         if ( (clock.second == 0) && (alarm.hour == clock.hour) && (alarm.minute == clock.minute) ) {
+
           // start the alarm!
           struct note_info note;
           note = playSong();
@@ -106,6 +101,7 @@ void timerSecondISR(void* isr_context) {
           printf("note.frequency == %d\n",note.frequency);
           printf("note.duration == %d\n",note.duration);
           printf("note.endofsong == %d\n",note.endofsong);
+
           writePWM(note.frequency);
           timerPWMEnableInterrupt(note.duration);
 
@@ -117,24 +113,25 @@ void timerSecondISR(void* isr_context) {
       printf("ERROR: mode.config.on has an invalid value\n");
     }
 
-    // since the time is being displayed, we'll have to update the display
+    // since we're currently in clock mode, 
+    // we have to update the display after every second tick
     updateDisplay(clock);
 
   }
   else {
-    // since the current time is not being displayed, we don't update the display
+    // since the current time is not being displayed, 
+    // we don't update the display
     clock = upClockSecond(CARRY_ON);
   }
 
-  // for debugging purposes:
-  printf("The clock time is currently: %d:%d:%d\n",clock.hour,clock.minute,clock.second);
+  printf("CLOCK TIME: %d:%d:%d\n",clock.hour,clock.minute,clock.second);
+
 }
 
 
-
-/* This ISR lets us determine what mode the user is currently requesting.
-Once this mode is determined, the system will update the display to match what was requested,
-and perform other actions such as turn on/off the alarm and on/off a song*/
+/* ISR determines user requested mode
+Once determined, the system will update the display to match what was requested, 
+and perform other actions such as turn on/off the alarm (for example)*/
 void switchesISR(void* isr_context) {
 
   // reset edge capture register by writing to it 
@@ -146,19 +143,19 @@ void switchesISR(void* isr_context) {
 
   mode_request = determineMode();
 
-  /* if an invalid mode is requested, nothing needs to change except for the mode struct
-  if however a valid mode is requested, we have to determine what display to change to
+  /* if an invalid mode is requested, nothing needs to change except for the mode struct.
+  if a valid mode is requested, we have to determine what display to change to
   and/or if the alarm needs to be turned on/off */
   if (mode_request.invalid == FALSE) {
 
-    /* if we're already displaying the same mode that was requested, we don't need 
-    need to update the display. Thus we can skip the following if statement*/
+    /* don't need to update the display if we're currently displaying the 
+    the same mode that was requested */
     if (mode_request.display != mode.display) {
 
       /* temporary display struct for data transfer between modules.
-      although the struct's name is time, the information located 
+      *** although the struct's name is time, the information located 
       in this struct is not necessarily time data. This struct could contain
-      volume or song information as well. */
+      volume or song information as well depending on the switch resolution. */
       struct time display;
 
       switch(mode_request.display) {
@@ -171,18 +168,17 @@ void switchesISR(void* isr_context) {
           break;
 
         case DISP_VOLUME:
-          /* the current volume will be displayed on the "second" 
-          7 segment displays. For the moment this means that we're not going
-          to check if the volume exceeds 99 (max number that can be displayed with 2 digits) */
+          /* the current volume will be displayed on the "second" digits for the 7 seg display.
+          For the moment this means that we're not going to check if the volume exceeds 99 */
           display.hour = DONT_DISPLAY;
           display.minute = DONT_DISPLAY;
           display.second = getVolume();
           break;
 
         case DISP_SONG:
-          /* the current song will be displayed on the "second" 
-          7 segment displays. For the moment this means that we're not going
-          to check if the song index exceeds 99 (max number that can be displayed with 2 digits) */
+          /* the current song will be displayed on the "second" digits for the 7 seg display.
+          7 segment displays. For the moment this means that we're not going to check 
+          if the song index exceeds 99  */
           display.hour = DONT_DISPLAY;
           display.minute = DONT_DISPLAY;
           display.second = getSong();
@@ -194,10 +190,9 @@ void switchesISR(void* isr_context) {
           printf("note.frequency == %d\n",note.frequency);
           printf("note.duration == %d\n",note.duration);
           printf("note.endofsong == %d\n",note.endofsong);
+
           writePWM(note.frequency);
           timerPWMEnableInterrupt(note.duration);
-
-          
 
           break;
 
@@ -209,7 +204,7 @@ void switchesISR(void* isr_context) {
       updateDisplay(display);  
     }
 
-    // (mode_request.display == mode.display)
+    // occurs when mode_request.display == mode.display
     else { 
       printf("The requested display mode is already active\n");
     }
@@ -224,22 +219,21 @@ void switchesISR(void* isr_context) {
       and then a user decides to turn off said alarm, OR if a user changes from
       the song display menu to any other menu */
       if (mode_request.display != DISP_SONG) {
-          printf("song stopped because alarm is off and not in song display mode!\n");
+          printf("song stopped because alarm is off and system is not currently in song display mode!\n");
 
         stopPWM();
-        // turn off PWM interrupt timer
         timerPWMDisableInterrupt();
 
       }
     }
 
-    // (mode_request.alarm == ON)
+    // occurs when mode_request.alarm == ON
     else {
       alarmLEDon();
     }
   }
 
-  // (mode_request.invalid == TRUE)
+  // occurs when mode_request.invalid == TRUE
   else {
     printf("ERROR: An invalid mode was requested\n");
   }
@@ -247,24 +241,28 @@ void switchesISR(void* isr_context) {
   // make sure to update the mode struct before leaving ISR
   mode = mode_request;
   return;
-
 }
 
 
-/* This ISR lets us determine what sort of operation the user wants to perform for the
+/* ISR determines what sort of operation the user wants to perform for the
 correctly active display mode (increase/decrease clock time, song select, etc.).
-Once the requested operation is determined, the system will update the display to match what was requested */
+Once the requested operation is determined, the system will 
+update the display to match what was requested */
 void buttonsISR(void* isr_context) {
 
-  // if the user is not currently configuring something (time, alarm, etc), then a button press won't do anything
+  /* if the user is not currently configuring something (time, alarm, etc), 
+  then a button press won't do anything */
   if (mode.config.on == FALSE) {
     printf("ERROR: Not currently in config mode! Button press ignored\n");
-    // we can't forget to reset edge capture register by writing to it though!
+
+    /* don't forget to reset edge capture register by writing to it and before
+    exiting ISR */
     IOWR_ALTERA_AVALON_PIO_EDGE_CAP(BUTTONS_BASE, 0);
+
     return;
   }
   else {
-    // determine the operation requested based on the buttons state
+    // determine the operation requested based on the button's state
     uint8_t buttons_state = IORD_ALTERA_AVALON_PIO_EDGE_CAP(BUTTONS_BASE);
 
       /* temporary display struct for data transfer between modules.
@@ -274,8 +272,8 @@ void buttonsISR(void* isr_context) {
       struct time display;
 
       /* what happens next is entirely dependant on what the current display mode is, whether or not 
-      the button press was an UP or DOWN operation, and finally if the config was for the minute or hour time units.
-      This scary case statement figures it out */
+      the button press was an UP or DOWN operation, and finally if the config was for the 
+      minute or hour time units. This scary case statement figures it out */
       switch(mode.display) {
 
         case DISP_CLOCK: 

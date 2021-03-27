@@ -10,7 +10,6 @@
 #include  "altera_avalon_pio_regs.h"
 #include "altera_avalon_timer_regs.h"
 
-// structs
 struct time{
   uint8_t hour;
   uint8_t minute;
@@ -35,7 +34,6 @@ struct note_info {
   int endofsong;
 };
 
-// macros
 // values possible for the mode struct members
 
 // mode.invalid = {FALSE, TRUE}
@@ -59,9 +57,10 @@ struct note_info {
 #define CARRY_ON 1
 
 /* the button values that correspond to the requested operations
--if the button state = 1, then the down button was pressed
--if the button state = 2, then the up button was pressed
--if both buttons were pressed (state = 3), then a reset operation was requested  */
+-> if the button state = 1, then the down button was pressed
+-> if the button state = 2, then the up button was pressed
+-> if both buttons were pressed (state = 3), then a reset operation was requested
+   (NOT YET IMPLEMENTED)*/
 #define DOWN 1
 #define UP 2
 #define RESET 3
@@ -83,7 +82,6 @@ void timerPWMISR(void *isr_context);
 
 
 // interrupt.c API
-
 uint8_t timerSecondRegisterISR(void (*timerSecondISR)(void *isr_context));
 void timerSecondEnableInterrupt(void);
 
@@ -140,6 +138,5 @@ void default500HzSquareWave(void);
 void testPWM(void);
 void stopPWM(void);
 void writePWM(int frequency);
-
 
 #endif

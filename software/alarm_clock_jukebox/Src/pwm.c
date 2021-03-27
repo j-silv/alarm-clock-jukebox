@@ -1,27 +1,55 @@
 #include "pwm.h"
 
-uint8_t volume = 5;
+uint8_t volume = 1;
 
 uint8_t getVolume(void) {
   return volume;
 }
+
 uint8_t upVolume(void) {
-  volume++;
+  if (volume != MAX_VOLUME) {
+    volume++;
+  }
   return volume;
 }
 uint8_t downVolume(void) {
-  volume--;
+  if (volume != 0) {
+    volume--;
+  }
   return volume;
 }
 
 void stopPWM(void) {
   int return_code = ALTERA_AVALON_PWM_OK;
+
   //Disable PWM and Check Return Code
   return_code = altera_avalon_pwm_disable(PWM_BASE); 
   check_return_code(PWM_BASE, return_code);
 }
 
+void writePWM(int frequency) {
 
+  if (frequency == 0) {
+    // this happens if the 'note' to play is a musical rest
+    stopPWM();
+  }
+  else {
+    // conversion of input frequency to PWM clock cycle divide value
+    unsigned int clock_divide = NIOS_CLOCK_FREQ/frequency;
+
+    unsigned int duty_cycle = clock_divide*duty_cycle_lookup_table[volume];
+
+    int return_code = ALTERA_AVALON_PWM_OK;
+    
+    //Initialize PWM and Check Return Code
+    return_code = altera_avalon_pwm_init(PWM_BASE, clock_divide, duty_cycle);  
+    check_return_code(PWM_BASE, return_code);
+    
+    //Enable PWM and Check Return Code
+    return_code = altera_avalon_pwm_enable(PWM_BASE); 
+    check_return_code(PWM_BASE, return_code);
+  }
+}
 
 void default500HzSquareWave(void) {
 
@@ -38,31 +66,7 @@ void default500HzSquareWave(void) {
  check_return_code(PWM_BASE, return_code);
 }
 
-void writePWM(int frequency) {
 
-  if (frequency == 0) {
-    // this happens if the note is supposed to be a pause
-    stopPWM();
-  }
-  else {
-    // conversion of input frequency to PWM clock cycle divide value
-    unsigned int clock_divide = NIOS_CLOCK_FREQ/frequency;
-
-    // 5% duty cycle by default
-    unsigned int duty_cycle =    clock_divide*0.05;
-
-    int return_code = ALTERA_AVALON_PWM_OK;
-    
-    //Initialize PWM and Check Return Code
-    return_code = altera_avalon_pwm_init(PWM_BASE, clock_divide, duty_cycle);  
-    check_return_code(PWM_BASE, return_code);
-    
-    //Enable PWM and Check Return Code
-    return_code = altera_avalon_pwm_enable(PWM_BASE); 
-    check_return_code(PWM_BASE, return_code);
-  }
-
-}
 
 void testPWM(void) {
  

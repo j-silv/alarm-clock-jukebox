@@ -1,10 +1,9 @@
 #include "time_keeper.h"
 
-// define 2 time structs for the clock time and the alarm time
 struct time clock;
 struct time alarm;
 
-// 24 hour or 12 hour format (24 by default)
+// display time in 24 hour or 12 hour format
 volatile uint8_t time_format = 24;
 
 
