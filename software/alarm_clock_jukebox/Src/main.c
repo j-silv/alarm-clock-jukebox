@@ -23,34 +23,34 @@ int main(void) {
 
   // ISR registration
   if (timerSecondRegisterISR(&timerSecondISR) == ISR_REGISTRATION_SUCCESS) {
-    printf("timerSecondISR successively registered!\n");
+    //printf("timerSecondISR successively registered!\n");
     timerSecondEnableInterrupt();
   }
   else {
-   printf("ERROR: timerSecondISR unsuccessively registered!\n");
+   //printf("ERROR: timerSecondISR unsuccessively registered!\n");
   }
 
   if (switchesRegisterISR(&switchesISR) == ISR_REGISTRATION_SUCCESS) {
-    printf("switchesISR successively registered!\n");
+    //printf("switchesISR successively registered!\n");
     switchesEnableInterrupt();
   }
   else {
-   printf("ERROR: switchesISR unsuccessively registered!\n");
+   //printf("ERROR: switchesISR unsuccessively registered!\n");
   }
 
   if (buttonsRegisterISR(&buttonsISR) == ISR_REGISTRATION_SUCCESS) {
-    printf("buttonsISR successively registered!\n");
+    //printf("buttonsISR successively registered!\n");
     buttonsEnableInterrupt();
   }
   else {
-   printf("ERROR: buttonsISR unsuccessively registered!\n");
+   //printf("ERROR: buttonsISR unsuccessively registered!\n");
   }
 
   if (timerPWMRegisterISR(&timerPWMISR) == ISR_REGISTRATION_SUCCESS) {
-    printf("timerPWMISR successively registered!\n");
+    //printf("timerPWMISR successively registered!\n");
   }
   else {
-   printf("ERROR: timerPWMISR unsuccessively registered!\n");
+   //printf("ERROR: timerPWMISR unsuccessively registered!\n");
   }
 
   while(1) {}  
@@ -66,7 +66,7 @@ void timerSecondISR(void* isr_context) {
   // clear timeout bit because the internal counter for the timer reached zero
   IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_SECOND_BASE, 0);
 
-  // temporary time struct for data transfer between modules and for printf debugging
+  // temporary time struct for data transfer between modules and for //printf debugging
   struct time clock;
  
   if (mode.display == DISP_CLOCK) {
@@ -97,10 +97,10 @@ void timerSecondISR(void* isr_context) {
           struct note_info note;
           note = playSong();
 
-          printf("BEEP! BEEP! BEEP! Alarm has gone off...\n");
-          printf("note.frequency == %d\n",note.frequency);
-          printf("note.duration == %d\n",note.duration);
-          printf("note.endofsong == %d\n",note.endofsong);
+          //printf("BEEP! BEEP! BEEP! Alarm has gone off...\n");
+          //printf("note.frequency == %d\n",note.frequency);
+          //printf("note.duration == %d\n",note.duration);
+          //printf("note.endofsong == %d\n",note.endofsong);
 
           writePWM(note.frequency);
           timerPWMEnableInterrupt(note.duration);
@@ -110,7 +110,7 @@ void timerSecondISR(void* isr_context) {
 
     }
     else {
-      printf("ERROR: mode.config.on has an invalid value\n");
+      //printf("ERROR: mode.config.on has an invalid value\n");
     }
 
     // since we're currently in clock mode, 
@@ -124,7 +124,7 @@ void timerSecondISR(void* isr_context) {
     clock = upClockSecond(CARRY_ON);
   }
 
-  printf("CLOCK TIME: %d:%d:%d\n",clock.hour,clock.minute,clock.second);
+  //printf("CLOCK TIME: %d:%d:%d\n",clock.hour,clock.minute,clock.second);
 
 }
 
@@ -176,6 +176,7 @@ void switchesISR(void* isr_context) {
           break;
 
         case DISP_SONG:
+
           /* the current song will be displayed on the "second" digits for the 7 seg display.
           7 segment displays. For the moment this means that we're not going to check 
           if the song index exceeds 99  */
@@ -186,10 +187,10 @@ void switchesISR(void* isr_context) {
           struct note_info note;
           note = playSong();
 
-          printf("switch to song display mode...\n");
-          printf("note.frequency == %d\n",note.frequency);
-          printf("note.duration == %d\n",note.duration);
-          printf("note.endofsong == %d\n",note.endofsong);
+          //printf("switch to song display mode...\n");
+          //printf("note.frequency == %d\n",note.frequency);
+          //printf("note.duration == %d\n",note.duration);
+          //printf("note.endofsong == %d\n",note.endofsong);
 
           writePWM(note.frequency);
           timerPWMEnableInterrupt(note.duration);
@@ -206,7 +207,7 @@ void switchesISR(void* isr_context) {
 
     // occurs when mode_request.display == mode.display
     else { 
-      printf("The requested display mode is already active\n");
+      //printf("The requested display mode is already active\n");
     }
 
     // update the alarm mode if necessary
@@ -219,7 +220,7 @@ void switchesISR(void* isr_context) {
       and then a user decides to turn off said alarm, OR if a user changes from
       the song display menu to any other menu */
       if (mode_request.display != DISP_SONG) {
-          printf("song stopped because alarm is off and system is not currently in song display mode!\n");
+          //printf("song stopped because alarm is off and system is not currently in song display mode!\n");
 
         stopPWM();
         timerPWMDisableInterrupt();
@@ -235,7 +236,7 @@ void switchesISR(void* isr_context) {
 
   // occurs when mode_request.invalid == TRUE
   else {
-    printf("ERROR: An invalid mode was requested\n");
+    //printf("ERROR: An invalid mode was requested\n");
   }
 
   // make sure to update the mode struct before leaving ISR
@@ -253,7 +254,7 @@ void buttonsISR(void* isr_context) {
   /* if the user is not currently configuring something (time, alarm, etc), 
   then a button press won't do anything */
   if (mode.config.on == FALSE) {
-    printf("ERROR: Not currently in config mode! Button press ignored\n");
+    //printf("ERROR: Not currently in config mode! Button press ignored\n");
 
     /* don't forget to reset edge capture register by writing to it and before
     exiting ISR */
@@ -332,6 +333,10 @@ void buttonsISR(void* isr_context) {
 
         case DISP_SONG:
 
+          /* immediately cut the PWM in case -> this should add an artificial 
+          "pause" the time it takes to fetch and parse the song */
+          stopPWM();
+
           display.hour = DONT_DISPLAY;
           display.minute = DONT_DISPLAY;
           if (buttons_state == UP) {
@@ -344,10 +349,11 @@ void buttonsISR(void* isr_context) {
           struct note_info note;
           note = playSong();
 
-          printf("button input while in display song mode...\n");
-          printf("note.frequency == %d\n",note.frequency);
-          printf("note.duration == %d\n",note.duration);
-          printf("note.endofsong == %d\n",note.endofsong);
+          //printf("button input while in display song mode...\n");
+          //printf("note.frequency == %d\n",note.frequency);
+          //printf("note.duration == %d\n",note.duration);
+          //printf("note.endofsong == %d\n",note.endofsong);
+          
           writePWM(note.frequency);
           timerPWMEnableInterrupt(note.duration);
 
@@ -370,7 +376,7 @@ void buttonsISR(void* isr_context) {
 
 void timerPWMISR(void* isr_context) {
 
-  printf("timerPWMISR has fired!\n");
+  //printf("timerPWMISR has fired!\n");
 
   /* The TO (timeout) bit is set to 1 when the internal counter reaches zero. Once set by a
   timeout event, the TO bit stays set until explicitly cleared by a master peripheral. 
@@ -380,9 +386,9 @@ void timerPWMISR(void* isr_context) {
   struct note_info note;
 
   note = getNote();
-  printf("note.frequency == %d\n",note.frequency);
-  printf("note.duration == %d\n",note.duration);
-  printf("note.endofsong == %d\n",note.endofsong);
+  //printf("note.frequency == %d\n",note.frequency);
+  //printf("note.duration == %d\n",note.duration);
+  //printf("note.endofsong == %d\n",note.endofsong);
 
   if (note.endofsong == FALSE) {
     writePWM(note.frequency);
@@ -390,16 +396,16 @@ void timerPWMISR(void* isr_context) {
   }
   else if (note.endofsong == TRUE) {
     if (mode.display == DISP_SONG) {
-      printf("song played through once while in display song mode...\n");
+      //printf("song played through once while in display song mode...\n");
       stopPWM();
       timerPWMDisableInterrupt();
     }
     else {
-      printf("Turn off alarm to stop the song!\n");
+      //printf("Turn off alarm to stop the song!\n");
       note = playSong();
-      printf("note.frequency == %d\n",note.frequency);
-      printf("note.duration == %d\n",note.duration);
-      printf("note.endofsong == %d\n",note.endofsong);
+      //printf("note.frequency == %d\n",note.frequency);
+      //printf("note.duration == %d\n",note.duration);
+      //printf("note.endofsong == %d\n",note.endofsong);
       writePWM(note.frequency);
       timerPWMEnableInterrupt(note.duration);  
     }

@@ -22,7 +22,7 @@ void stopPWM(void);
 void writePWM(int frequency);
 
 // follows an exponential curve
-const uint8_t duty_cycle_lookup_table[MAX_VOLUME+1] = {
+const float duty_cycle_lookup_table[MAX_VOLUME+1] = {
   // min duty cycle 0% -> volume = 0
   0,
   0.00310253,
@@ -35,7 +35,7 @@ const uint8_t duty_cycle_lookup_table[MAX_VOLUME+1] = {
   0.078764805,
   0.1250235,
   0.19845,
-  0.003103,
+  0.3103,
   // max duty cycle 50% -> volume = 20
   0.5
 };
