@@ -20,7 +20,7 @@ uint8_t upSong(void) {
   /* song is an array of pointers of type const char. Since each pointer has the same
   size in memory (char* takes up 1 byte) if we divide the size of the entire array by the size
   of 1 char pointer, we'll get the number char pointers and thus the number of songs */
-  if (song_index == sizeof(song)/sizeof(song[0])){
+  if (song_index == (sizeof(song)/sizeof(song[0]))-1){
 
     // wrap around when scrolling through songs
     song_index = 0;
@@ -35,7 +35,7 @@ uint8_t downSong(void) {
   if (song_index == 0) {
 
     // wrap around when scrolling through songs
-    song_index = sizeof(song)/sizeof(song[0]);
+    song_index = (sizeof(song)/sizeof(song[0])-1);
   }
   else {
     song_index--;
