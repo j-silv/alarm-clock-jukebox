@@ -12,6 +12,9 @@ void alarmLEDoff(void);
 void alarmLEDon(void);
 void alarmLEDtoggle(void);
 
+void writeLEDPiano(char note);
+void LEDPianoOff(void);
+
 #define LED_OFF 0
 #define LED_ON 1
 

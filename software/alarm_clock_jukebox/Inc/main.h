@@ -106,6 +106,8 @@ void timerPWMDisableInterrupt(void);
 void alarmLEDoff(void);
 void alarmLEDon(void);
 void alarmLEDtoggle(void);
+void writeLEDPiano(char note);
+void LEDPianoOff(void);
 
 // time_keeper.c API
 void resetClockTime(void);

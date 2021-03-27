@@ -113,7 +113,8 @@ struct note_info nextSongNote(void) {
 
     // Parse note
     switch (*p) {
-      case 0: printf("End of song!\n"); payload.endofsong = TRUE; return payload; // i *think* means the null-terminated character is reached
+      // i *think* means the null-terminated character is reached
+      case 0: printf("End of song!\n"); payload.endofsong = TRUE; return payload;
       case 'C': case 'c': note = 0; break;
       case 'D': case 'd': note = 2; break;
       case 'E': case 'e': note = 4; break;
@@ -126,7 +127,7 @@ struct note_info nextSongNote(void) {
     }
 
     // this info is picked up for the LED piano module
-    payload.letter = note;
+    payload.letter = *p;
 
     p++;
     if (*p == '#') {

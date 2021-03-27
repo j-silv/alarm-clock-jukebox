@@ -17,6 +17,7 @@ int main(void) {
 
   // module intialization
   alarmLEDoff();
+  LEDPianoOff();
   resetClockTime();
   resetAlarmTime();
   resetDisplay();
@@ -104,6 +105,7 @@ void timerSecondISR(void* isr_context) {
           //printf("note.endofsong == %d\n",note.endofsong);
 
           writePWM(note.frequency);
+          writeLEDPiano(note.letter);
           timerPWMEnableInterrupt(note.duration);
 
         }
@@ -217,6 +219,7 @@ void switchesISR(void* isr_context) {
           //printf("song stopped because alarm is off and system is not currently in song display mode!\n");
 
         stopPWM();
+        LEDPianoOff();
         timerPWMDisableInterrupt();
 
       }
@@ -329,6 +332,7 @@ void buttonsISR(void* isr_context) {
 
           // immediately cut the PWM in case a song is currently being played
           stopPWM();
+          LEDPianoOff();
 
           //printf("button input while in display song mode...\n");
 
@@ -381,6 +385,7 @@ void timerPWMISR(void* isr_context) {
 
   if (note.endofsong == FALSE) {
     writePWM(note.frequency);
+    writeLEDPiano(note.letter);
     timerPWMEnableInterrupt(note.duration);
   }
   else if (note.endofsong == TRUE) {
@@ -390,11 +395,13 @@ void timerPWMISR(void* isr_context) {
       #ifdef REPEAT_SONG_PREVIEW
         //printf("repeating song preview while in display song mode...\n");
         stopPWM();   
+        LEDPianoOff();
         initializeSong();
         timerPWMEnableInterrupt(PAUSE_DURATION_MS);  
       #else
         //printf("song played through once while in display song mode...\n");
         stopPWM();
+        LEDPianoOff();
         timerPWMDisableInterrupt();
       #endif
 
@@ -402,6 +409,7 @@ void timerPWMISR(void* isr_context) {
 
     else {
       stopPWM();
+      LEDPianoOff();
       //printf("repeating song while alarm is currently going off\n");
       initializeSong();
       timerPWMEnableInterrupt(PAUSE_DURATION_MS);  
