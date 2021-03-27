@@ -8,6 +8,7 @@
 #include "rtttl_songs.h"
 
 struct note_info {
+  char letter;
   int frequency;
   int duration;
   int endofsong;
@@ -16,11 +17,11 @@ struct note_info {
 #define FALSE 0
 #define TRUE 1
 
-uint8_t getSong(void);
+uint8_t getSongIndex(void);
 uint8_t upSong(void);
 uint8_t downSong(void);
-struct note_info playSong(void);
-struct note_info getNote(void);
+void initializeSong(void);
+struct note_info nextSongNote(void);
 
 
 #endif

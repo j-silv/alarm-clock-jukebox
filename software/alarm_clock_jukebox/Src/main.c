@@ -88,14 +88,14 @@ void timerSecondISR(void* isr_context) {
         struct time alarm;
         alarm = getAlarmTime();
 
-        /* to avoid executing the following block of code everytime and to only call playSong() once, 
+        /* to avoid executing the following block of code everytime and to only call initializeSong() once, 
         we have to check whether or not the time is currently at XX:XX:00. 
         --> at 0 seconds, thats when the alarm will be activated */
         if ( (clock.second == 0) && (alarm.hour == clock.hour) && (alarm.minute == clock.minute) ) {
 
           // start the alarm!
           struct note_info note;
-          note = playSong();
+          note = initializeSong();
 
           //printf("BEEP! BEEP! BEEP! Alarm has gone off...\n");
           //printf("note.frequency == %d\n",note.frequency);
@@ -182,10 +182,10 @@ void switchesISR(void* isr_context) {
           if the song index exceeds 99  */
           display.hour = DONT_DISPLAY;
           display.minute = DONT_DISPLAY;
-          display.second = getSong();
+          display.second = getSongIndex();
 
           struct note_info note;
-          note = playSong();
+          note = initializeSong();
 
           //printf("switch to song display mode...\n");
           //printf("note.frequency == %d\n",note.frequency);
@@ -347,7 +347,7 @@ void buttonsISR(void* isr_context) {
           }
 
           struct note_info note;
-          note = playSong();
+          note = initializeSong();
 
           //printf("button input while in display song mode...\n");
           //printf("note.frequency == %d\n",note.frequency);
@@ -385,7 +385,7 @@ void timerPWMISR(void* isr_context) {
 
   struct note_info note;
 
-  note = getNote();
+  note = nextSongNote();
   //printf("note.frequency == %d\n",note.frequency);
   //printf("note.duration == %d\n",note.duration);
   //printf("note.endofsong == %d\n",note.endofsong);
@@ -402,7 +402,7 @@ void timerPWMISR(void* isr_context) {
     }
     else {
       //printf("Turn off alarm to stop the song!\n");
-      note = playSong();
+      note = initializeSong();
       //printf("note.frequency == %d\n",note.frequency);
       //printf("note.duration == %d\n",note.duration);
       //printf("note.endofsong == %d\n",note.endofsong);

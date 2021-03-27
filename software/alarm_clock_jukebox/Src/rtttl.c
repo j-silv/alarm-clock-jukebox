@@ -1,6 +1,7 @@
 #include "rtttl.h"
 
 uint8_t song_index = 0;
+
 int notefreq[12] = {4186, 4434, 4698, 4978, 5274, 5587, 5919, 6271, 6644, 7040, 7458, 7902};
 int defdur = 4;
 int defscale = 6;
@@ -8,7 +9,7 @@ int bpm = 63;
 int silence = 0;
 char *p;
 
-uint8_t getSong(void) {
+uint8_t getSongIndex(void) {
   return song_index;
 }
 
@@ -43,7 +44,7 @@ int note2freq(int note) {
   return notefreq[note % 12] / (1 << (9 - (note / 12)));
 }
 
-struct note_info playSong(void) {
+void initializeSong(void) {
 
   p = song[song_index];
   
@@ -79,15 +80,10 @@ struct note_info playSong(void) {
   }
   p++;
 
-  // get the first note of the song
-  struct note_info payload;
-  payload = getNote();
-  return payload;
-
 }
 
 // used to get the first note of the song and the subsequent ones
-struct note_info getNote(void) {
+struct note_info nextSongNote(void) {
 
   int note = -1;
   int scale = defscale;
@@ -100,10 +96,9 @@ struct note_info getNote(void) {
 
   else {
 
-
     // Skip whitespace
     while (*p == ' ') p++;
-    if (!*p) {printf("ERROR in rtttl.c: 0 found during getNote\n"); return;}
+    if (!*p) {printf("ERROR in rtttl.c: 0 found during nextSongNote\n"); return;}
 
     // Parse duration
     if (*p >= '0' && *p <= '9') {
@@ -126,6 +121,10 @@ struct note_info getNote(void) {
       case 'B': case 'b': note = 11; break;
       case 'P': case 'p': note = -1; break;
     }
+
+    // this info is picked up for the LED piano module
+    payload.letter = note;
+
     p++;
     if (*p == '#') {
       note++;
