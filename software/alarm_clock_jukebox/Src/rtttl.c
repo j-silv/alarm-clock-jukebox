@@ -7,7 +7,10 @@ int defdur = 4;
 int defscale = 6;
 int bpm = 63;
 int silence = 0;
-char *p;
+
+/* p is a pointer to a const char -> we can change what to point at
+but we can't change the actual value of the object that we're pointing at */
+const char *p;
 
 uint8_t getSongIndex(void) {
   return song_index;
@@ -98,7 +101,7 @@ struct note_info nextSongNote(void) {
 
     // Skip whitespace
     while (*p == ' ') p++;
-    if (!*p) {printf("ERROR in rtttl.c: 0 found during nextSongNote\n"); return;}
+    if (!*p) {printf("ERROR in rtttl.c: 0 found during nextSongNote\n");payload.letter = ERROR_CHAR; return payload;}
 
     // Parse duration
     if (*p >= '0' && *p <= '9') {

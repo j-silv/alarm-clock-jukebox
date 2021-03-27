@@ -17,6 +17,8 @@ struct note_info {
 #define FALSE 0
 #define TRUE 1
 
+#define ERROR_CHAR 'X'
+
 uint8_t getSongIndex(void);
 uint8_t upSong(void);
 uint8_t downSong(void);

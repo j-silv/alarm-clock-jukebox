@@ -93,9 +93,10 @@ void timerSecondISR(void* isr_context) {
         --> at 0 seconds, thats when the alarm will be activated */
         if ( (clock.second == 0) && (alarm.hour == clock.hour) && (alarm.minute == clock.minute) ) {
 
-          // start the alarm!
+          // immediately start the alarm after initializing the song
+          initializeSong();
           struct note_info note;
-          note = initializeSong();
+          note = nextSongNote();
 
           //printf("BEEP! BEEP! BEEP! Alarm has gone off...\n");
           //printf("note.frequency == %d\n",note.frequency);
@@ -176,6 +177,7 @@ void switchesISR(void* isr_context) {
           break;
 
         case DISP_SONG:
+          //printf("switch to song display mode...\n");
 
           /* the current song will be displayed on the "second" digits for the 7 seg display.
           7 segment displays. For the moment this means that we're not going to check 
@@ -184,16 +186,8 @@ void switchesISR(void* isr_context) {
           display.minute = DONT_DISPLAY;
           display.second = getSongIndex();
 
-          struct note_info note;
-          note = initializeSong();
-
-          //printf("switch to song display mode...\n");
-          //printf("note.frequency == %d\n",note.frequency);
-          //printf("note.duration == %d\n",note.duration);
-          //printf("note.endofsong == %d\n",note.endofsong);
-
-          writePWM(note.frequency);
-          timerPWMEnableInterrupt(note.duration);
+          initializeSong();
+          timerPWMEnableInterrupt(PAUSE_DURATION_MS);
 
           break;
 
@@ -333,9 +327,10 @@ void buttonsISR(void* isr_context) {
 
         case DISP_SONG:
 
-          /* immediately cut the PWM in case -> this should add an artificial 
-          "pause" the time it takes to fetch and parse the song */
+          // immediately cut the PWM in case a song is currently being played
           stopPWM();
+
+          //printf("button input while in display song mode...\n");
 
           display.hour = DONT_DISPLAY;
           display.minute = DONT_DISPLAY;
@@ -346,16 +341,10 @@ void buttonsISR(void* isr_context) {
             display.second = downSong();
           }
 
-          struct note_info note;
-          note = initializeSong();
+          // intialize song, but add a pause before song starts
+          initializeSong();
 
-          //printf("button input while in display song mode...\n");
-          //printf("note.frequency == %d\n",note.frequency);
-          //printf("note.duration == %d\n",note.duration);
-          //printf("note.endofsong == %d\n",note.endofsong);
-          
-          writePWM(note.frequency);
-          timerPWMEnableInterrupt(note.duration);
+          timerPWMEnableInterrupt(PAUSE_DURATION_MS);
 
           break;
 
@@ -395,19 +384,27 @@ void timerPWMISR(void* isr_context) {
     timerPWMEnableInterrupt(note.duration);
   }
   else if (note.endofsong == TRUE) {
+
     if (mode.display == DISP_SONG) {
-      //printf("song played through once while in display song mode...\n");
-      stopPWM();
-      timerPWMDisableInterrupt();
+      
+      #ifdef REPEAT_SONG_PREVIEW
+        //printf("repeating song preview while in display song mode...\n");
+        stopPWM();   
+        initializeSong();
+        timerPWMEnableInterrupt(PAUSE_DURATION_MS);  
+      #else
+        //printf("song played through once while in display song mode...\n");
+        stopPWM();
+        timerPWMDisableInterrupt();
+      #endif
+
     }
+
     else {
-      //printf("Turn off alarm to stop the song!\n");
-      note = initializeSong();
-      //printf("note.frequency == %d\n",note.frequency);
-      //printf("note.duration == %d\n",note.duration);
-      //printf("note.endofsong == %d\n",note.endofsong);
-      writePWM(note.frequency);
-      timerPWMEnableInterrupt(note.duration);  
+      stopPWM();
+      //printf("repeating song while alarm is currently going off\n");
+      initializeSong();
+      timerPWMEnableInterrupt(PAUSE_DURATION_MS);  
     }
   }
 

@@ -74,6 +74,12 @@ not display the digits for a particular time unit (for example, in alarm config 
 want to show the seconds time unit). */
 #define DONT_DISPLAY 100
 
+// 1 second pause for repeating song
+#define PAUSE_DURATION_MS 1000
+
+// comment this to not repeat the song while in song display mode
+// by default, the song repeats in alarm mode
+#define REPEAT_SONG_PREVIEW
 
 // ISRs
 void timerSecondISR(void *isr_context);
