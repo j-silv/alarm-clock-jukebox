@@ -95,7 +95,7 @@ struct note_info nextSongNote(void) {
   int freq;
   struct note_info payload;
 
-  if (!*p) {printf("End of song!\n");payload.endofsong = TRUE; return payload;}
+  if (!*p) {payload.endofsong = TRUE; return payload;}
 
   else {
 
@@ -114,7 +114,7 @@ struct note_info nextSongNote(void) {
     // Parse note
     switch (*p) {
       // i *think* means the null-terminated character is reached
-      case 0: printf("End of song!\n"); payload.endofsong = TRUE; return payload;
+      case 0: payload.endofsong = TRUE; return payload;
       case 'C': case 'c': note = 0; break;
       case 'D': case 'd': note = 2; break;
       case 'E': case 'e': note = 4; break;

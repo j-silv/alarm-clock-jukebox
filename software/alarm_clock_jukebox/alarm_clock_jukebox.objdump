@@ -370,7 +370,7 @@ Disassembly of section .entry:
    40014:	08409114 	ori	at,at,580
     jmp r1
    40018:	0800683a 	jmp	at
-   4001c:	00000000 	call	0 <__reset-0x40000>
+   4001c:	00000000 	call	0 <__alt_mem_onchip_memory-0x40000>
 
 Disassembly of section .exceptions:
 
@@ -1635,7 +1635,7 @@ void writeLEDPiano(char note) {
    40af8:	00040bdc 	xori	zero,zero,4143
    40afc:	00040be8 	cmpgeui	zero,zero,4143
    40b00:	00040bf4 	movhi	zero,4143
-   40b04:	00040c00 	call	40c0 <__reset-0x3bf40>
+   40b04:	00040c00 	call	40c0 <__alt_mem_onchip_memory-0x3bf40>
    40b08:	00040bb8 	rdprs	zero,zero,4142
    40b0c:	00040c14 	movui	zero,4144
    40b10:	00040c14 	movui	zero,4144
@@ -1667,7 +1667,7 @@ void writeLEDPiano(char note) {
    40b78:	00040bdc 	xori	zero,zero,4143
    40b7c:	00040be8 	cmpgeui	zero,zero,4143
    40b80:	00040bf4 	movhi	zero,4143
-   40b84:	00040c00 	call	40c0 <__reset-0x3bf40>
+   40b84:	00040c00 	call	40c0 <__alt_mem_onchip_memory-0x3bf40>
    40b88:	00040bb8 	rdprs	zero,zero,4142
    40b8c:	00040c14 	movui	zero,4144
    40b90:	00040c14 	movui	zero,4144
@@ -3340,10 +3340,10 @@ uint8_t upSong(void) {
   /* song is an array of pointers of type const char. Since each pointer has the same
   size in memory (char* takes up 1 byte) if we divide the size of the entire array by the size
   of 1 char pointer, we'll get the number char pointers and thus the number of songs */
-  if (song_index == sizeof(song)/sizeof(song[0])){
+  if (song_index == (sizeof(song)/sizeof(song[0]))-1){
    41a8c:	d0a0f903 	ldbu	r2,-31772(gp)
    41a90:	10803fcc 	andi	r2,r2,255
-   41a94:	10800798 	cmpnei	r2,r2,30
+   41a94:	10800758 	cmpnei	r2,r2,29
    41a98:	1000021e 	bne	r2,zero,41aa4 <upSong+0x24>
 
     // wrap around when scrolling through songs
@@ -3377,8 +3377,8 @@ uint8_t downSong(void) {
    41ad8:	1000031e 	bne	r2,zero,41ae8 <downSong+0x24>
 
     // wrap around when scrolling through songs
-    song_index = sizeof(song)/sizeof(song[0]);
-   41adc:	00800784 	movi	r2,30
+    song_index = (sizeof(song)/sizeof(song[0])-1);
+   41adc:	00800744 	movi	r2,29
    41ae0:	d0a0f905 	stb	r2,-31772(gp)
    41ae4:	00000306 	br	41af4 <downSong+0x30>
   }
@@ -8890,9 +8890,9 @@ void alt_icache_flush (void* start, alt_u32 len)
    459f0:	89000015 	stw	r4,0(r17)
    459f4:	a8000226 	beq	r21,zero,45a00 <__call_exitprocs+0x144>
    459f8:	a809883a 	mov	r4,r21
-   459fc:	00000000 	call	0 <__reset-0x40000>
+   459fc:	00000000 	call	0 <__alt_mem_onchip_memory-0x40000>
    45a00:	9809883a 	mov	r4,r19
-   45a04:	00000000 	call	0 <__reset-0x40000>
+   45a04:	00000000 	call	0 <__alt_mem_onchip_memory-0x40000>
    45a08:	8cc00017 	ldw	r19,0(r17)
    45a0c:	003fbd06 	br	45904 <__alt_data_end+0xfffdd904>
    45a10:	9823883a 	mov	r17,r19

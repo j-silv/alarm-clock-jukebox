@@ -389,7 +389,7 @@ void timerPWMISR(void* isr_context) {
     timerPWMEnableInterrupt(note.duration);
   }
   else if (note.endofsong == TRUE) {
-
+    //printf("End of song!\n");
     if (mode.display == DISP_SONG) {
       
       #ifdef REPEAT_SONG_PREVIEW
