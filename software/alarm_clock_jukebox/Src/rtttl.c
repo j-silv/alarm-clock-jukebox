@@ -13,9 +13,12 @@ uint8_t getSong(void) {
 }
 
 uint8_t upSong(void) {
-  // whoops! this isnt what i want -> i want to get the number of strings (number of songs)
-  // implement: sizeof(names)/sizeof(names[0]) to get length array
-  if (song_index == sizeof(song)) {
+  /* song is an array of pointers of type const char. Since each pointer has the same
+  size in memory (char* takes up 1 byte) if we divide the size of the entire array by the size
+  of 1 char pointer, we'll get the number char pointers and thus the number of songs */
+  if (song_index == sizeof(song)/sizeof(song[0])){
+
+    // wrap around when scrolling through songs
     song_index = 0;
   }
   else {
@@ -26,8 +29,9 @@ uint8_t upSong(void) {
 
 uint8_t downSong(void) {
   if (song_index == 0) {
-    // implement: sizeof(names)/sizeof(names[0]) to get length of array
-    //song_index = sizeof(song);
+
+    // wrap around when scrolling through songs
+    song_index = sizeof(song)/sizeof(song[0]);
   }
   else {
     song_index--;
