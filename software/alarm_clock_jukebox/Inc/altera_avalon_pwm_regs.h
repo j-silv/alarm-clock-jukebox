@@ -1,3 +1,8 @@
+/* 
+The PWM modules have been taken from Altera. As per the copyright states, the following
+notice has been included:
+*/
+
 /******************************************************************************
 *                                                                             *
 * License Agreement                                                           *

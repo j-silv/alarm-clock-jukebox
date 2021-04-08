@@ -1,3 +1,8 @@
+/* 
+The PWM modules have been taken from Altera. As per the copyright states, the following
+notice has been included:
+*/
+
 /****************************************************************************************/
 /* Copyright � 2004 Altera Corporation, San Jose, California, USA. All rights reserved. */
 /* Permission is hereby granted, free of charge, to any person obtaining a copy of this */
