@@ -24,7 +24,6 @@ int main(void) {
 
   // ISR registration
   if (timerSecondRegisterISR(&timerSecondISR) == ISR_REGISTRATION_SUCCESS) {
-    //printf("timerSecondISR successively registered!\n");
     timerSecondEnableInterrupt();
   }
   else {
@@ -32,7 +31,6 @@ int main(void) {
   }
 
   if (switchesRegisterISR(&switchesISR) == ISR_REGISTRATION_SUCCESS) {
-    //printf("switchesISR successively registered!\n");
     switchesEnableInterrupt();
   }
   else {
@@ -40,7 +38,6 @@ int main(void) {
   }
 
   if (buttonsRegisterISR(&buttonsISR) == ISR_REGISTRATION_SUCCESS) {
-    //printf("buttonsISR successively registered!\n");
     buttonsEnableInterrupt();
   }
   else {
@@ -48,7 +45,6 @@ int main(void) {
   }
 
   if (timerPWMRegisterISR(&timerPWMISR) == ISR_REGISTRATION_SUCCESS) {
-    //printf("timerPWMISR successively registered!\n");
   }
   else {
    //printf("ERROR: timerPWMISR unsuccessively registered!\n");
@@ -67,7 +63,7 @@ void timerSecondISR(void* isr_context) {
   // clear timeout bit because the internal counter for the timer reached zero
   IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_SECOND_BASE, 0);
 
-  // temporary time struct for data transfer between modules and for //printf debugging
+  // temporary time struct for data transfer between modules and for printf debugging
   struct time clock;
  
   if (mode.display == DISP_CLOCK) {
@@ -100,9 +96,6 @@ void timerSecondISR(void* isr_context) {
           note = nextSongNote();
 
           //printf("BEEP! BEEP! BEEP! Alarm has gone off...\n");
-          //printf("note.frequency == %d\n",note.frequency);
-          //printf("note.duration == %d\n",note.duration);
-          //printf("note.endofsong == %d\n",note.endofsong);
 
           writePWM(note.frequency);
           writeLEDPiano(note.letter);
@@ -379,9 +372,6 @@ void timerPWMISR(void* isr_context) {
   struct note_info note;
 
   note = nextSongNote();
-  //printf("note.frequency == %d\n",note.frequency);
-  //printf("note.duration == %d\n",note.duration);
-  //printf("note.endofsong == %d\n",note.endofsong);
 
   if (note.endofsong == FALSE) {
     writePWM(note.frequency);
