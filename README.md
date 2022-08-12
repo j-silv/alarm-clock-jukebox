@@ -5,6 +5,11 @@ Here is the project repo for my alarm clock that plays cellphone ringtones (i.e.
 The device uses a Nios II embedded softcore IP from Quartus, programmed on a MAX 10 FPGA. 
 The ringtones are played using RTTTL (Ring Tones Text Transfer Language).
 
+## Video demonstration (click to go to YouTube)
+
+[![Alt text](https://img.youtube.com/vi/H3km1ellEmk/0.jpg)](https://www.youtube.com/watch?v=H3km1ellEmk)
+
+
 ## Navigating the repo:
 
 The C source code can be found in the software/ folder.
